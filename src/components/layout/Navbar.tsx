@@ -81,9 +81,9 @@ export default function Navbar() {
           <Image
             src="/saaphzone-logo-icon.png"
             alt="Saaphzone Technologies"
-            width={48}
-            height={48}
-            style={{ objectFit: "contain" }}
+            width={64}
+            height={64}
+            style={{ objectFit: "contain", background: "none" }}
             priority
           />
         </Link>
@@ -195,33 +195,7 @@ export default function Navbar() {
             )
           )}
 
-          <Link
-            href="/contact"
-            id="navbar-cta"
-            style={{
-              marginLeft: "0.5rem",
-              padding: "0.5625rem 1.25rem",
-              borderRadius: "8px",
-              background: "#1d4ed8",
-              color: "white",
-              textDecoration: "none",
-              fontSize: "0.9rem",
-              fontWeight: 600,
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              transition: "background 0.2s, transform 0.2s",
-              display: "inline-block",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af";
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8";
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-            }}
-          >
-            Get a Quote
-          </Link>
+
         </nav>
 
         {/* Mobile hamburger */}
@@ -322,24 +296,7 @@ export default function Navbar() {
               </Link>
             )
           )}
-          <Link
-            href="/contact"
-            style={{
-              display: "block",
-              marginTop: "1rem",
-              padding: "0.875rem",
-              background: "#1d4ed8",
-              color: "white",
-              textDecoration: "none",
-              borderRadius: "10px",
-              fontWeight: 700,
-              fontSize: "1rem",
-              textAlign: "center",
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}
-          >
-            Get a Quote
-          </Link>
+
         </div>
       )}
 
