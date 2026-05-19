@@ -85,6 +85,7 @@ export default function Navbar() {
             height={64}
             style={{ objectFit: "contain", background: "none" }}
             priority
+            loading="eager"
           />
         </Link>
 
@@ -196,6 +197,36 @@ export default function Navbar() {
           )}
 
 
+          {/* Get Quote CTA */}
+          <Link
+            href="/contact"
+            id="navbar-get-quote"
+            style={{
+              marginLeft: "0.5rem",
+              padding: "0.5rem 1.125rem",
+              background: "#1d4ed8",
+              color: "white",
+              borderRadius: "8px",
+              textDecoration: "none",
+              fontSize: "0.9rem",
+              fontWeight: 700,
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              transition: "all 0.2s ease",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
+              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 12px rgba(29,78,216,0.35)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+            }}
+          >
+            Get Quote
+          </Link>
         </nav>
 
         {/* Mobile hamburger */}
@@ -297,6 +328,26 @@ export default function Navbar() {
             )
           )}
 
+          {/* Mobile Get Quote */}
+          <div style={{ marginTop: "1rem", paddingTop: "0.75rem", borderTop: "1px solid #f1f5f9" }}>
+            <Link
+              href="/contact"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "0.75rem",
+                background: "#1d4ed8",
+                color: "white",
+                borderRadius: "10px",
+                textDecoration: "none",
+                fontWeight: 700,
+                fontSize: "1rem",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}
+            >
+              Get a Quote
+            </Link>
+          </div>
         </div>
       )}
 
