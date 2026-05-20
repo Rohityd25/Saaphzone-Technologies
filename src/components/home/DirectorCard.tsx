@@ -115,7 +115,7 @@ export default function DirectorCard() {
               <Phone size={16} /> {DIRECTOR.phone}
             </a>
             <a
-              href="mailto:director@saaphzone.com"
+              href="mailto:vpp.dir@eieindia.in"
               id="director-email"
               style={{
                 display: "inline-flex",
@@ -138,7 +138,7 @@ export default function DirectorCard() {
                 ((e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.12)")
               }
             >
-              <Mail size={16} /> director@saaphzone.com
+              <Mail size={16} /> vpp.dir@eieindia.in
             </a>
           </div>
         </motion.div>

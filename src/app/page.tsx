@@ -173,13 +173,13 @@ export default function ComingSoonPage() {
               <Phone size={16} /> +91 9882810053
             </a>
             <a
-              href="mailto:director@saaphzone.com"
+              href="mailto:vpp.dir@eieindia.in"
               id="cs-director-email"
               style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(255,255,255,0.1)", color: "white", padding: "0.625rem 1.25rem", borderRadius: "10px", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem", border: "1px solid rgba(255,255,255,0.2)", transition: "background 0.2s" }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.18)"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.1)"; }}
             >
-              <Mail size={16} /> director@saaphzone.com
+              <Mail size={16} /> vpp.dir@eieindia.in
             </a>
           </div>
 
