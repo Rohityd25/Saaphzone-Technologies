@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ScrollProgress from "@/components/layout/ScrollProgress";
+import BackToTop from "@/components/layout/BackToTop";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Saaphzone Technologies for a free consultation on environmental solutions, renewable energy, BESS, and pollution control. Based in Noida, India.",
+    "Get in touch with Saaphzone Technologies for a free consultation on environmental solutions, renewable energy, BESS, and pollution control. Based in India.",
   openGraph: {
     title: "Contact Saaphzone Technologies",
     description:
@@ -12,5 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <div className="min-h-full flex flex-col antialiased">
+      <ScrollProgress />
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+      <BackToTop />
+    </div>
+  );
 }

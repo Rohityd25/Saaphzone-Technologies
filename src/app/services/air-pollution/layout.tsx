@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ScrollProgress from "@/components/layout/ScrollProgress";
+import BackToTop from "@/components/layout/BackToTop";
 
 export const metadata: Metadata = {
   title: "Air Pollution Mitigation System",
@@ -12,5 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <div className="min-h-full flex flex-col antialiased">
+      <ScrollProgress />
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+      <BackToTop />
+    </div>
+  );
 }
