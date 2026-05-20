@@ -104,16 +104,16 @@ export default function ComingSoonPage() {
 
         {/* Logo */}
         <div style={{ marginBottom: "2rem", display: "flex", justifyContent: "center" }}>
-          <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "20px", padding: "0.75rem 1.5rem", backdropFilter: "blur(12px)", display: "inline-flex", alignItems: "center", gap: "0.75rem" }}>
+          <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "24px", padding: "1rem 2rem", backdropFilter: "blur(12px)", display: "inline-flex", alignItems: "center", gap: "1rem" }}>
             <Image
               src="/Saaphzone logo.png"
               alt="Saaphzone Technologies"
-              width={48}
-              height={48}
+              width={80}
+              height={80}
               style={{ objectFit: "contain" }}
               priority
             />
-            <span style={{ color: "white", fontWeight: 700, fontSize: "1.1rem", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.01em" }}>
+            <span style={{ color: "white", fontWeight: 800, fontSize: "1.6rem", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.02em" }}>
               Saaphzone Technologies
             </span>
           </div>
@@ -128,11 +128,8 @@ export default function ComingSoonPage() {
         </div>
 
         {/* Headline */}
-        <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 900, color: "white", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1.25rem" }}>
-          Something Big is{" "}
-          <span style={{ background: "linear-gradient(90deg, #60a5fa, #818cf8, #a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-            Coming Soon
-          </span>
+        <h1 style={{ fontSize: "clamp(3rem, 7vw, 5rem)", fontWeight: 900, color: "white", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1.25rem", background: "linear-gradient(90deg, #60a5fa, #818cf8, #a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+          Coming Soon
         </h1>
 
         <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: 540, margin: "0 auto 2.5rem" }}>
