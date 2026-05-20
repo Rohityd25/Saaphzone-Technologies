@@ -70,8 +70,6 @@ function CountdownBox({ value, label }: { value: number; label: string }) {
 
 export default function ComingSoonPage() {
   const [time, setTime] = useState(getTimeLeft());
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => setTime(getTimeLeft()), 1000);
@@ -147,33 +145,7 @@ export default function ComingSoonPage() {
           <CountdownBox value={time.seconds} label="Seconds" />
         </div>
 
-        {/* Notify form */}
-        {!subscribed ? (
-          <form
-            onSubmit={(e) => { e.preventDefault(); if (email) setSubscribed(true); }}
-            style={{ display: "flex", gap: "0.625rem", maxWidth: 460, margin: "0 auto 3rem", flexWrap: "wrap", justifyContent: "center" }}
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email to be notified"
-              required
-              style={{ flex: 1, minWidth: 220, padding: "0.75rem 1.125rem", borderRadius: "10px", border: "1.5px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.07)", color: "white", fontSize: "0.9375rem", outline: "none", fontFamily: "'Inter', sans-serif", backdropFilter: "blur(8px)" }}
-            />
-            <button
-              type="submit"
-              style={{ padding: "0.75rem 1.375rem", background: "linear-gradient(135deg, #1d4ed8, #4f46e5)", color: "white", border: "none", borderRadius: "10px", fontWeight: 700, fontSize: "0.9rem", cursor: "pointer", fontFamily: "'Plus Jakarta Sans', sans-serif", whiteSpace: "nowrap" }}
-            >
-              Notify Me
-            </button>
-          </form>
-        ) : (
-          <div style={{ marginBottom: "3rem", padding: "0.75rem 1.5rem", background: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.3)", borderRadius: "12px", display: "inline-flex", gap: "0.5rem", alignItems: "center" }}>
-            <span style={{ color: "#4ade80", fontSize: "1.1rem" }}>✓</span>
-            <span style={{ color: "#86efac", fontSize: "0.9rem", fontWeight: 600 }}>Thanks! We&apos;ll notify you when we launch.</span>
-          </div>
-        )}
+
 
         {/* Divider */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginBottom: "2.5rem" }} />
