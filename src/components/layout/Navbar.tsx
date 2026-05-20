@@ -79,10 +79,10 @@ export default function Navbar() {
           }}
         >
           <Image
-            src="/saaphzone-logo-icon.png"
+            src="/Saaphzone logo.png"
             alt="Saaphzone Technologies"
-            width={64}
-            height={64}
+            width={60}
+            height={60}
             style={{ objectFit: "contain", background: "none" }}
             priority
             loading="eager"

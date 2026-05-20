@@ -84,7 +84,7 @@ export default function SolidWastePage() {
               { title: "Waste-to-Energy", desc: "Converting organic waste to biogas, energy pellets, or RDF for power generation and fuel substitution.", icon: "⚡" },
               { title: "Composting Systems", desc: "Aerobic and anaerobic composting plants for organic waste conversion to quality soil amendments.", icon: "🌱" },
             ].map((item, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease", cursor: "default" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease", cursor: "default" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" }}>
                 <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>{item.icon}</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.5rem" }}>{item.title}</h3>
                 <p style={{ fontSize: "0.9rem", color: "#64748b", lineHeight: 1.65 }}>{item.desc}</p>
@@ -124,7 +124,7 @@ export default function SolidWastePage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "1.5rem" }}>
             {benefits.map((b, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ display: "flex", gap: "1rem", padding: "1.5rem", background: "#f8faff", border: "1.5px solid #e2e8f0", borderRadius: "12px", transition: "all .25s ease" }} whileHover={{ borderColor: "#3b82f6", background: "#eff6ff" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ display: "flex", gap: "1rem", padding: "1.5rem", background: "#f8faff", border: "1.5px solid #e2e8f0", borderRadius: "12px", transition: "all .25s ease" }} whileHover={{ borderColor: "#3b82f6", background: "#eff6ff" }}>
                 <div style={{ width: 44, height: 44, borderRadius: "10px", background: "#dbeafe", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <b.icon size={20} color="#1d4ed8" />
                 </div>
@@ -147,7 +147,7 @@ export default function SolidWastePage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem", justifyContent: "center" }}>
             {industries.map((ind, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ padding: "0.625rem 1.25rem", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.2)", borderRadius: "100px", color: "white", fontSize: "0.9rem", fontWeight: 500, transition: "all .2s ease" }} whileHover={{ background: "rgba(255,255,255,.2)", scale: 1.03 } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ padding: "0.625rem 1.25rem", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.2)", borderRadius: "100px", color: "white", fontSize: "0.9rem", fontWeight: 500, transition: "all .2s ease" }} whileHover={{ background: "rgba(255,255,255,.2)", scale: 1.03 }}>
                 {ind}
               </motion.div>
             ))}
@@ -200,3 +200,4 @@ export default function SolidWastePage() {
     </div>
   );
 }
+

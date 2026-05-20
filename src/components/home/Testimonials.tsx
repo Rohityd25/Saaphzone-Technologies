@@ -45,15 +45,13 @@ export default function Testimonials() {
     timer.current = setInterval(() => {
       setDir("right");
       setActive((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5000);
+    }, 5500);
   };
 
   useEffect(() => {
     startTimer();
-    return () => {
-      if (timer.current) clearInterval(timer.current);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => { if (timer.current) clearInterval(timer.current); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const go = (index: number, direction: "left" | "right") => {
@@ -62,8 +60,7 @@ export default function Testimonials() {
     startTimer();
   };
 
-  const prev = () =>
-    go((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length, "left");
+  const prev = () => go((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length, "left");
   const next = () => go((active + 1) % TESTIMONIALS.length, "right");
 
   return (
@@ -73,14 +70,12 @@ export default function Testimonials() {
     >
       <div style={{ maxWidth: "860px", margin: "0 auto" }}>
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", marginBottom: "3rem" }}
-        >
-          <span
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             style={{
               display: "inline-block",
               background: "#eff6ff",
@@ -96,8 +91,13 @@ export default function Testimonials() {
             }}
           >
             Client Stories
-          </span>
-          <h2
+          </motion.span>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             style={{
               fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
               fontWeight: 800,
@@ -107,45 +107,76 @@ export default function Testimonials() {
             }}
           >
             What Our Clients Say
-          </h2>
-        </motion.div>
+          </motion.h2>
+        </div>
 
-        {/* Carousel */}
-        <div
+        {/* Carousel card */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           style={{
             background: "white",
             borderRadius: "20px",
             padding: "2.5rem",
             border: "1.5px solid #e2e8f0",
-            boxShadow: "0 4px 24px rgba(29,78,216,0.07)",
+            boxShadow: "0 4px 28px rgba(29,78,216,0.08)",
             position: "relative",
             minHeight: 260,
+            overflow: "hidden",
           }}
         >
+          {/* Large quote icon */}
           <Quote
-            size={48}
+            size={52}
             color="#dbeafe"
             style={{ position: "absolute", top: "1.5rem", left: "1.75rem" }}
             aria-hidden="true"
           />
 
+          {/* Progress bar */}
+          <motion.div
+            key={active + "-bar"}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 5.5, ease: "linear" }}
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 3,
+              background: "linear-gradient(90deg, #1d4ed8, #60a5fa)",
+              transformOrigin: "left",
+            }}
+          />
+
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, x: dir === "right" ? 32 : -32 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir === "right" ? -32 : 32 }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
+              initial={{
+                opacity: 0,
+                x: dir === "right" ? 40 : -40,
+                filter: "blur(4px)",
+              }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{
+                opacity: 0,
+                x: dir === "right" ? -40 : 40,
+                filter: "blur(4px)",
+              }}
+              transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
               style={{ position: "relative", zIndex: 1 }}
             >
               <p
                 style={{
                   fontSize: "1.0625rem",
                   color: "#374151",
-                  lineHeight: 1.75,
+                  lineHeight: 1.78,
                   fontStyle: "italic",
                   marginBottom: "2rem",
-                  paddingTop: "1.5rem",
+                  paddingTop: "1.75rem",
                 }}
               >
                 &ldquo;{TESTIMONIALS[active].quote}&rdquo;
@@ -166,6 +197,7 @@ export default function Testimonials() {
                     fontSize: "0.875rem",
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     flexShrink: 0,
+                    boxShadow: "0 4px 12px rgba(29,78,216,0.3)",
                   }}
                 >
                   {TESTIMONIALS[active].initials}
@@ -188,7 +220,7 @@ export default function Testimonials() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
 
         {/* Controls */}
         <div
@@ -200,6 +232,7 @@ export default function Testimonials() {
             marginTop: "1.75rem",
           }}
         >
+          {/* Prev */}
           <button
             onClick={prev}
             aria-label="Previous testimonial"
@@ -214,21 +247,29 @@ export default function Testimonials() {
               alignItems: "center",
               justifyContent: "center",
               color: "#1d4ed8",
-              transition: "all 0.2s",
+              transition: "all 0.22s cubic-bezier(0.16, 1, 0.3, 1)",
+              flexShrink: 0,
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "#1d4ed8";
-              (e.currentTarget as HTMLButtonElement).style.color = "white";
+              const el = e.currentTarget;
+              el.style.background = "#1d4ed8";
+              el.style.color = "white";
+              el.style.transform = "scale(1.1)";
+              el.style.borderColor = "#1d4ed8";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "white";
-              (e.currentTarget as HTMLButtonElement).style.color = "#1d4ed8";
+              const el = e.currentTarget;
+              el.style.background = "white";
+              el.style.color = "#1d4ed8";
+              el.style.transform = "scale(1)";
+              el.style.borderColor = "#e2e8f0";
             }}
           >
             <ChevronLeft size={18} />
           </button>
 
-          <div style={{ display: "flex", gap: "0.5rem" }}>
+          {/* Dots */}
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
             {TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
@@ -241,13 +282,14 @@ export default function Testimonials() {
                   background: i === active ? "#1d4ed8" : "#dbeafe",
                   border: "none",
                   cursor: "pointer",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                   padding: 0,
                 }}
               />
             ))}
           </div>
 
+          {/* Next */}
           <button
             onClick={next}
             aria-label="Next testimonial"
@@ -262,15 +304,22 @@ export default function Testimonials() {
               alignItems: "center",
               justifyContent: "center",
               color: "#1d4ed8",
-              transition: "all 0.2s",
+              transition: "all 0.22s cubic-bezier(0.16, 1, 0.3, 1)",
+              flexShrink: 0,
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "#1d4ed8";
-              (e.currentTarget as HTMLButtonElement).style.color = "white";
+              const el = e.currentTarget;
+              el.style.background = "#1d4ed8";
+              el.style.color = "white";
+              el.style.transform = "scale(1.1)";
+              el.style.borderColor = "#1d4ed8";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "white";
-              (e.currentTarget as HTMLButtonElement).style.color = "#1d4ed8";
+              const el = e.currentTarget;
+              el.style.background = "white";
+              el.style.color = "#1d4ed8";
+              el.style.transform = "scale(1)";
+              el.style.borderColor = "#e2e8f0";
             }}
           >
             <ChevronRight size={18} />

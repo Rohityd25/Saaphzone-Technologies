@@ -4,14 +4,51 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+/* ── word-by-word reveal (triggered on scroll) ── */
+function RevealWords({
+  text,
+  baseDelay = 0,
+  stagger = 0.055,
+  style,
+}: {
+  text: string;
+  baseDelay?: number;
+  stagger?: number;
+  style?: React.CSSProperties;
+}) {
+  const words = text.split(" ");
+  return (
+    <span style={{ display: "inline", ...style }} aria-label={text}>
+      {words.map((word, i) => (
+        <span
+          key={i}
+          style={{ display: "inline-block", overflow: "hidden", lineHeight: "inherit" }}
+        >
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: "110%", opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{
+              duration: 0.58,
+              delay: baseDelay + i * stagger,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            {word}
+          </motion.span>
+          {i < words.length - 1 ? "\u00a0" : ""}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function AboutPreview() {
   return (
     <section
       aria-label="About Saaphzone"
-      style={{
-        padding: "5rem 1.5rem",
-        background: "#f8faff",
-      }}
+      style={{ padding: "5rem 1.5rem", background: "#f8faff" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         <div
@@ -23,14 +60,14 @@ export default function AboutPreview() {
           }}
           className="about-grid"
         >
-          {/* Left content */}
-          <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <span
+          {/* ── Left content ── */}
+          <div>
+            {/* Badge */}
+            <motion.span
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 display: "inline-block",
                 background: "#eff6ff",
@@ -46,7 +83,9 @@ export default function AboutPreview() {
               }}
             >
               Who We Are
-            </span>
+            </motion.span>
+
+            {/* Headline with word reveal */}
             <h2
               style={{
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
@@ -58,32 +97,38 @@ export default function AboutPreview() {
                 lineHeight: 1.2,
               }}
             >
-              India&apos;s Trusted Clean-Tech Partner Since 2018
+              <RevealWords
+                text="India's Trusted Clean-Tech Partner Since 2018"
+                baseDelay={0.05}
+                stagger={0.05}
+              />
             </h2>
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "#475569",
-                lineHeight: 1.75,
-                marginBottom: "1rem",
-              }}
-            >
-              Saaphzone Technologies is a leading environmental solutions company
-              headquartered in Noida, UP. We help industries meet regulatory
-              compliance while significantly reducing their environmental footprint.
-            </p>
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "#475569",
-                lineHeight: 1.75,
-                marginBottom: "2rem",
-              }}
-            >
-              From cement plants and steel mills to municipalities and solar farms,
-              our solutions span the full spectrum of clean technology — backed by
-              field-tested expertise and 350+ successful projects.
-            </p>
+
+            {/* Body paragraphs — fade-in with blur */}
+            {[
+              "Saaphzone Technologies is a leading environmental solutions company headquartered in Noida, UP. We help industries meet regulatory compliance while significantly reducing their environmental footprint.",
+              "From cement plants and steel mills to municipalities and solar farms, our solutions span the full spectrum of clean technology — backed by field-tested expertise and 350+ successful projects.",
+            ].map((para, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{
+                  duration: 0.65,
+                  delay: 0.15 + i * 0.12,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                style={{
+                  fontSize: "1rem",
+                  color: "#475569",
+                  lineHeight: 1.75,
+                  marginBottom: "1rem",
+                }}
+              >
+                {para}
+              </motion.p>
+            ))}
 
             {/* Mission & Vision */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
@@ -98,16 +143,20 @@ export default function AboutPreview() {
                   text: "An India where industrial growth and environmental sustainability coexist seamlessly.",
                   color: "#0369a1",
                 },
-              ].map(({ label, text, color }) => (
-                <div
+              ].map(({ label, text, color }, i) => (
+                <motion.div
                   key={label}
-                  style={{
-                    display: "flex",
-                    gap: "1rem",
-                    alignItems: "flex-start",
-                  }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.35 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}
                 >
-                  <div
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.45, delay: 0.38 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
                     style={{
                       width: 4,
                       minHeight: 44,
@@ -115,6 +164,7 @@ export default function AboutPreview() {
                       background: color,
                       flexShrink: 0,
                       marginTop: 2,
+                      transformOrigin: "top",
                     }}
                   />
                   <div>
@@ -133,47 +183,59 @@ export default function AboutPreview() {
                     </p>
                     <p style={{ fontSize: "0.9375rem", color: "#475569", lineHeight: 1.6 }}>{text}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <Link
-              href="/about"
-              id="about-learn-more-btn"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.8125rem 1.625rem",
-                background: "#1d4ed8",
-                color: "white",
-                borderRadius: "10px",
-                textDecoration: "none",
-                fontWeight: 700,
-                fontSize: "0.9375rem",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                transition: "all 0.25s ease",
-                boxShadow: "0 4px 14px rgba(29,78,216,0.25)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af";
-                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8";
-                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-              }}
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
             >
-              Learn More About Us <ArrowRight size={17} />
-            </Link>
-          </motion.div>
+              <Link
+                href="/about"
+                id="about-learn-more-btn"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.8125rem 1.625rem",
+                  background: "#1d4ed8",
+                  color: "white",
+                  borderRadius: "10px",
+                  textDecoration: "none",
+                  fontWeight: 700,
+                  fontSize: "0.9375rem",
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
+                  boxShadow: "0 4px 14px rgba(29,78,216,0.25)",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = "#1e40af";
+                  el.style.transform = "translateY(-3px) scale(1.02)";
+                  el.style.boxShadow = "0 10px 26px rgba(29,78,216,0.38)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = "#1d4ed8";
+                  el.style.transform = "translateY(0) scale(1)";
+                  el.style.boxShadow = "0 4px 14px rgba(29,78,216,0.25)";
+                }}
+              >
+                Learn More About Us <ArrowRight size={17} />
+              </Link>
+            </motion.div>
+          </div>
 
-          {/* Right — Graphic */}
+          {/* ── Right — Graphic ── */}
           <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 36, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="about-visual"
           >
             <AboutVisual />
@@ -199,9 +261,15 @@ export default function AboutPreview() {
 }
 
 function AboutVisual() {
+  const cards = [
+    { label: "Projects Done", val: "350+", color: "#eff6ff", text: "#1d4ed8" },
+    { label: "Industries", val: "40+", color: "#f0f9ff", text: "#0369a1" },
+    { label: "CO₂ Reduced", val: "120K T", color: "#eef2ff", text: "#4338ca" },
+    { label: "Capacity MW", val: "85+", color: "#ecfeff", text: "#0e7490" },
+  ];
+
   return (
     <div style={{ position: "relative" }}>
-      {/* Main card */}
       <div
         style={{
           background: "white",
@@ -211,20 +279,28 @@ function AboutVisual() {
           border: "1.5px solid #e2e8f0",
         }}
       >
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
-          {[
-            { label: "Projects Done", val: "350+", color: "#eff6ff", text: "#1d4ed8" },
-            { label: "Industries", val: "40+", color: "#f0f9ff", text: "#0369a1" },
-            { label: "CO₂ Reduced", val: "120K T", color: "#eef2ff", text: "#4338ca" },
-            { label: "Capacity MW", val: "85+", color: "#ecfeff", text: "#0e7490" },
-          ].map(({ label, val, color, text }) => (
-            <div
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "1rem",
+            marginBottom: "1rem",
+          }}
+        >
+          {cards.map(({ label, val, color, text }, i) => (
+            <motion.div
               key={label}
+              initial={{ opacity: 0, scale: 0.88 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.48, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ scale: 1.04, transition: { duration: 0.22 } }}
               style={{
                 background: color,
                 borderRadius: "12px",
                 padding: "1.25rem",
                 textAlign: "center",
+                cursor: "default",
               }}
             >
               <p
@@ -240,12 +316,16 @@ function AboutVisual() {
                 {val}
               </p>
               <p style={{ fontSize: "0.8rem", color: "#64748b", fontWeight: 500 }}>{label}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Certifications */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           style={{
             display: "flex",
             gap: "0.75rem",
@@ -255,9 +335,13 @@ function AboutVisual() {
             borderRadius: "12px",
           }}
         >
-          {["ISO 9001:2015", "CPCB Certified", "MoEFCC Approved"].map((cert) => (
-            <span
+          {["ISO 9001:2015", "CPCB Certified", "MoEFCC Approved"].map((cert, i) => (
+            <motion.span
               key={cert}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
               style={{
                 background: "white",
                 border: "1px solid #dbeafe",
@@ -270,13 +354,17 @@ function AboutVisual() {
               }}
             >
               ✓ {cert}
-            </span>
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Floating badge */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
+        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.55, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: "absolute",
           bottom: -20,
@@ -304,7 +392,7 @@ function AboutVisual() {
           <br />
           Excellence
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 }

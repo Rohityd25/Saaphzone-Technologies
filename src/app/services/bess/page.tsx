@@ -131,7 +131,7 @@ export default function BESSPage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
             {keyFeatures.map((f, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" }}>
                 <div style={{ width: 48, height: 48, borderRadius: "12px", background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem" }}>
                   <f.icon size={22} color="#1d4ed8" />
                 </div>
@@ -174,7 +174,7 @@ export default function BESSPage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "1.25rem" }}>
             {useCases.map((uc, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ background: "rgba(255,255,255,.1)", border: "1px solid rgba(255,255,255,.15)", borderRadius: "14px", padding: "1.5rem", transition: "all .25s ease" }} whileHover={{ background: "rgba(255,255,255,.17)" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ background: "rgba(255,255,255,.1)", border: "1px solid rgba(255,255,255,.15)", borderRadius: "14px", padding: "1.5rem", transition: "all .25s ease" }} whileHover={{ background: "rgba(255,255,255,.17)" }}>
                 <div style={{ fontSize: "2rem", marginBottom: "0.875rem" }}>{uc.icon}</div>
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.5rem" }}>{uc.title}</h3>
                 <p style={{ fontSize: "0.875rem", color: "#bfdbfe", lineHeight: 1.65 }}>{uc.desc}</p>
@@ -229,3 +229,4 @@ export default function BESSPage() {
     </div>
   );
 }
+

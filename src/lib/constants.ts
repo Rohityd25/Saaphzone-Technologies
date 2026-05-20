@@ -11,8 +11,8 @@ export const COMPANY = {
 };
 
 export const DIRECTOR = {
-  name: "Mr. Rahul Sharma",
-  phone: "+91 98765 43210",
+  name: "Dr.VIVEK PRAKASH PANKAJ",
+  phone: "+91 9882810053",
   designation: "Director, Saaphzone Technologies",
   bio: "Over 15 years of expertise in clean technology, industrial pollution control, and sustainable energy solutions — driving Saaphzone's mission of a greener tomorrow.",
 };

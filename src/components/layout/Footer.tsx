@@ -82,10 +82,10 @@ export default function Footer() {
               }}
             >
               <Image
-                src="/saaphzone-logo-icon.png"
+                src="/Saaphzone logo.png"
                 alt="Saaphzone Technologies"
-                width={52}
-                height={52}
+                width={56}
+                height={56}
                 style={{ objectFit: "contain" }}
               />
             </Link>
@@ -120,7 +120,7 @@ export default function Footer() {
                     (e.currentTarget as HTMLAnchorElement).style.color = "#64748b";
                   }}
                 >
-                  <Icon size={16} />
+                  <Icon />
                 </a>
               ))}
             </div>

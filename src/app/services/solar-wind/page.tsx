@@ -87,7 +87,7 @@ export default function SolarWindPage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "1.5rem" }}>
             {solarSolutions.map((sol, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ background: "linear-gradient(145deg,#f8faff,#eff6ff)", border: "1.5px solid #dbeafe", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ background: "linear-gradient(145deg,#f8faff,#eff6ff)", border: "1.5px solid #dbeafe", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" }}>
                 <div style={{ fontSize: "2rem", marginBottom: "0.875rem" }}>☀️</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.5rem" }}>{sol.title}</h3>
                 <p style={{ fontSize: "0.9rem", color: "#64748b", lineHeight: 1.65 }}>{sol.desc}</p>
@@ -110,7 +110,7 @@ export default function SolarWindPage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
             {windSolutions.map((sol, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" }}>
                 <div style={{ fontSize: "2rem", marginBottom: "0.875rem" }}>💨</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.5rem" }}>{sol.title}</h3>
                 <p style={{ fontSize: "0.9rem", color: "#64748b", lineHeight: 1.65 }}>{sol.desc}</p>
@@ -147,7 +147,7 @@ export default function SolarWindPage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "1.5rem" }}>
             {roiPoints.map((pt, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ display: "flex", gap: "1rem", padding: "1.5rem", background: "#f8faff", border: "1.5px solid #e2e8f0", borderRadius: "12px", transition: "all .25s ease" }} whileHover={{ borderColor: "#3b82f6", background: "#eff6ff" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ display: "flex", gap: "1rem", padding: "1.5rem", background: "#f8faff", border: "1.5px solid #e2e8f0", borderRadius: "12px", transition: "all .25s ease" }} whileHover={{ borderColor: "#3b82f6", background: "#eff6ff" }}>
                 <div style={{ width: 44, height: 44, borderRadius: "10px", background: "#dbeafe", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <pt.icon size={20} color="#1d4ed8" />
                 </div>
@@ -206,3 +206,4 @@ export default function SolarWindPage() {
     </div>
   );
 }
+

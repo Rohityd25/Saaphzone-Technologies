@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const STATS = [
   { value: 350, suffix: "+", label: "Projects Completed" },
@@ -59,30 +58,61 @@ export default function Stats() {
         overflow: "hidden",
       }}
     >
-      {/* Background accent */}
+      {/* Background radial glow */}
       <div
         aria-hidden="true"
         style={{
           position: "absolute",
-          width: 500,
-          height: 500,
+          width: 600,
+          height: 600,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(29,78,216,0.2), transparent)",
+          background: "radial-gradient(circle, rgba(29,78,216,0.18), transparent 70%)",
           top: "-200px",
-          right: "-100px",
+          right: "-120px",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          width: 400,
+          height: 400,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(59,130,246,0.1), transparent 70%)",
+          bottom: "-120px",
+          left: "-80px",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Horizontal scan line */}
+      <motion.div
+        aria-hidden="true"
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: 0,
+          right: 0,
+          height: 1,
+          background: "linear-gradient(90deg, transparent, rgba(59,130,246,0.25), transparent)",
+          transformOrigin: "left",
           pointerEvents: "none",
         }}
       />
 
       <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", marginBottom: "3.5rem" }}
-        >
-          <span
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <motion.span
+            initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
               display: "inline-block",
               background: "rgba(59,130,246,0.15)",
@@ -95,11 +125,17 @@ export default function Stats() {
               textTransform: "uppercase",
               marginBottom: "0.875rem",
               fontFamily: "'Plus Jakarta Sans', sans-serif",
+              border: "1px solid rgba(59,130,246,0.2)",
             }}
           >
             Our Impact
-          </span>
-          <h2
+          </motion.span>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             style={{
               fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
               fontWeight: 800,
@@ -109,9 +145,10 @@ export default function Stats() {
             }}
           >
             Numbers That Speak for Themselves
-          </h2>
-        </motion.div>
+          </motion.h2>
+        </div>
 
+        {/* Stat cards */}
         <div
           style={{
             display: "grid",
@@ -122,10 +159,20 @@ export default function Stats() {
           {STATS.map(({ value, suffix, label }, i) => (
             <motion.div
               key={label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 36, filter: "blur(6px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{
+                duration: 0.65,
+                delay: i * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              whileHover={{
+                scale: 1.04,
+                borderColor: "rgba(59,130,246,0.4)",
+                boxShadow: "0 0 30px rgba(29,78,216,0.2)",
+                transition: { duration: 0.22 },
+              }}
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(255,255,255,0.1)",
@@ -133,8 +180,24 @@ export default function Stats() {
                 padding: "2.5rem 1.5rem",
                 textAlign: "center",
                 backdropFilter: "blur(10px)",
+                cursor: "default",
               }}
             >
+              {/* Top accent bar */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.45, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  height: 2,
+                  background: "linear-gradient(90deg, #1d4ed8, #60a5fa)",
+                  borderRadius: "1px",
+                  marginBottom: "1.5rem",
+                  transformOrigin: "left",
+                }}
+              />
+
               <p
                 style={{
                   fontSize: "clamp(2.5rem, 5vw, 3.5rem)",

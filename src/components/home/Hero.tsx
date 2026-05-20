@@ -1,8 +1,57 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { useRef } from "react";
+
+/* ─── animation helpers ─────────────────────────────────── */
+
+/** Split a string into words, each wrapped in a clip container for a "slide-up" reveal */
+function SplitWords({
+  text,
+  baseDelay = 0,
+  stagger = 0.06,
+  className,
+  style,
+}: {
+  text: string;
+  baseDelay?: number;
+  stagger?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const words = text.split(" ");
+  return (
+    <span
+      className={className}
+      style={{ display: "inline", ...style }}
+      aria-label={text}
+    >
+      {words.map((word, i) => (
+        <span
+          key={i}
+          style={{ display: "inline-block", overflow: "hidden", lineHeight: "inherit" }}
+        >
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: "110%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.62,
+              delay: baseDelay + i * stagger,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            {word}
+          </motion.span>
+          {i < words.length - 1 ? "\u00a0" : ""}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 const floatingShapes = [
   { size: 320, x: "70%", y: "-10%", opacity: 0.06, delay: 0 },
@@ -11,14 +60,20 @@ const floatingShapes = [
   { size: 100, x: "55%", y: "80%", opacity: 0.07, delay: 1.5 },
 ];
 
+/* ─── component ─────────────────────────────────────────── */
+
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+
   const scrollToServices = () => {
-    const el = document.getElementById("services");
-    el?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
+      ref={sectionRef}
       aria-label="Hero"
       style={{
         position: "relative",
@@ -30,34 +85,34 @@ export default function Hero() {
         paddingTop: "70px",
       }}
     >
-      {/* Floating decorative circles */}
-      {floatingShapes.map((s, i) => (
-        <motion.div
-          key={i}
-          aria-hidden="true"
-          animate={{
-            y: [0, -18, 0],
-            scale: [1, 1.04, 1],
-          }}
-          transition={{
-            duration: 6 + i,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: s.delay,
-          }}
-          style={{
-            position: "absolute",
-            width: s.size,
-            height: s.size,
-            borderRadius: "50%",
-            background: `radial-gradient(circle, rgba(29,78,216,${s.opacity * 1.5}), rgba(59,130,246,${s.opacity}))`,
-            left: s.x,
-            top: s.y,
-            transform: "translate(-50%, -50%)",
-            pointerEvents: "none",
-          }}
-        />
-      ))}
+      {/* Parallax blobs */}
+      <motion.div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          y: bgY,
+          pointerEvents: "none",
+        }}
+      >
+        {floatingShapes.map((s, i) => (
+          <motion.div
+            key={i}
+            animate={{ y: [0, -18, 0], scale: [1, 1.04, 1] }}
+            transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut", delay: s.delay }}
+            style={{
+              position: "absolute",
+              width: s.size,
+              height: s.size,
+              borderRadius: "50%",
+              background: `radial-gradient(circle, rgba(29,78,216,${s.opacity * 1.5}), rgba(59,130,246,${s.opacity}))`,
+              left: s.x,
+              top: s.y,
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+        ))}
+      </motion.div>
 
       {/* Grid dot pattern */}
       <div
@@ -65,13 +120,13 @@ export default function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage:
-            "radial-gradient(circle, rgba(29,78,216,0.08) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(29,78,216,0.07) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
           pointerEvents: "none",
         }}
       />
 
+      {/* Main content */}
       <div
         style={{
           maxWidth: "1280px",
@@ -91,16 +146,13 @@ export default function Hero() {
           }}
           className="hero-grid"
         >
-          {/* Left content */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
+          {/* ── Left content ── */}
+          <div>
+            {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -119,7 +171,7 @@ export default function Hero() {
                   borderRadius: "50%",
                   background: "#1d4ed8",
                   display: "inline-block",
-                  animation: "pulse 2s infinite",
+                  animation: "heroPulse 2s infinite",
                 }}
               />
               <span
@@ -135,6 +187,7 @@ export default function Hero() {
               </span>
             </motion.div>
 
+            {/* Headline with split-word reveal */}
             <h1
               style={{
                 fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
@@ -146,24 +199,28 @@ export default function Hero() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Innovating for a{" "}
+              <SplitWords text="Innovating for a" baseDelay={0.18} stagger={0.07} />
+              {" "}
               <span
                 style={{
                   background: "linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
+                  display: "inline",
                 }}
               >
-                Cleaner & Sustainable
-              </span>{" "}
-              Tomorrow
+                <SplitWords text="Cleaner & Sustainable" baseDelay={0.42} stagger={0.065} />
+              </span>
+              {" "}
+              <SplitWords text="Tomorrow" baseDelay={0.72} stagger={0.08} />
             </h1>
 
+            {/* Paragraph — fade + slide up with blur */}
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.7, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontSize: "1.125rem",
                 color: "#475569",
@@ -177,19 +234,18 @@ export default function Hero() {
               India&apos;s industrial scale.
             </motion.p>
 
+            {/* CTA buttons */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.5 }}
+              transition={{ delay: 1.0, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
             >
               <Link
                 href="#services"
                 id="hero-explore-btn"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToServices();
-                }}
+                onClick={(e) => { e.preventDefault(); scrollToServices(); }}
+                className="hero-btn-primary"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -203,17 +259,19 @@ export default function Hero() {
                   fontSize: "1rem",
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                   boxShadow: "0 4px 20px rgba(29,78,216,0.3)",
-                  transition: "all 0.25s ease",
+                  transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 25px rgba(29,78,216,0.4)";
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = "#1e40af";
+                  el.style.transform = "translateY(-3px) scale(1.02)";
+                  el.style.boxShadow = "0 10px 28px rgba(29,78,216,0.42)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 20px rgba(29,78,216,0.3)";
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = "#1d4ed8";
+                  el.style.transform = "translateY(0) scale(1)";
+                  el.style.boxShadow = "0 4px 20px rgba(29,78,216,0.3)";
                 }}
               >
                 Explore Solutions <ArrowRight size={18} />
@@ -235,15 +293,19 @@ export default function Hero() {
                   fontSize: "1rem",
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                   border: "1.5px solid #1d4ed8",
-                  transition: "all 0.25s ease",
+                  transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "#eff6ff";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = "#eff6ff";
+                  el.style.transform = "translateY(-3px) scale(1.02)";
+                  el.style.boxShadow = "0 8px 20px rgba(29,78,216,0.12)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "white";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = "white";
+                  el.style.transform = "translateY(0) scale(1)";
+                  el.style.boxShadow = "none";
                 }}
               >
                 Contact Us
@@ -254,7 +316,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.65, duration: 0.5 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
               style={{
                 display: "flex",
                 gap: "2rem",
@@ -266,8 +328,13 @@ export default function Hero() {
                 { num: "350+", label: "Projects" },
                 { num: "40+", label: "Industries" },
                 { num: "85 MW", label: "Renewable" },
-              ].map(({ num, label }) => (
-                <div key={label}>
+              ].map(({ num, label }, i) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2 + i * 0.1, duration: 0.45, ease: "easeOut" }}
+                >
                   <p
                     style={{
                       fontSize: "1.5rem",
@@ -280,27 +347,21 @@ export default function Hero() {
                   >
                     {num}
                   </p>
-                  <p style={{ fontSize: "0.8rem", color: "#64748b", fontWeight: 500 }}>
-                    {label}
-                  </p>
-                </div>
+                  <p style={{ fontSize: "0.8rem", color: "#64748b", fontWeight: 500 }}>{label}</p>
+                </motion.div>
               ))}
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Right — Illustration */}
+          {/* ── Right — Hero Image ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.25, duration: 0.7, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 40, filter: "blur(8px)" }}
+            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="hero-illustration"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            style={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}
           >
-            <HeroIllustration />
+            <HeroImage />
           </motion.div>
         </div>
 
@@ -308,7 +369,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.1, duration: 0.5 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
           style={{
             position: "absolute",
             bottom: "2rem",
@@ -318,14 +379,16 @@ export default function Hero() {
             flexDirection: "column",
             alignItems: "center",
             gap: "0.25rem",
+            cursor: "pointer",
           }}
+          onClick={scrollToServices}
         >
-          <span style={{ fontSize: "0.75rem", color: "#94a3b8", fontWeight: 500 }}>
+          <span style={{ fontSize: "0.75rem", color: "#94a3b8", fontWeight: 500, letterSpacing: "0.04em" }}>
             Scroll to explore
           </span>
           <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, 7, 0] }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           >
             <ChevronDown size={20} color="#94a3b8" />
           </motion.div>
@@ -333,9 +396,9 @@ export default function Hero() {
       </div>
 
       <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
+        @keyframes heroPulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.45; transform: scale(0.85); }
         }
         .hero-grid {
           grid-template-columns: 1fr 1fr;
@@ -353,106 +416,115 @@ export default function Hero() {
   );
 }
 
-function HeroIllustration() {
+/* ─── hero image subcomponent ───────────────────────────── */
+function HeroImage() {
   return (
-    <svg
-      viewBox="0 0 520 480"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ width: "100%", maxWidth: 480 }}
-      aria-hidden="true"
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        maxWidth: 520,
+        borderRadius: "24px",
+        overflow: "hidden",
+        boxShadow: "0 24px 64px rgba(29,78,216,0.18), 0 4px 16px rgba(0,0,0,0.10)",
+      }}
     >
-      {/* Background card */}
-      <rect x="30" y="30" width="460" height="420" rx="24" fill="white" fillOpacity="0.7" />
-      <rect x="30" y="30" width="460" height="420" rx="24" stroke="#dbeafe" strokeWidth="1.5" />
+      <Image
+        src="/hero-cleantech.png"
+        alt="Saaphzone clean technology facility with solar panels and wind turbines"
+        width={520}
+        height={380}
+        style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}
+        priority
+      />
 
-      {/* Factory building */}
-      <rect x="90" y="200" width="120" height="180" rx="6" fill="#dbeafe" />
-      <rect x="100" y="215" width="40" height="50" rx="4" fill="#bfdbfe" />
-      <rect x="155" y="215" width="40" height="50" rx="4" fill="#bfdbfe" />
-      <rect x="100" y="285" width="95" height="95" rx="4" fill="#93c5fd" />
-      {/* Chimney */}
-      <rect x="105" y="150" width="22" height="60" rx="5" fill="#1d4ed8" />
-      <rect x="145" y="165" width="22" height="45" rx="5" fill="#3b82f6" />
-      <rect x="180" y="155" width="18" height="55" rx="5" fill="#1d4ed8" />
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "50%",
+          background: "linear-gradient(to top, rgba(15,23,42,0.55), transparent)",
+          pointerEvents: "none",
+        }}
+      />
 
-      {/* Clean smoke → green particles */}
-      {[0, 1, 2].map((i) => (
-        <motion.circle
-          key={i}
-          cx={116 + i * 40}
-          cy={145}
-          r={8 + i * 3}
-          fill="#dbeafe"
-          fillOpacity={0.6 - i * 0.15}
-          animate={{ cy: [145, 120 - i * 12, 145], opacity: [0.6, 0.1, 0.6] }}
-          transition={{ duration: 2.5 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
-        />
-      ))}
-
-      {/* Solar panels */}
-      <g transform="translate(260, 190)">
-        {[0, 1, 2].map((row) =>
-          [0, 1, 2].map((col) => (
-            <rect
-              key={`${row}-${col}`}
-              x={col * 38}
-              y={row * 26}
-              width="34"
-              height="22"
-              rx="3"
-              fill={row === 1 && col === 1 ? "#1d4ed8" : "#3b82f6"}
-              fillOpacity={0.7 + (row + col) * 0.05}
-            />
-          ))
-        )}
-      </g>
-
-      {/* Wind turbine */}
-      <line x1="400" y1="140" x2="400" y2="320" stroke="#60a5fa" strokeWidth="4" strokeLinecap="round" />
-      {/* Blades */}
-      {[0, 120, 240].map((deg, i) => (
-        <motion.g
-          key={i}
-          style={{ transformOrigin: "400px 200px" }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+      {/* Live monitoring card */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          position: "absolute",
+          bottom: "1rem",
+          left: "1rem",
+          right: "1rem",
+          background: "rgba(255,255,255,0.15)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255,255,255,0.3)",
+          borderRadius: "14px",
+          padding: "0.875rem 1rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.875rem",
+        }}
+      >
+        <div
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: "10px",
+            background: "rgba(29,78,216,0.85)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+            fontSize: "1.1rem",
+          }}
         >
-          <line
-            x1="400"
-            y1="200"
-            x2={400 + 45 * Math.cos((deg * Math.PI) / 180)}
-            y2={200 + 45 * Math.sin((deg * Math.PI) / 180)}
-            stroke="#1d4ed8"
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
-        </motion.g>
-      ))}
-      <circle cx="400" cy="200" r="8" fill="#1d4ed8" />
-
-      {/* Battery */}
-      <rect x="80" y="310" width="100" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" strokeWidth="2" />
-      <rect x="175" y="325" width="8" height="20" rx="3" fill="#bfdbfe" />
-      <rect x="88" y="318" width="55" height="34" rx="4" fill="#3b82f6" fillOpacity="0.7" />
-      <text x="116" y="340" fill="white" fontSize="11" fontWeight="700" textAnchor="middle" fontFamily="Inter, sans-serif">BESS</text>
-
-      {/* Leaf decorations */}
-      <circle cx="450" cy="100" r="22" fill="#dbeafe" />
-      <text x="450" y="107" fontSize="22" textAnchor="middle">🌿</text>
-      <circle cx="80" cy="100" r="18" fill="#eff6ff" />
-      <text x="80" y="106" fontSize="18" textAnchor="middle">♻️</text>
-
-      {/* Ground line */}
-      <line x1="60" y1="375" x2="460" y2="375" stroke="#e2e8f0" strokeWidth="2" />
-
-      {/* Small data card */}
-      <rect x="265" y="310" width="160" height="75" rx="10" fill="white" stroke="#dbeafe" strokeWidth="1.5" />
-      <text x="280" y="333" fill="#1d4ed8" fontSize="10" fontWeight="700" fontFamily="Plus Jakarta Sans, sans-serif">LIVE MONITORING</text>
-      <rect x="280" y="342" width="80" height="6" rx="3" fill="#dbeafe" />
-      <rect x="280" y="342" width="62" height="6" rx="3" fill="#3b82f6" />
-      <text x="280" y="363" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">PM2.5: 24 μg/m³  ✓ Safe</text>
-      <text x="280" y="377" fill="#64748b" fontSize="9" fontFamily="Inter, sans-serif">Output: 3.2 MW  ↑ +4%</text>
-    </svg>
+          ⚡
+        </div>
+        <div style={{ flex: 1 }}>
+          <p
+            style={{
+              fontSize: "0.7rem",
+              color: "rgba(255,255,255,0.75)",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              marginBottom: "0.2rem",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}
+          >
+            Live Monitoring
+          </p>
+          <p
+            style={{
+              fontSize: "0.8rem",
+              color: "white",
+              fontWeight: 700,
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}
+          >
+            PM2.5: 24 μg/m³ &nbsp;·&nbsp; Output: 3.2 MW ↑ +4%
+          </p>
+        </div>
+        <motion.span
+          animate={{ opacity: [1, 0.3, 1], scale: [1, 0.85, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: "50%",
+            background: "#4ade80",
+            display: "inline-block",
+            boxShadow: "0 0 8px #4ade80",
+            flexShrink: 0,
+          }}
+        />
+      </motion.div>
+    </div>
   );
 }

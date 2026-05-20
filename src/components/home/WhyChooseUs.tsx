@@ -31,6 +31,32 @@ const REASONS = [
   },
 ];
 
+/* animated underline drawn on scroll */
+function UnderlineReveal({ children }: { children: React.ReactNode }) {
+  return (
+    <span style={{ position: "relative", display: "inline-block" }}>
+      {children}
+      <motion.span
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{ duration: 0.55, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          position: "absolute",
+          bottom: -4,
+          left: 0,
+          right: 0,
+          height: 3,
+          background: "linear-gradient(90deg, #1d4ed8, #3b82f6)",
+          borderRadius: "2px",
+          transformOrigin: "left",
+          display: "block",
+        }}
+      />
+    </span>
+  );
+}
+
 export default function WhyChooseUs() {
   return (
     <section
@@ -39,14 +65,12 @@ export default function WhyChooseUs() {
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", marginBottom: "3.5rem" }}
-        >
-          <span
+        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             style={{
               display: "inline-block",
               background: "#eff6ff",
@@ -62,7 +86,8 @@ export default function WhyChooseUs() {
             }}
           >
             Our Advantage
-          </span>
+          </motion.span>
+
           <h2
             style={{
               fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
@@ -73,9 +98,14 @@ export default function WhyChooseUs() {
               letterSpacing: "-0.02em",
             }}
           >
-            Why Choose Saaphzone?
+            <UnderlineReveal>Why Choose Saaphzone?</UnderlineReveal>
           </h2>
-          <p
+
+          <motion.p
+            initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             style={{
               fontSize: "1.0625rem",
               color: "#64748b",
@@ -86,8 +116,8 @@ export default function WhyChooseUs() {
           >
             We combine technical excellence with field-proven reliability to deliver
             clean-tech solutions that last.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Cards */}
         <div
@@ -100,11 +130,19 @@ export default function WhyChooseUs() {
           {REASONS.map(({ Icon, title, desc }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: i * 0.09 }}
-              whileHover={{ y: -5, boxShadow: "0 12px 30px rgba(29,78,216,0.1)" }}
+              transition={{
+                duration: 0.55,
+                delay: i * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              whileHover={{
+                y: -6,
+                boxShadow: "0 16px 36px rgba(29,78,216,0.13)",
+                borderColor: "#bfdbfe",
+              }}
               style={{
                 background: "white",
                 border: "1.5px solid #e2e8f0",
@@ -114,7 +152,10 @@ export default function WhyChooseUs() {
                 cursor: "default",
               }}
             >
-              <div
+              {/* Icon with hover glow */}
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 4 }}
+                transition={{ duration: 0.22 }}
                 style={{
                   width: 48,
                   height: 48,
@@ -124,10 +165,12 @@ export default function WhyChooseUs() {
                   alignItems: "center",
                   justifyContent: "center",
                   marginBottom: "1rem",
+                  boxShadow: "0 4px 12px rgba(29,78,216,0.25)",
                 }}
               >
                 <Icon size={22} color="white" />
-              </div>
+              </motion.div>
+
               <h3
                 style={{
                   fontSize: "1rem",

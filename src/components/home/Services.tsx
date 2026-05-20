@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { Recycle, Wind, BatteryFull, Sun, ArrowRight } from "lucide-react";
 
@@ -14,6 +15,7 @@ const SERVICES = [
     href: "/services/solid-waste",
     accent: "#1d4ed8",
     bg: "#eff6ff",
+    image: "/service-solid-waste.png",
   },
   {
     id: "air-pollution",
@@ -24,6 +26,7 @@ const SERVICES = [
     href: "/services/air-pollution",
     accent: "#0369a1",
     bg: "#f0f9ff",
+    image: "/service-air-pollution.png",
   },
   {
     id: "bess",
@@ -34,6 +37,7 @@ const SERVICES = [
     href: "/services/bess",
     accent: "#4338ca",
     bg: "#eef2ff",
+    image: "/service-bess.png",
   },
   {
     id: "solar-wind",
@@ -44,6 +48,7 @@ const SERVICES = [
     href: "/services/solar-wind",
     accent: "#0e7490",
     bg: "#ecfeff",
+    image: "/service-solar-wind.png",
   },
 ];
 
@@ -54,7 +59,7 @@ const stagger = {
 
 const cardAnim = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } },
 };
 
 export default function Services() {
@@ -128,7 +133,7 @@ export default function Services() {
             gap: "1.5rem",
           }}
         >
-          {SERVICES.map(({ id, Icon, title, description, href, accent, bg }) => (
+          {SERVICES.map(({ id, Icon, title, description, href, accent, bg, image }) => (
             <motion.div
               key={id}
               variants={cardAnim}
@@ -136,10 +141,9 @@ export default function Services() {
                 background: "white",
                 border: "1.5px solid #e2e8f0",
                 borderRadius: "16px",
-                padding: "2rem",
+                overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
-                gap: "1rem",
                 cursor: "pointer",
                 transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
               }}
@@ -149,67 +153,101 @@ export default function Services() {
                 borderColor: accent,
               }}
             >
-              {/* Icon */}
+              {/* Service Image */}
               <div
                 style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: "14px",
-                  background: bg,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  position: "relative",
+                  width: "100%",
+                  height: 160,
+                  overflow: "hidden",
+                  flexShrink: 0,
                 }}
               >
-                <Icon size={26} color={accent} />
+                <Image
+                  src={image}
+                  alt={title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+                {/* Color overlay on hover target */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: `linear-gradient(to bottom, transparent 40%, ${accent}33)`,
+                    pointerEvents: "none",
+                  }}
+                />
+                {/* Icon badge */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "0.75rem",
+                    left: "0.75rem",
+                    width: 40,
+                    height: 40,
+                    borderRadius: "10px",
+                    background: bg,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
+                  }}
+                >
+                  <Icon size={22} color={accent} />
+                </div>
               </div>
 
-              <div style={{ flex: 1 }}>
-                <h3
+              {/* Card Body */}
+              <div style={{ padding: "1.25rem 1.5rem", flex: 1, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                <div style={{ flex: 1 }}>
+                  <h3
+                    style={{
+                      fontSize: "1.0625rem",
+                      fontWeight: 700,
+                      color: "#0f172a",
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.9rem",
+                      color: "#64748b",
+                      lineHeight: 1.65,
+                    }}
+                  >
+                    {description}
+                  </p>
+                </div>
+
+                <Link
+                  href={href}
+                  id={`service-${id}-link`}
                   style={{
-                    fontSize: "1.0625rem",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.375rem",
+                    color: accent,
+                    textDecoration: "none",
+                    fontSize: "0.875rem",
                     fontWeight: 700,
-                    color: "#0f172a",
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    marginBottom: "0.5rem",
+                    transition: "gap 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.gap = "0.625rem";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.gap = "0.375rem";
                   }}
                 >
-                  {title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    color: "#64748b",
-                    lineHeight: 1.65,
-                  }}
-                >
-                  {description}
-                </p>
+                  Learn More <ArrowRight size={15} />
+                </Link>
               </div>
-
-              <Link
-                href={href}
-                id={`service-${id}-link`}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.375rem",
-                  color: accent,
-                  textDecoration: "none",
-                  fontSize: "0.875rem",
-                  fontWeight: 700,
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  transition: "gap 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.gap = "0.625rem";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.gap = "0.375rem";
-                }}
-              >
-                Learn More <ArrowRight size={15} />
-              </Link>
             </motion.div>
           ))}
         </motion.div>

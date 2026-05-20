@@ -121,7 +121,7 @@ export default function AboutPage() {
             {CORE_VALUES.map((val, i) => {
               const Icon = iconMap[val.icon] || Target;
               return (
-                <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", textAlign: "center", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" } as object}>
+                <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", textAlign: "center", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" }}>
                   <div style={{ width: 56, height: 56, borderRadius: "14px", background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1rem" }}>
                     <Icon size={24} color="#1d4ed8" />
                   </div>
@@ -163,7 +163,7 @@ export default function AboutPage() {
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
             {leadership.map((person, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "16px", padding: "2rem", textAlign: "center", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.1)", borderColor: "#3b82f6" } as object}>
+              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "16px", padding: "2rem", textAlign: "center", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.1)", borderColor: "#3b82f6" }}>
                 <div style={{ width: 72, height: 72, borderRadius: "50%", background: "linear-gradient(135deg,#1d4ed8,#3b82f6)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "white", fontSize: "1.375rem", fontWeight: 800, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
                   {person.initials}
                 </div>
@@ -214,3 +214,4 @@ export default function AboutPage() {
     </div>
   );
 }
+
