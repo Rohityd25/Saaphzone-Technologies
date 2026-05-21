@@ -205,7 +205,7 @@ export default function ComingSoonPage() {
               onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8"; (e.currentTarget as HTMLAnchorElement).style.color = "white"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.07)"; (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.5)"; }}
             >
-              <Icon size={16} />
+              <Icon />
             </a>
           ))}
         </div>

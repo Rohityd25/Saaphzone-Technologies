@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Phone, Mail } from "lucide-react";
 
 const DIRECTOR = {
-  name: "Mr. Rahul Sharma",
-  phone: "+91 98765 43210",
+  name: "Dr.VIVEK PRAKASH PANKAJ",
+  phone: "+91 9882810053",
   designation: "Director, Saaphzone Technologies",
   bio: "Over 15 years of expertise in clean technology, industrial pollution control, and sustainable energy solutions — driving Saaphzone's mission of a greener tomorrow.",
 };
@@ -115,7 +115,7 @@ export default function DirectorCard() {
               <Phone size={16} /> {DIRECTOR.phone}
             </a>
             <a
-              href="mailto:vpp.dir@eieindia.in"
+              href="mailto:director@saaphzone.com"
               id="director-email"
               style={{
                 display: "inline-flex",
@@ -138,7 +138,7 @@ export default function DirectorCard() {
                 ((e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.12)")
               }
             >
-              <Mail size={16} /> vpp.dir@eieindia.in
+              <Mail size={16} /> director@saaphzone.com
             </a>
           </div>
         </motion.div>
