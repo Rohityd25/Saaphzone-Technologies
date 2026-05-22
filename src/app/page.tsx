@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 
 // Inline SVG social icons (compatible with all lucide-react versions)
 const LinkedInIcon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>;
@@ -10,72 +9,7 @@ const TwitterIcon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="
 const FacebookIcon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>;
 const YoutubeIcon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>;
 
-const LAUNCH_DATE = new Date("2025-08-01T00:00:00");
-
-function getTimeLeft() {
-  const diff = LAUNCH_DATE.getTime() - Date.now();
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  return {
-    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((diff / (1000 * 60)) % 60),
-    seconds: Math.floor((diff / 1000) % 60),
-  };
-}
-
-function CountdownBox({ value, label }: { value: number; label: string }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "0.25rem",
-        minWidth: 72,
-      }}
-    >
-      <div
-        style={{
-          background: "rgba(255,255,255,0.1)",
-          border: "1px solid rgba(255,255,255,0.2)",
-          borderRadius: "14px",
-          padding: "1rem 1.25rem",
-          fontSize: "2.25rem",
-          fontWeight: 800,
-          color: "white",
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          lineHeight: 1,
-          minWidth: 72,
-          textAlign: "center",
-          backdropFilter: "blur(8px)",
-        }}
-      >
-        {String(value).padStart(2, "0")}
-      </div>
-      <span
-        style={{
-          fontSize: "0.7rem",
-          color: "rgba(255,255,255,0.55)",
-          fontWeight: 600,
-          textTransform: "uppercase",
-          letterSpacing: "0.1em",
-          fontFamily: "'Inter', sans-serif",
-        }}
-      >
-        {label}
-      </span>
-    </div>
-  );
-}
-
 export default function ComingSoonPage() {
-  const [time, setTime] = useState(getTimeLeft());
-
-  useEffect(() => {
-    const id = setInterval(() => setTime(getTimeLeft()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <div
       style={{
@@ -134,16 +68,7 @@ export default function ComingSoonPage() {
           We&apos;re building something great — advanced environmental solutions for a cleaner tomorrow. Our full website will be live soon.
         </p>
 
-        {/* Countdown */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem" }}>
-          <CountdownBox value={time.days} label="Days" />
-          <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "2rem", fontWeight: 300, alignSelf: "flex-start", paddingTop: "0.875rem" }}>:</div>
-          <CountdownBox value={time.hours} label="Hours" />
-          <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "2rem", fontWeight: 300, alignSelf: "flex-start", paddingTop: "0.875rem" }}>:</div>
-          <CountdownBox value={time.minutes} label="Minutes" />
-          <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "2rem", fontWeight: 300, alignSelf: "flex-start", paddingTop: "0.875rem" }}>:</div>
-          <CountdownBox value={time.seconds} label="Seconds" />
-        </div>
+
 
 
 
@@ -172,15 +97,7 @@ export default function ComingSoonPage() {
             >
               <Phone size={16} /> +91 9882810053
             </a>
-            <a
-              href="mailto:vpp.dir@eieindia.in"
-              id="cs-director-email"
-              style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(255,255,255,0.1)", color: "white", padding: "0.625rem 1.25rem", borderRadius: "10px", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem", border: "1px solid rgba(255,255,255,0.2)", transition: "background 0.2s" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.18)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.1)"; }}
-            >
-              <Mail size={16} /> vpp.dir@eieindia.in
-            </a>
+
           </div>
 
           <div style={{ marginTop: "1.25rem", display: "flex", alignItems: "flex-start", gap: "0.5rem", justifyContent: "center", color: "rgba(255,255,255,0.4)", fontSize: "0.85rem" }}>
