@@ -30,23 +30,29 @@ function SplitWords({
       aria-label={text}
     >
       {words.map((word, i) => (
-        <span
-          key={i}
-          style={{ display: "inline-block", overflow: "hidden", lineHeight: "inherit" }}
-        >
-          <motion.span
-            style={{ display: "inline-block" }}
-            initial={{ y: "110%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 0.62,
-              delay: baseDelay + i * stagger,
-              ease: [0.16, 1, 0.3, 1],
+        <span key={i} style={{ display: "inline-block" }}>
+          <span
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+              verticalAlign: "bottom",
+              lineHeight: "inherit",
             }}
           >
-            {word}
-          </motion.span>
-          {i < words.length - 1 ? "\u00a0" : ""}
+            <motion.span
+              style={{ display: "inline-block" }}
+              initial={{ y: "110%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.62,
+                delay: baseDelay + i * stagger,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {i < words.length - 1 ? " " : ""}
         </span>
       ))}
     </span>
