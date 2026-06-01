@@ -48,7 +48,7 @@ export default function AboutPreview() {
   return (
     <section
       aria-label="About Saaphzone"
-      style={{ padding: "5rem 1.5rem", background: "#f8faff" }}
+      style={{ padding: "6rem 1.5rem", background: "#ffffff" }}
     >
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         {/* Badge */}

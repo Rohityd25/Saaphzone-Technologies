@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Phone, Mail } from "lucide-react";
 
 const DIRECTOR = {
-  name: "Dr.VIVEK PRAKASH PANKAJ",
+  name: "Dr. Vivek Prakash Pankaj",
   phone: "+91 9882810053",
   designation: "Director, Saaphzone Technologies",
   bio: "Over 15 years of expertise in clean technology, industrial pollution control, and sustainable energy solutions — driving Saaphzone's mission of a greener tomorrow.",
@@ -21,7 +21,7 @@ export default function DirectorCard() {
       aria-label="Director Introduction"
       style={{
         background: "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)",
-        padding: "4rem 1.5rem",
+        padding: "6rem 1.5rem",
       }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>

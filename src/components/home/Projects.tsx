@@ -34,7 +34,7 @@ export default function Projects() {
   return (
     <section
       aria-label="Featured Projects"
-      style={{ padding: "5rem 1.5rem", background: "white" }}
+      style={{ padding: "6rem 1.5rem", background: "white" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}

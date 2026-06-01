@@ -61,7 +61,7 @@ export default function WhyChooseUs() {
   return (
     <section
       aria-label="Why Choose Saaphzone"
-      style={{ padding: "5rem 1.5rem", background: "#f8faff" }}
+      style={{ padding: "6rem 1.5rem", background: "#f8faff" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}

@@ -48,7 +48,7 @@ export default function CTABanner() {
       aria-label="Call to Action"
       style={{
         background: "linear-gradient(135deg, #1d4ed8 0%, #1e40af 60%, #1e3a8a 100%)",
-        padding: "5rem 1.5rem",
+        padding: "6rem 1.5rem",
         position: "relative",
         overflow: "hidden",
       }}
