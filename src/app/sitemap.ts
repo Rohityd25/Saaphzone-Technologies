@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/services/air-pollution", priority: 0.9, changeFrequency: "monthly" as const },
     { url: "/services/bess", priority: 0.9, changeFrequency: "monthly" as const },
     { url: "/services/solar-wind", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/services/software-development", priority: 0.9, changeFrequency: "monthly" as const },
   ];
 
   return routes.map(({ url, priority, changeFrequency }) => ({

@@ -16,6 +16,7 @@ const NAV_LINKS = [
       { label: "Air Pollution Mitigation", href: "/services/air-pollution" },
       { label: "BESS", href: "/services/bess" },
       { label: "Solar & Wind Energy", href: "/services/solar-wind" },
+      { label: "Software Development", href: "/services/software-development" },
     ],
   },
   { label: "About Us", href: "/about" },
@@ -62,7 +63,7 @@ export default function Navbar() {
           maxWidth: "1280px",
           margin: "0 auto",
           padding: "0 1.5rem",
-          height: "70px",
+          height: "80px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -81,8 +82,8 @@ export default function Navbar() {
           <Image
             src="/Saaphzone logo.png"
             alt="Saaphzone Technologies"
-            width={60}
-            height={60}
+            width={76}
+            height={76}
             style={{ objectFit: "contain", background: "none" }}
             priority
             loading="eager"

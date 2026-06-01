@@ -82,7 +82,7 @@ export default function Hero() {
         alignItems: "center",
         background: "linear-gradient(145deg, #f8faff 0%, #eff6ff 50%, #dbeafe 100%)",
         overflow: "hidden",
-        paddingTop: "70px",
+        paddingTop: "80px",
       }}
     >
       {/* Parallax blobs */}
@@ -148,44 +148,6 @@ export default function Hero() {
         >
           {/* ── Left content ── */}
           <div>
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: "rgba(29,78,216,0.08)",
-                border: "1px solid rgba(29,78,216,0.2)",
-                borderRadius: "100px",
-                padding: "0.375rem 0.875rem",
-                marginBottom: "1.5rem",
-              }}
-            >
-              <span
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  background: "#1d4ed8",
-                  display: "inline-block",
-                  animation: "heroPulse 2s infinite",
-                }}
-              />
-              <span
-                style={{
-                  fontSize: "0.825rem",
-                  fontWeight: 600,
-                  color: "#1d4ed8",
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Trusted Clean-Tech Partner across India
-              </span>
-            </motion.div>
 
             {/* Headline with split-word reveal */}
             <h1

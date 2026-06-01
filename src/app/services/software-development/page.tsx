@@ -3,41 +3,36 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Recycle, CheckCircle2, ChevronDown, ChevronUp, ArrowRight, Factory, Leaf, Zap, FlaskConical, Building2 } from "lucide-react";
+import { Code, CheckCircle2, ChevronDown, ChevronUp, ArrowRight, Database, LineChart, Cpu, Zap, ShieldCheck } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const benefits = [
-  { icon: Leaf, title: "Zero Landfill", desc: "Advanced processing ensures near-zero waste reaches landfills." },
-  { icon: Zap, title: "Energy Recovery", desc: "Convert organic waste to biogas or energy pellets for power generation." },
-  { icon: CheckCircle2, title: "Regulatory Compliance", desc: "Full alignment with CPCB SWM Rules 2016 and state guidelines." },
-  { icon: Factory, title: "Industrial Grade", desc: "Scalable systems from 5 TPD to 500+ TPD for any facility size." },
-  { icon: FlaskConical, title: "Scientific Processing", desc: "Lab-tested segregation, treatment and safe residue disposal." },
-  { icon: Building2, title: "Turnkey Delivery", desc: "Design, supply, install and commission — one responsible partner." },
+  { icon: LineChart, title: "Real-Time Analytics", desc: "Get immediate insights and telemetry alerts when emissions exceed custom thresholds." },
+  { icon: ShieldCheck, title: "CPCB Compliance", desc: "Auto-generate regulatory environmental reports aligned with pollution board standards." },
+  { icon: Cpu, title: "IoT Integrations", desc: "Connect hardware monitoring sensors seamlessly using MQTT and secure HTTP protocols." },
+  { icon: Database, title: "Secure Storage", desc: "Enterprise-grade encryption and ISO-compliant database structures for data protection." },
+  { icon: Code, title: "Custom Dashboards", desc: "Tailored visual widgets and charts for operations, compliance, and executives." },
+  { icon: Zap, title: "Rapid Deployment", desc: "Pre-built modules for standard monitoring devices to get up and running faster." },
 ];
 
 const workflow = [
-  { step: "01", title: "Assessment & Audit", desc: "On-site waste characterisation and quantity assessment." },
-  { step: "02", title: "System Design", desc: "Custom engineering tailored to waste type, volume and regulations." },
-  { step: "03", title: "Supply & Install", desc: "Equipment procurement, civil works and system integration." },
-  { step: "04", title: "Commissioning", desc: "Full trial runs, staff training and O&M documentation." },
-  { step: "05", title: "Monitoring", desc: "Remote monitoring dashboard and 24/7 after-sales support." },
+  { step: "01", title: "Discovery & Audits", desc: "Understanding telemetry endpoints, data frequency, and ESG goals." },
+  { step: "02", title: "Database & API Design", desc: "Creating optimized schemas for time-series sensor data and secure endpoints." },
+  { step: "03", title: "Dashboard Dev", desc: "Building intuitive, responsive frontend interfaces with charts and alerts." },
+  { step: "04", title: "Hardware Binding", desc: "Calibrating actual telemetry hardware with our software APIs." },
+  { step: "05", title: "Deploy & Support", desc: "Launching on secure cloud infrastructure with 24/7 reliability monitoring." },
 ];
 
-const industries = [
-  "Cement & Steel Plants", "Municipal Corporations", "Hotels & Hospitality",
-  "Food & Beverage", "Hospitals & Healthcare", "Real Estate & Townships",
-  "Chemical Industries", "Educational Campuses",
-];
 
 const faqs = [
-  { q: "What types of solid waste can you manage?", a: "We handle Municipal Solid Waste (MSW), Industrial Solid Waste, C&D debris, Biomedical waste, and E-waste — with tailored solutions for each category." },
-  { q: "What is the minimum capacity you offer?", a: "Our systems start from 5 TPD (Tonnes Per Day) and scale up to 500+ TPD for large municipal or industrial requirements." },
-  { q: "Are your systems compliant with CPCB norms?", a: "Yes. All solutions are designed to comply with the Solid Waste Management Rules, 2016, Bio-Medical Waste Rules, and CPCB guidelines." },
-  { q: "Do you provide operation and maintenance services?", a: "Absolutely. We offer comprehensive O&M contracts including remote monitoring, preventive maintenance, and on-site technical support." },
-  { q: "How long does a typical project take?", a: "Timelines vary from 3 to 12 months depending on capacity and complexity. Small modular systems can be commissioned in under 90 days." },
+  { q: "Can your software connect with our existing hardware monitoring sensors?", a: "Yes. Our software solutions use industry-standard communication protocols like MQTT, CoAP, and HTTP APIs, allowing us to connect with almost any standard telemetry sensor." },
+  { q: "Does the platform support multi-location tracking?", a: "Absolutely. You can track emissions, waste disposal, and energy generation across multiple factories, offices, or municipalities from a single unified enterprise portal." },
+  { q: "How secure is our industrial environmental data?", a: "We implement enterprise-grade security including end-to-end encryption, role-based access control (RBAC), and secure cloud servers (AWS/Azure) conforming to ISO 27001 standards." },
+  { q: "Do you offer white-labeled dashboards?", a: "Yes. We can customize the user interface with your corporate branding and logo, and host it on your custom domain." },
+  { q: "What is the typical software development timeline?", a: "A standard telemetry dashboard or custom ESG reporting portal takes between 8 to 12 weeks to design, develop, and integrate. We also offer pre-built modules for quicker setups." },
 ];
 
-export default function SolidWastePage() {
+export default function SoftwareDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   return (
     <div style={{ paddingTop: "80px" }}>
@@ -47,14 +42,14 @@ export default function SolidWastePage() {
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(29,78,216,.08)", border: "1px solid rgba(29,78,216,.2)", borderRadius: "100px", padding: "0.375rem 0.875rem", marginBottom: "1.25rem" }}>
-              <Recycle size={14} color="#1d4ed8" />
+              <Code size={14} color="#1d4ed8" />
               <span style={{ fontSize: "0.825rem", fontWeight: 600, color: "#1d4ed8", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Our Services</span>
             </div>
             <h1 style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.02em", maxWidth: 680, marginBottom: "1.25rem" }}>
-              Solid Waste Management
+              Software Development
             </h1>
             <p style={{ fontSize: "1.125rem", color: "#475569", lineHeight: 1.75, maxWidth: 600, marginBottom: "2rem" }}>
-              End-to-end solid waste processing systems — from collection and segregation to treatment and safe disposal — engineered for industries, municipalities and commercial establishments.
+              Custom environmental tracking software, IoT telemetry integration, and enterprise compliance reporting dashboards tailored for modern green enterprises and smart cities.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", background: "#1d4ed8", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", boxShadow: "0 4px 20px rgba(29,78,216,.3)", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; }}>
@@ -68,21 +63,21 @@ export default function SolidWastePage() {
         </div>
       </section>
 
-      {/* SERVICES OVERVIEW */}
+      {/* SOLUTIONS OVERVIEW */}
       <section style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Waste Management Solutions</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 580, margin: "0 auto" }}>Comprehensive systems designed to handle every category of solid waste with efficiency and compliance.</p>
+            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Software & IoT Solutions</h2>
+            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 580, margin: "0 auto" }}>Advanced telemetry platforms and ESG portals designed to bring digital transformation to sustainability projects.</p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
             {[
-              { title: "Municipal Solid Waste (MSW)", desc: "Integrated systems for household and municipal waste: collection, segregation, composting, and RDF production.", icon: "🏙️" },
-              { title: "Industrial Waste Management", desc: "Specialised treatment for hazardous and non-hazardous industrial residues with zero compromise on safety.", icon: "🏭" },
-              { title: "Bio-Medical Waste", desc: "Autoclave-based treatment, incineration, and regulatory-compliant disposal for healthcare facilities.", icon: "🏥" },
-              { title: "C&D Waste Recycling", desc: "Construction and demolition debris processing for material recovery and reuse in new projects.", icon: "🏗️" },
-              { title: "Waste-to-Energy", desc: "Converting organic waste to biogas, energy pellets, or RDF for power generation and fuel substitution.", icon: "⚡" },
-              { title: "Composting Systems", desc: "Aerobic and anaerobic composting plants for organic waste conversion to quality soil amendments.", icon: "🌱" },
+              { title: "Environmental Dashboards (EMS)", desc: "Real-time carbon footprint calculators, emissions logs, and sustainability reporting dashboards.", icon: "📊" },
+              { title: "IoT Telemetry Systems", desc: "Connect remote ambient air, noise, and water sensors to central cloud networks for seamless reporting.", icon: "📡" },
+              { title: "Regulatory Compliance Portals", desc: "Auto-generate files and telemetry logs formatted for CPCB and State Pollution Control Boards.", icon: "📋" },
+              { title: "Smart Grid Integration", desc: "Control interfaces and data telemetry for managing solar/wind farms and battery storage (BESS) systems.", icon: "⚡" },
+              { title: "Waste & Energy Analytics", desc: "AI-powered models to predict municipal waste accumulation and optimize solar storage charging cycles.", icon: "🤖" },
+              { title: "Enterprise ESG Portals", desc: "Consolidated, audit-ready portals tracking Environmental, Social, and Governance metrics across all locations.", icon: "🏢" },
             ].map((item, i) => (
               <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", transition: "all .25s ease", cursor: "default" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" }}>
                 <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>{item.icon}</div>
@@ -98,8 +93,8 @@ export default function SolidWastePage() {
       <section style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Project Workflow</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 520, margin: "0 auto" }}>A systematic, proven process from initial assessment to long-term operations support.</p>
+            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Development Process</h2>
+            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 520, margin: "0 auto" }}>A structured methodology to ensure high-performance telemetry and enterprise grade security.</p>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: "2rem" }}>
             {workflow.map((item, i) => (
@@ -119,8 +114,8 @@ export default function SolidWastePage() {
       <section style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Why Choose Our Solutions</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 520, margin: "0 auto" }}>Built for reliability, compliance, and long-term environmental impact.</p>
+            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Why Choose Our Software</h2>
+            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 520, margin: "0 auto" }}>Engineered for industrial telemetry, regulatory compliance, and extreme reliability.</p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "1.5rem" }}>
             {benefits.map((b, i) => (
@@ -138,29 +133,12 @@ export default function SolidWastePage() {
         </div>
       </section>
 
-      {/* INDUSTRIES */}
-      <section style={{ padding: "5rem 1.5rem", background: "#1d4ed8" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Industry Applications</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#bfdbfe", maxWidth: 480, margin: "0 auto" }}>Our solid waste management systems serve diverse sectors across India.</p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem", justifyContent: "center" }}>
-            {industries.map((ind, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ padding: "0.625rem 1.25rem", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.2)", borderRadius: "100px", color: "white", fontSize: "0.9rem", fontWeight: 500, transition: "all .2s ease" }} whileHover={{ background: "rgba(255,255,255,.2)", scale: 1.03 }}>
-                {ind}
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Frequently Asked Questions</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b" }}>Common queries about our solid waste management services.</p>
+            <p style={{ fontSize: "1.0625rem", color: "#64748b" }}>Common queries about our software development and IoT telemetry platforms.</p>
           </motion.div>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             {faqs.map((faq, i) => (
@@ -184,13 +162,13 @@ export default function SolidWastePage() {
       <section style={{ padding: "5rem 1.5rem", background: "linear-gradient(135deg,#1e40af 0%,#1d4ed8 50%,#3b82f6 100%)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 800, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "1rem" }}>Ready to Transform Your Waste Management?</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#bfdbfe", marginBottom: "2rem", lineHeight: 1.7 }}>Talk to our experts and get a tailored solid waste management plan for your facility.</p>
+            <h2 style={{ fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 800, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "1rem" }}>Ready to Build Your Environmental Monitoring System?</h2>
+            <p style={{ fontSize: "1.0625rem", color: "#bfdbfe", marginBottom: "2rem", lineHeight: 1.7 }}>Talk to our engineers and get a tailored software architecture proposal for your enterprise.</p>
             <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", background: "white", color: "#1d4ed8", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; }}>
                 Contact Us <ArrowRight size={18} />
               </Link>
-              <Link href="/services/air-pollution" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", background: "transparent", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", border: "1.5px solid rgba(255,255,255,.4)", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}>
+              <Link href="/services/solid-waste" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", background: "transparent", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", border: "1.5px solid rgba(255,255,255,.4)", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}>
                 Explore Other Services
               </Link>
             </div>
@@ -200,4 +178,3 @@ export default function SolidWastePage() {
     </div>
   );
 }
-

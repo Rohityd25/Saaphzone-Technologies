@@ -29,6 +29,7 @@ const FOOTER_SERVICES = [
   { label: "Air Pollution Mitigation", href: "/services/air-pollution" },
   { label: "BESS", href: "/services/bess" },
   { label: "Solar & Wind Energy", href: "/services/solar-wind" },
+  { label: "Software Development", href: "/services/software-development" },
 ];
 
 const FOOTER_COMPANY = [
@@ -84,8 +85,8 @@ export default function Footer() {
               <Image
                 src="/Saaphzone logo.png"
                 alt="Saaphzone Technologies"
-                width={56}
-                height={56}
+                width={76}
+                height={76}
                 style={{ objectFit: "contain" }}
               />
             </Link>

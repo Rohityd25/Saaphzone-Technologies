@@ -27,6 +27,7 @@ export const NAV_LINKS = [
       { label: "Air Pollution Mitigation", href: "/services/air-pollution" },
       { label: "BESS", href: "/services/bess" },
       { label: "Solar & Wind Energy", href: "/services/solar-wind" },
+      { label: "Software Development", href: "/services/software-development" },
     ],
   },
   { label: "About Us", href: "/about" },
@@ -69,6 +70,15 @@ export const SERVICES = [
       "Turnkey solar PV, wind turbine, and hybrid renewable energy plants engineered for maximum yield and long-term ROI.",
     href: "/services/solar-wind",
     color: "from-blue-50 to-cyan-100",
+  },
+  {
+    id: "software-development",
+    icon: "Code",
+    title: "Software Development",
+    description:
+      "Custom environmental tracking software, IoT telemetry integration, and enterprise compliance reporting dashboards.",
+    href: "/services/software-development",
+    color: "from-cyan-50 to-cyan-100",
   },
 ];
 

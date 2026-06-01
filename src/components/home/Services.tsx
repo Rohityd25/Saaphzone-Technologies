@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Recycle, Wind, BatteryFull, Sun, ArrowRight } from "lucide-react";
+import { Recycle, Wind, BatteryFull, Sun, ArrowRight, Code2 } from "lucide-react";
 
 const SERVICES = [
   {
@@ -49,6 +49,17 @@ const SERVICES = [
     accent: "#0e7490",
     bg: "#ecfeff",
     image: "/service-solar-wind.png",
+  },
+  {
+    id: "software-development",
+    Icon: Code2,
+    title: "Software Development",
+    description:
+      "Custom environmental tracking software, IoT telemetry integration, and enterprise compliance reporting dashboards.",
+    href: "/services/software-development",
+    accent: "#0891b2",
+    bg: "#ecfeff",
+    image: "/service-software-dev.png",
   },
 ];
 

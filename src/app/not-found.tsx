@@ -14,7 +14,7 @@ export default function NotFound() {
         justifyContent: "center",
         background: "linear-gradient(145deg,#f8faff 0%,#eff6ff 60%,#dbeafe 100%)",
         padding: "2rem",
-        paddingTop: "70px",
+        paddingTop: "80px",
       }}
     >
       <div style={{ textAlign: "center", maxWidth: 560 }}>

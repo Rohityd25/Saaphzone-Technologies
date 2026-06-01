@@ -42,7 +42,7 @@ const certifications = [
 
 export default function AboutPage() {
   return (
-    <div style={{ paddingTop: "70px" }}>
+    <div style={{ paddingTop: "80px" }}>
       {/* HERO */}
       <section style={{ background: "linear-gradient(145deg,#f8faff 0%,#eff6ff 60%,#dbeafe 100%)", padding: "5rem 1.5rem 4rem", position: "relative", overflow: "hidden" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle,rgba(29,78,216,.07) 1px,transparent 1px)", backgroundSize: "32px 32px", pointerEvents: "none" }} />
