@@ -30,7 +30,7 @@ function SplitWords({
       aria-label={text}
     >
       {words.map((word, i) => (
-        <span key={i} style={{ display: "inline-block" }}>
+        <span key={i} style={{ display: "inline" }}>
           <span
             style={{
               display: "inline-block",
