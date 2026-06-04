@@ -55,7 +55,7 @@ export default function ComingSoonPage() {
         <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(29,78,216,0.25)", border: "1px solid rgba(99,130,246,0.4)", borderRadius: "100px", padding: "0.375rem 1rem", marginBottom: "1.5rem" }}>
           <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#3b82f6", display: "inline-block", animation: "blink 1.5s ease-in-out infinite" }} />
           <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#93c5fd", letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            Website Under Construction
+            Website Under Development
           </span>
         </div>
 
