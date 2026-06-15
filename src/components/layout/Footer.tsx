@@ -2,11 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   Mail,
   Phone,
   MapPin,
 } from "lucide-react";
+import {
+  fadeInUp,
+  slideInLeft,
+  staggerContainerSlow,
+  blurFadeInFast,
+  socialHover
+} from "@/lib/animations";
 
 const LinkedinIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
@@ -62,7 +70,11 @@ export default function Footer() {
           padding: "0 1.5rem",
         }}
       >
-        <div
+        <motion.div
+          variants={staggerContainerSlow}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
@@ -72,7 +84,7 @@ export default function Footer() {
           }}
         >
           {/* Brand */}
-          <div style={{ gridColumn: "span 1" }}>
+          <motion.div variants={slideInLeft} style={{ gridColumn: "span 1" }}>
             <Link
               href="/"
               style={{
@@ -96,10 +108,13 @@ export default function Footer() {
             </p>
             <div style={{ display: "flex", gap: "0.625rem" }}>
               {SOCIALS.map(({ Icon, href, label }) => (
-                <a
+                <motion.a
                   key={label}
                   href={href}
                   aria-label={label}
+                  variants={socialHover}
+                  initial="rest"
+                  whileHover="hover"
                   style={{
                     width: 36,
                     height: 36,
@@ -122,13 +137,13 @@ export default function Footer() {
                   }}
                 >
                   <Icon />
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <h3
               style={{
                 color: "white",
@@ -165,10 +180,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Company */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <h3
               style={{
                 color: "white",
@@ -205,10 +220,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <h3
               style={{
                 color: "white",
@@ -237,11 +252,15 @@ export default function Footer() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Bottom bar */}
-        <div
+        <motion.div
+          variants={blurFadeInFast}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
           style={{
             paddingTop: "1.5rem",
             display: "flex",
@@ -257,7 +276,7 @@ export default function Footer() {
           <p style={{ fontSize: "0.85rem" }}>
             Clean Tech · Pollution Control · Renewable Energy
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
