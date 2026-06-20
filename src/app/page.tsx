@@ -35,19 +35,24 @@ export default function ComingSoonPage() {
       <div style={{ position: "relative", zIndex: 1, maxWidth: 700, width: "100%", textAlign: "center" }}>
 
         {/* Logo */}
-        <div style={{ marginBottom: "2rem", display: "flex", justifyContent: "center" }}>
-          <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "24px", padding: "1rem 2rem", backdropFilter: "blur(12px)", display: "inline-flex", alignItems: "center", gap: "1rem" }}>
+        <div style={{ marginBottom: "2.5rem", display: "flex", justifyContent: "center" }}>
+          <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "24px", padding: "1.5rem 3rem", backdropFilter: "blur(12px)", display: "inline-flex", alignItems: "center", gap: "20px" }}>
             <Image
               src="/Saaphzone logo.png"
               alt="Saaphzone Technologies"
-              width={110}
-              height={110}
+              width={96}
+              height={96}
               style={{ objectFit: "contain" }}
               priority
             />
-            <span style={{ color: "white", fontWeight: 800, fontSize: "1.6rem", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.02em" }}>
-              Saaphzone Technologies
-            </span>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: 1.15 }}>
+              <span style={{ color: "white", fontWeight: 800, fontSize: "1.6rem", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.02em" }}>
+                Saaphzone
+              </span>
+              <span style={{ color: "#94a3b8", fontWeight: 600, fontSize: "0.8rem", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+                Technologies
+              </span>
+            </div>
           </div>
         </div>
 

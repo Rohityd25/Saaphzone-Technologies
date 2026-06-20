@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 const NAV_LINKS = [
@@ -13,7 +13,13 @@ const NAV_LINKS = [
     href: "#",
     children: [
       { label: "Solid Waste Management", href: "/services/solid-waste" },
-      { label: "Air Pollution Mitigation", href: "/services/air-pollution" },
+      {
+        label: "Air Pollution Mitigation",
+        href: "/services/air-pollution",
+        children: [
+          { label: "SPM (Dust Analyzer)", href: "/services/air-pollution/spm" },
+        ],
+      },
       { label: "BESS", href: "/services/bess" },
       { label: "Solar & Wind Energy", href: "/services/solar-wind" },
       { label: "Software Development", href: "/services/software-development" },
@@ -27,6 +33,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,6 +45,7 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
     setServicesOpen(false);
+    setSubOpen(null);
   }, [pathname]);
 
   return (
@@ -45,10 +53,10 @@ export default function Navbar() {
       role="banner"
       style={{
         position: "fixed",
-        top: 3,
+        top: 0,
         left: 0,
         right: 0,
-        zIndex: 100,
+        zIndex: 9990,
         transition: "all 0.3s ease",
         background: scrolled
           ? "rgba(255,255,255,0.97)"
@@ -76,6 +84,7 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
+            gap: "14px",
             textDecoration: "none",
           }}
         >
@@ -88,6 +97,14 @@ export default function Navbar() {
             priority
             loading="eager"
           />
+          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15 }}>
+            <span style={{ fontSize: "1.45rem", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "-0.02em" }}>
+              Saaphzone
+            </span>
+            <span style={{ fontSize: "0.68rem", fontWeight: 600, color: "#64748b", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+              Technologies
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -148,32 +165,107 @@ export default function Navbar() {
                       animation: "fadeDown 0.18s ease",
                     }}
                   >
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        style={{
-                          display: "block",
-                          padding: "0.625rem 0.875rem",
-                          borderRadius: "8px",
-                          textDecoration: "none",
-                          fontSize: "0.9rem",
-                          fontWeight: 500,
-                          color: "#374151",
-                          transition: "background 0.15s, color 0.15s",
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLAnchorElement).style.background = "#eff6ff";
-                          (e.currentTarget as HTMLAnchorElement).style.color = "#1d4ed8";
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-                          (e.currentTarget as HTMLAnchorElement).style.color = "#374151";
-                        }}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                    {link.children.map((child) => {
+                      if ("children" in child && Array.isArray(child.children)) {
+                        return (
+                          <div
+                            key={child.href}
+                            className="nav-sub-item-container"
+                            style={{ position: "relative" }}
+                          >
+                            <Link
+                              href={child.href}
+                              className="nav-sub-item-link"
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                padding: "0.625rem 0.875rem",
+                                borderRadius: "8px",
+                                textDecoration: "none",
+                                fontSize: "0.9rem",
+                                fontWeight: 500,
+                                color: "#374151",
+                                transition: "background 0.15s, color 0.15s",
+                              }}
+                            >
+                              <span>{child.label}</span>
+                              <ChevronRight size={14} />
+                            </Link>
+                            <div
+                              className="nav-nested-menu"
+                              style={{
+                                position: "absolute",
+                                top: 0,
+                                left: "100%",
+                                marginLeft: "4px",
+                                minWidth: 200,
+                                background: "white",
+                                borderRadius: "12px",
+                                boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
+                                border: "1px solid #e2e8f0",
+                                padding: "0.5rem",
+                                display: "none",
+                              }}
+                            >
+                              {child.children.map((subChild) => (
+                                <Link
+                                  key={subChild.href}
+                                  href={subChild.href}
+                                  style={{
+                                    display: "block",
+                                    padding: "0.625rem 0.875rem",
+                                    borderRadius: "8px",
+                                    textDecoration: "none",
+                                    fontSize: "0.9rem",
+                                    fontWeight: 500,
+                                    color: "#374151",
+                                    transition: "background 0.15s, color 0.15s",
+                                  }}
+                                  onMouseEnter={(e) => {
+                                    (e.currentTarget as HTMLAnchorElement).style.background = "#eff6ff";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#1d4ed8";
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "#374151";
+                                  }}
+                                >
+                                  {subChild.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          style={{
+                            display: "block",
+                            padding: "0.625rem 0.875rem",
+                            borderRadius: "8px",
+                            textDecoration: "none",
+                            fontSize: "0.9rem",
+                            fontWeight: 500,
+                            color: "#374151",
+                            transition: "background 0.15s, color 0.15s",
+                          }}
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLAnchorElement).style.background = "#eff6ff";
+                            (e.currentTarget as HTMLAnchorElement).style.color = "#1d4ed8";
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                            (e.currentTarget as HTMLAnchorElement).style.color = "#374151";
+                          }}
+                        >
+                          {child.label}
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -290,23 +382,98 @@ export default function Navbar() {
                 </button>
                 {servicesOpen && (
                   <div style={{ paddingLeft: "1rem" }}>
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        style={{
-                          display: "block",
-                          padding: "0.625rem 0",
-                          textDecoration: "none",
-                          fontSize: "0.9375rem",
-                          fontWeight: 500,
-                          color: "#3b82f6",
-                          borderBottom: "1px solid #f8fafc",
-                        }}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                    {link.children.map((child) => {
+                      if ("children" in child && Array.isArray(child.children)) {
+                        const isOpen = subOpen === child.label;
+                        return (
+                          <div key={child.label}>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSubOpen(isOpen ? null : child.label);
+                              }}
+                              style={{
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                padding: "0.625rem 0",
+                                background: "none",
+                                border: "none",
+                                cursor: "pointer",
+                                fontSize: "0.9375rem",
+                                fontWeight: 500,
+                                color: "#3b82f6",
+                                borderBottom: "1px solid #f8fafc",
+                              }}
+                            >
+                              <span>{child.label}</span>
+                              <ChevronDown
+                                size={14}
+                                style={{
+                                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                                  transition: "transform 0.2s",
+                                  color: "#3b82f6",
+                                }}
+                              />
+                            </button>
+                            {isOpen && (
+                              <div style={{ paddingLeft: "1rem" }}>
+                                <Link
+                                  href={child.href}
+                                  style={{
+                                    display: "block",
+                                    padding: "0.625rem 0",
+                                    textDecoration: "none",
+                                    fontSize: "0.9rem",
+                                    fontWeight: 500,
+                                    color: "#64748b",
+                                    borderBottom: "1px solid #f8fafc",
+                                  }}
+                                >
+                                  Overview
+                                </Link>
+                                {child.children.map((subChild) => (
+                                  <Link
+                                    key={subChild.href}
+                                    href={subChild.href}
+                                    style={{
+                                      display: "block",
+                                      padding: "0.625rem 0",
+                                      textDecoration: "none",
+                                      fontSize: "0.9rem",
+                                      fontWeight: 500,
+                                      color: "#64748b",
+                                      borderBottom: "1px solid #f8fafc",
+                                    }}
+                                  >
+                                    {subChild.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          style={{
+                            display: "block",
+                            padding: "0.625rem 0",
+                            textDecoration: "none",
+                            fontSize: "0.9375rem",
+                            fontWeight: 500,
+                            color: "#3b82f6",
+                            borderBottom: "1px solid #f8fafc",
+                          }}
+                        >
+                          {child.label}
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -360,6 +527,27 @@ export default function Navbar() {
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-sub-item-container:hover .nav-nested-menu {
+          display: block !important;
+          animation: fadeRight 0.18s ease;
+        }
+        .nav-nested-menu::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: -15px;
+          width: 15px;
+          background: transparent;
+        }
+        .nav-sub-item-container:hover > .nav-sub-item-link {
+          background-color: #eff6ff;
+          color: #1d4ed8 !important;
+        }
+        @keyframes fadeRight {
+          from { opacity: 0; transform: translateX(-8px); }
+          to { opacity: 1; transform: translateX(0); }
         }
         .hidden { display: none; }
         @media (min-width: 1024px) {

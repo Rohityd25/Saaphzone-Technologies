@@ -35,6 +35,7 @@ const YoutubeIcon = () => (
 const FOOTER_SERVICES = [
   { label: "Solid Waste Management", href: "/services/solid-waste" },
   { label: "Air Pollution Mitigation", href: "/services/air-pollution" },
+  { label: "SPM (Dust Analyzer)", href: "/services/air-pollution/spm" },
   { label: "BESS", href: "/services/bess" },
   { label: "Solar & Wind Energy", href: "/services/solar-wind" },
   { label: "Software Development", href: "/services/software-development" },
@@ -90,6 +91,7 @@ export default function Footer() {
               style={{
                 display: "flex",
                 alignItems: "center",
+                gap: "14px",
                 textDecoration: "none",
                 marginBottom: "1rem",
               }}
@@ -101,6 +103,14 @@ export default function Footer() {
                 height={76}
                 style={{ objectFit: "contain" }}
               />
+              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15 }}>
+                <span style={{ fontSize: "1.45rem", fontWeight: 800, color: "#ffffff", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "-0.02em" }}>
+                  Saaphzone
+                </span>
+                <span style={{ fontSize: "0.68rem", fontWeight: 600, color: "#94a3b8", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+                  Technologies
+                </span>
+              </div>
             </Link>
             <p style={{ fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
               Advanced clean-tech solutions for pollution mitigation, waste

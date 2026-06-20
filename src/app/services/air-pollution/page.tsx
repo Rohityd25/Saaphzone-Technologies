@@ -13,6 +13,7 @@ const systemTypes = [
   { icon: Activity, title: "Catalytic Converters", desc: "SCR and SNCR systems for NOₓ reduction in thermal power plants, waste incinerators, and cement kilns." },
   { icon: Gauge, title: "CEMS Integration", desc: "Continuous Emission Monitoring Systems (CEMS) for real-time stack data, CPCB portal integration, and compliance reporting." },
   { icon: BarChart2, title: "Ambient Air Monitoring", desc: "Fixed and mobile air quality monitoring stations for PM2.5, PM10, SO₂, NOₓ, CO measurement and reporting." },
+  { icon: Activity, title: "SPM (Dust Monitor)", desc: "Suspended Particulate Matter (SPM) dust monitors for continuous real-time measurement of ambient and industrial fugitive dust emissions." },
 ];
 
 const complianceFeatures = [
