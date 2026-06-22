@@ -128,10 +128,10 @@ export default function ContactPage() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "flex", flexDirection: "column", gap: "1.25rem", marginBottom: "2.5rem" }}>
               {[
-                { Icon: MapPin, label: "Address", value: "B-42, Industrial Area, Sector 62, Noida, Uttar Pradesh – 201309, India" },
+                { Icon: MapPin, label: "Address", value: "Plot No. 80, 1st Floor, Udyog Vihar Phase 1, Gurugram, Haryana, India" },
                 { Icon: Phone, label: "Phone", value: "+91 98765 43210" },
-                { Icon: Mail, label: "Email", value: "info@saaphzone.com" },
-                { Icon: Clock, label: "Business Hours", value: "Mon – Sat: 9:00 AM – 6:00 PM IST" },
+                { Icon: Mail, label: "Email", value: "sales@saaphzone.com" },
+                { Icon: Clock, label: "Business Hours", value: "Mon – Sat: 10:00 AM – 6:00 PM IST" },
               ].map(({ Icon, label, value }) => (
                 <motion.div key={label} variants={fadeInUp} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                   <div style={{ width: 44, height: 44, borderRadius: "11px", background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -150,7 +150,7 @@ export default function ContactPage() {
               <MapPin size={36} color="#1d4ed8" />
               <p style={{ fontSize: "0.9rem", color: "#64748b", fontWeight: 500, textAlign: "center" }}>
                 Saaphzone Technologies<br />
-                <span style={{ fontSize: "0.8rem", color: "#94a3b8" }}>Sector 62, Noida, UP – 201309</span>
+                <span style={{ fontSize: "0.8rem", color: "#94a3b8" }}>Udyog Vihar Phase 1, Gurugram, Haryana</span>
               </p>
             </div>
           </motion.div>

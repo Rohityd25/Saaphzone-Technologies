@@ -95,7 +95,7 @@ export default function AboutPreview() {
 
         {/* Body paragraphs — fade-in with blur */}
         {[
-          "Saaphzone Technologies is a leading environmental solutions company headquartered in Noida, UP. We help industries meet regulatory compliance while significantly reducing their environmental footprint.",
+          "Saaphzone Technologies is a leading environmental solutions company headquartered in Gurugram, Haryana. We help industries meet regulatory compliance while significantly reducing their environmental footprint.",
           "From cement plants and steel mills to municipalities and solar farms, our solutions span the full spectrum of clean technology — backed by field-tested expertise and 350+ successful projects.",
         ].map((para, i) => (
           <motion.p

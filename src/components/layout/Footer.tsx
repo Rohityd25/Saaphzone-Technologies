@@ -252,10 +252,10 @@ export default function Footer() {
               {[
                 {
                   Icon: MapPin,
-                  text: "B-42, Industrial Area, Sector 62, Noida, UP – 201309",
+                  text: "Plot No. 80, 1st Floor, Udyog Vihar Phase 1, Gurugram, Haryana, India",
                 },
                 { Icon: Phone, text: "+91 98765 43210" },
-                { Icon: Mail, text: "info@saaphzone.com" },
+                { Icon: Mail, text: "sales@saaphzone.com" },
               ].map(({ Icon, text }) => (
                 <div key={text} style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
                   <Icon size={15} style={{ marginTop: 2, flexShrink: 0, color: "#3b82f6" }} />

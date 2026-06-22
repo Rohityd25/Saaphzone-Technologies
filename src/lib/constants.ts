@@ -3,9 +3,9 @@ export const COMPANY = {
   tagline: "Innovating for a Cleaner & Sustainable Tomorrow",
   description:
     "Saaphzone Technologies delivers advanced environmental solutions — from pollution control to renewable energy systems.",
-  email: "vpp.dir@eieindia.in",
+  email: "sales@saaphzone.com",
   phone: "+91 98765 43210",
-  address: "B-42, Industrial Area, Sector 62, Noida, Uttar Pradesh – 201309, India",
+  address: "Plot No. 80, 1st Floor, Udyog Vihar Phase 1, Gurugram, Haryana, India",
   founded: "2018",
   website: "https://www.saaphzone.com",
 };
