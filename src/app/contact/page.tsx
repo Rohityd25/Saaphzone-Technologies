@@ -129,7 +129,7 @@ export default function ContactPage() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "flex", flexDirection: "column", gap: "1.25rem", marginBottom: "2.5rem" }}>
               {[
                 { Icon: MapPin, label: "Address", value: "Plot No. 80, 1st Floor, Udyog Vihar Phase 1, Gurugram, Haryana, India" },
-                { Icon: Phone, label: "Phone", value: "+91 98765 43210" },
+                { Icon: Phone, label: "Phone", value: "+91 98182 19904" },
                 { Icon: Mail, label: "Email", value: "sales@saaphzone.com" },
                 { Icon: Clock, label: "Business Hours", value: "Mon – Sat: 10:00 AM – 6:00 PM IST" },
               ].map(({ Icon, label, value }) => (

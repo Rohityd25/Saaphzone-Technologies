@@ -254,7 +254,7 @@ export default function Footer() {
                   Icon: MapPin,
                   text: "Plot No. 80, 1st Floor, Udyog Vihar Phase 1, Gurugram, Haryana, India",
                 },
-                { Icon: Phone, text: "+91 98765 43210" },
+                { Icon: Phone, text: "+91 98182 19904" },
                 { Icon: Mail, text: "sales@saaphzone.com" },
               ].map(({ Icon, text }) => (
                 <div key={text} style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>

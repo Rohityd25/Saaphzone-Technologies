@@ -4,7 +4,7 @@ export const COMPANY = {
   description:
     "Saaphzone Technologies delivers advanced environmental solutions — from pollution control to renewable energy systems.",
   email: "sales@saaphzone.com",
-  phone: "+91 98765 43210",
+  phone: "+91 98182 19904",
   address: "Plot No. 80, 1st Floor, Udyog Vihar Phase 1, Gurugram, Haryana, India",
   founded: "2018",
   website: "https://www.saaphzone.com",
