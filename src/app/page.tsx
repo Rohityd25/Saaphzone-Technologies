@@ -36,20 +36,21 @@ export default function ComingSoonPage() {
 
         {/* Logo */}
         <div style={{ marginBottom: "2.5rem", display: "flex", justifyContent: "center" }}>
-          <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "24px", padding: "1.5rem 3rem", backdropFilter: "blur(12px)", display: "inline-flex", alignItems: "center", gap: "20px" }}>
+          <div className="cs-logo-box">
             <Image
               src="/Saaphzone logo.png"
               alt="Saaphzone Technologies"
               width={96}
               height={96}
-              style={{ objectFit: "contain" }}
+              className="cs-logo-img"
+              style={{ objectFit: "contain", flexShrink: 0 }}
               priority
             />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: 1.15 }}>
-              <span style={{ color: "white", fontWeight: 800, fontSize: "1.6rem", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.02em" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: 1.15, flexShrink: 0 }}>
+              <span className="cs-logo-text-title" style={{ color: "white", fontWeight: 800, fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.02em" }}>
                 Saaphzone
               </span>
-              <span style={{ color: "#94a3b8", fontWeight: 600, fontSize: "0.8rem", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+              <span className="cs-logo-text-subtitle" style={{ color: "#94a3b8", fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "0.22em", textTransform: "uppercase" }}>
                 Technologies
               </span>
             </div>
@@ -146,6 +147,45 @@ export default function ComingSoonPage() {
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.3; }
+        }
+        .cs-logo-box {
+          background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 24px;
+          padding: 1.5rem 3rem;
+          backdrop-filter: blur(12px);
+          display: inline-flex;
+          align-items: center;
+          gap: 0px;
+        }
+        .cs-logo-img {
+          width: 96px !important;
+          height: 96px !important;
+          margin-right: -14px !important;
+        }
+        .cs-logo-text-title {
+          font-size: 1.6rem !important;
+        }
+        .cs-logo-text-subtitle {
+          font-size: 0.8rem !important;
+        }
+        @media (max-width: 640px) {
+          .cs-logo-box {
+            padding: 1rem 1.75rem !important;
+            gap: 0px !important;
+            border-radius: 16px !important;
+          }
+          .cs-logo-img {
+            width: 64px !important;
+            height: 64px !important;
+            margin-right: -9px !important;
+          }
+          .cs-logo-text-title {
+            font-size: 1.3rem !important;
+          }
+          .cs-logo-text-subtitle {
+            font-size: 0.65rem !important;
+          }
         }
         input::placeholder { color: rgba(255,255,255,0.3); }
         input:focus { border-color: rgba(99,130,246,0.6) !important; box-shadow: 0 0 0 3px rgba(99,130,246,0.15); }

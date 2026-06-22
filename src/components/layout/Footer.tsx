@@ -91,9 +91,10 @@ export default function Footer() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "14px",
+                gap: "0px",
                 textDecoration: "none",
                 marginBottom: "1rem",
+                flexShrink: 0,
               }}
             >
               <Image
@@ -101,9 +102,9 @@ export default function Footer() {
                 alt="Saaphzone Technologies"
                 width={76}
                 height={76}
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain", flexShrink: 0, marginRight: "-10px" }}
               />
-              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15 }}>
+              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15, flexShrink: 0 }}>
                 <span style={{ fontSize: "1.45rem", fontWeight: 800, color: "#ffffff", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "-0.02em" }}>
                   Saaphzone
                 </span>

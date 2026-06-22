@@ -447,7 +447,10 @@ export default function SpmPage() {
             </div>
             <div>
               <div className="diagram-card" style={{ padding: "14px" }}>
-                <img src="/assets/unit-photo.jpg" alt="BDM Series detector unit, mounted in calibration cradle" />
+                <div style={{ minHeight: "220px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "var(--paper)", border: "2px dashed var(--line)", borderRadius: "var(--radius-sm)", color: "var(--ink-faint)", gap: "8px", padding: "1rem" }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                  <span style={{ fontSize: "12px", fontFamily: "var(--font-mono)", textAlign: "center" }}>[ BDM Detector Head Photo ]</span>
+                </div>
               </div>
               <p className="diagram-cap">The BDM detector head — all-metal housing, IP65.</p>
             </div>
@@ -648,14 +651,20 @@ export default function SpmPage() {
 
             <div>
               <div className="diagram-card">
-                <img src="/assets/flue-install-diagram.png" alt="Embedded flange and signal/power cable routing on the flue" />
+                <div style={{ minHeight: "220px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "var(--paper)", border: "2px dashed var(--line)", borderRadius: "var(--radius-sm)", color: "var(--ink-faint)", gap: "8px", padding: "1rem" }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span style={{ fontSize: "12px", fontFamily: "var(--font-mono)", textAlign: "center" }}>[ Flange Mounting Diagram ]</span>
+                </div>
               </div>
               <p className="diagram-cap">Fig. 2 — Embedded-flange mounting, with signal and power cable routing.</p>
 
               <h5 style={{ fontFamily: "var(--font-display)", fontSize: "15px", margin: "28px 0 12px" }}>Wiring — 7-pin aviation connector</h5>
               <div className="photo-pair">
                 <figure>
-                  <img src="/assets/connector-photo.jpg" alt="7-pin aviation plug, rear view" />
+                  <div style={{ minHeight: "150px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "var(--paper)", border: "2px dashed var(--line)", borderRadius: "var(--radius-sm)", color: "var(--ink-faint)", gap: "8px", padding: "1rem" }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    <span style={{ fontSize: "11px", fontFamily: "var(--font-mono)", textAlign: "center" }}>[ 7-Pin Aviation Plug Photo ]</span>
+                  </div>
                   <figcaption>Rear terminal view</figcaption>
                 </figure>
                 <figure style={{ display: "flex", alignItems: "center" }}>
@@ -716,14 +725,20 @@ export default function SpmPage() {
 
             <div>
               <div className="diagram-card">
-                <img src="/assets/calibrator-diagram.png" alt="In-situ calibrator knob, front and side section views" />
+                <div style={{ minHeight: "220px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "var(--paper)", border: "2px dashed var(--line)", borderRadius: "var(--radius-sm)", color: "var(--ink-faint)", gap: "8px", padding: "1rem" }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span style={{ fontSize: "12px", fontFamily: "var(--font-mono)", textAlign: "center" }}>[ Calibrator Knob Diagram ]</span>
+                </div>
               </div>
               <p className="diagram-cap">Fig. 3 — Calibrator knob (Z / S / W) and back-cover section.</p>
 
               <h5 style={{ fontFamily: "var(--font-display)", fontSize: "15px", margin: "26px 0 10px" }}>Optical window care</h5>
               <div className="photo-pair" style={{ gridTemplateColumns: "0.8fr 1.2fr" }}>
                 <figure>
-                  <img src="/assets/optic-window.jpg" alt="Detachable optical window assembly" />
+                  <div style={{ minHeight: "150px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "var(--paper)", border: "2px dashed var(--line)", borderRadius: "var(--radius-sm)", color: "var(--ink-faint)", gap: "8px", padding: "1rem" }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    <span style={{ fontSize: "11px", fontFamily: "var(--font-mono)", textAlign: "center" }}>[ Optical Window Photo ]</span>
+                  </div>
                   <figcaption>Detachable window plate</figcaption>
                 </figure>
                 <figure>

@@ -43,9 +43,12 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setServicesOpen(false);
-    setSubOpen(null);
+    const timer = setTimeout(() => {
+      setMobileOpen(false);
+      setServicesOpen(false);
+      setSubOpen(null);
+    }, 0);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return (
@@ -84,8 +87,9 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "14px",
+            gap: "0px",
             textDecoration: "none",
+            flexShrink: 0,
           }}
         >
           <Image
@@ -93,15 +97,16 @@ export default function Navbar() {
             alt="Saaphzone Technologies"
             width={76}
             height={76}
-            style={{ objectFit: "contain", background: "none" }}
+            className="navbar-logo-img"
+            style={{ objectFit: "contain", background: "none", flexShrink: 0 }}
             priority
             loading="eager"
           />
-          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15 }}>
-            <span style={{ fontSize: "1.45rem", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "-0.02em" }}>
+          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15, flexShrink: 0 }}>
+            <span className="navbar-logo-text-title" style={{ fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "-0.02em" }}>
               Saaphzone
             </span>
-            <span style={{ fontSize: "0.68rem", fontWeight: 600, color: "#64748b", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+            <span className="navbar-logo-text-subtitle" style={{ fontWeight: 600, color: "#64748b", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", letterSpacing: "0.22em", textTransform: "uppercase" }}>
               Technologies
             </span>
           </div>
@@ -527,6 +532,30 @@ export default function Navbar() {
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-logo-img {
+          width: 70px !important;
+          height: 70px !important;
+          margin-right: -10px !important;
+        }
+        .navbar-logo-text-title {
+          font-size: 1.35rem !important;
+        }
+        .navbar-logo-text-subtitle {
+          font-size: 0.65rem !important;
+        }
+        @media (max-width: 640px) {
+          .navbar-logo-img {
+            width: 52px !important;
+            height: 52px !important;
+            margin-right: -7px !important;
+          }
+          .navbar-logo-text-title {
+            font-size: 1.15rem !important;
+          }
+          .navbar-logo-text-subtitle {
+            font-size: 0.55rem !important;
+          }
         }
         .nav-sub-item-container:hover .nav-nested-menu {
           display: block !important;

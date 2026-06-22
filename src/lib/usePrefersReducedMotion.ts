@@ -7,7 +7,9 @@ export function usePrefersReducedMotion() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+    const timer = setTimeout(() => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    }, 0);
 
     const listener = (event: MediaQueryListEvent) => {
       setPrefersReducedMotion(event.matches);
@@ -15,6 +17,7 @@ export function usePrefersReducedMotion() {
 
     mediaQuery.addEventListener("change", listener);
     return () => {
+      clearTimeout(timer);
       mediaQuery.removeEventListener("change", listener);
     };
   }, []);
