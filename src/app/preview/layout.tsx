@@ -1,5 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import BackToTop from "@/components/layout/BackToTop";
 import CustomCursor from "@/components/layout/CustomCursor";
@@ -12,11 +10,9 @@ export default function SiteLayout({
     <>
       <CustomCursor />
       <ScrollProgress />
-      <Navbar />
       <main className="flex-1">
         <PageTransition>{children}</PageTransition>
       </main>
-      <Footer />
       <BackToTop />
     </>
   );
