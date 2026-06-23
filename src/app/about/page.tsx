@@ -10,26 +10,7 @@ const iconMap: Record<string, React.ElementType> = {
   Target, Lightbulb, Globe, Users, Star, Shield,
 };
 
-const leadership = [
-  {
-    name: "Mr. Rahul Sharma",
-    designation: "Director & Founder",
-    bio: "15+ years in clean technology, industrial pollution control, and sustainable energy. Founding visionary behind Saaphzone's mission-driven growth.",
-    initials: "RS",
-  },
-  {
-    name: "Ms. Priya Verma",
-    designation: "Chief Technology Officer",
-    bio: "PhD in Environmental Engineering. Leads R&D in emission control systems, BESS design, and IoT-based monitoring platforms.",
-    initials: "PV",
-  },
-  {
-    name: "Mr. Amit Joshi",
-    designation: "Head of Projects",
-    bio: "20 years of turnkey project execution across solar, waste management, and air pollution control. Delivered 200+ projects pan-India.",
-    initials: "AJ",
-  },
-];
+
 
 const certifications = [
   "ISO 9001:2015 — Quality Management System",
@@ -154,27 +135,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* LEADERSHIP */}
-      <section style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Leadership Team</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 480, margin: "0 auto" }}>Experienced professionals driving Saaphzone&apos;s mission forward.</p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
-            {leadership.map((person, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "16px", padding: "2rem", textAlign: "center", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.1)", borderColor: "#3b82f6" }}>
-                <div style={{ width: 72, height: 72, borderRadius: "50%", background: "linear-gradient(135deg,#1d4ed8,#3b82f6)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "white", fontSize: "1.375rem", fontWeight: 800, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
-                  {person.initials}
-                </div>
-                <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.25rem" }}>{person.name}</h3>
-                <p style={{ fontSize: "0.8375rem", fontWeight: 600, color: "#1d4ed8", marginBottom: "0.875rem" }}>{person.designation}</p>
-                <p style={{ fontSize: "0.875rem", color: "#64748b", lineHeight: 1.7 }}>{person.bio}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+
 
       {/* CERTIFICATIONS */}
       <section style={{ padding: "5rem 1.5rem", background: "#1d4ed8" }}>
