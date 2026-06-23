@@ -32,7 +32,7 @@ const SERVICES = [
   {
     id: "bess",
     Icon: BatteryFull,
-    title: "Battery Energy Storage",
+    title: "Battery Energy Storage System",
     tagline: "Power. Stored Smarter.",
     description:
       "Grid-scale and commercial BESS solutions for reliable, intelligent energy storage that maximises renewable utilisation.",

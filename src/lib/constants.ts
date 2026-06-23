@@ -62,7 +62,7 @@ export const SERVICES = [
   {
     id: "bess",
     icon: "Battery",
-    title: "Battery Energy Storage",
+    title: "Battery Energy Storage System",
     description:
       "Grid-scale and commercial BESS solutions for reliable, intelligent energy storage that maximises renewable utilisation.",
     href: "/services/bess",
