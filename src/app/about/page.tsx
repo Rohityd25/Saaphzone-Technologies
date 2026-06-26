@@ -407,7 +407,7 @@ export default function AboutPage() {
               >
                 <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
                   <img 
-                    className="w-full h-full object-contain filter invert brightness-0" 
+                    className="w-full h-full object-contain invert mix-blend-screen" 
                     alt={cert.title} 
                     src={cert.img}
                   />
