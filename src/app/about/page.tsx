@@ -1,113 +1,352 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 import Link from "next/link";
-import { Target, Lightbulb, Globe, Users, Star, Shield, ArrowRight, CheckCircle2 } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { CORE_VALUES, MILESTONES } from "@/lib/constants";
+import { motion } from "framer-motion";
+import { 
+  Target, 
+  Eye, 
+  Heart, 
+  Lightbulb, 
+  Leaf, 
+  Users, 
+  Award, 
+  Scale, 
+  ArrowRight
+} from "lucide-react";
 
-const iconMap: Record<string, React.ElementType> = {
-  Target, Lightbulb, Globe, Users, Star, Shield,
+// Animation configs
+const fadeInUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
+const coreValues = [
+  {
+    title: "Integrity",
+    desc: "Integrity is the same integrity and professional services.",
+    icon: Heart
+  },
+  {
+    title: "Innovation",
+    desc: "Innovation is immersive innovations to trust-fitting innovation.",
+    icon: Lightbulb
+  },
+  {
+    title: "Sustainability",
+    desc: "Generation embedded in sustainability, and sustainability.",
+    icon: Leaf
+  },
+  {
+    title: "Collaboration",
+    desc: "Collaboration of community and empowerment adaptability.",
+    icon: Users
+  },
+  {
+    title: "Excellence",
+    desc: "Excellence in accessibility and construction and excellence.",
+    icon: Award
+  },
+  {
+    title: "Compliance",
+    desc: "Compliance and assistance and compliance compliance.",
+    icon: Scale
+  }
+];
+
+const milestones = [
+  {
+    year: "2018",
+    title: "Founded",
+    desc: "Founded in 2018 in smart-solutions."
+  },
+  {
+    year: "2021",
+    title: "Growth phase",
+    desc: "Established as a leader in technical innovation."
+  },
+  {
+    year: "2022",
+    title: "Advanced Solutions",
+    desc: "Advanced solutions, growth and investment missions."
+  },
+  {
+    year: "2024",
+    title: "Expansion",
+    desc: "Exceeded business saaphzone technologies benchmarks."
+  }
+];
 
 const certifications = [
-  "ISO 9001:2015 — Quality Management System",
-  "ISO 14001:2015 — Environmental Management",
-  "MSME Registered Enterprise",
-  "CPCB Approved Vendor",
-  "Member — CII Green Business Centre",
-  "BIS Registered Products",
+  {
+    title: "ISO 9001",
+    subtitle: "Quality Certification",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDZXjbWfnmDh0BPg3QbjFyCyTBN7Ifio_t9Ly4bXskQjJ08rQyC7198f0fo2tqIcq3tWypDyRyKg5iJpCUYs93bGScygYYfS5zQdTUKGee50UhsgaUqiKj5yJDNP_glTs0qLvxhH78vsFQ02oUX6lwIrS80wSgE-a2pBQ7rDl731dHCq8WLmIXDgMSE6f_YiVJJKrH16JdYcpe63cwMQxzmqR6qzAYKSr59I2h8fDtmC3i_LQMjxgzeu7KFXJvFJljfZamENyJQHwA"
+  },
+  {
+    title: "ISO 14001",
+    subtitle: "Environment Certification",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBLPFUTAdMZYPw8Oo7nijnzy8Dj3xLvbWzCrY2ZgUFmqVuR1WtqoMR0Us2FkIuTgNi_vos9i4tqf5_Z8kbe8I5I_EJ2HgnEL2inG9QvgPmvej9XeR52iffwEwoNqrkCb4v6y8v5oMYXJlHjiV4wp6y0NFMjFPb2IkHSIQ9Ij7aDt1Dul3fE9EJ2d3XWjZIJIx4Wt-HD5AKsqPEvy0wCmuwQitpV2gu2kM6NVHyF3dhQIr6t9HeKVChbWc54WI-RquzuzxfAeUyK8Tc"
+  },
+  {
+    title: "MSME",
+    subtitle: "Official Recognition",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBokFZpMJ839ikmQkKz-G0-jVa5gkC2vVcgzKISE_G4ikrT6Xy2wNHb6kyyyJz3wWFp3hsJWdw9VWlNVnZzgDnBouCthgIoeXlQH9qXs0pcUz4_8vT_kMUxMaAb9s5nBwGjcRiO_gJ2IQvaEKajRuoDAgKwyiAnrpyUty_O-5TJIu61K_0oz7rj27OJIA9u0bJhwf7babHY0HmpWd0edJzFygulBcdl6BbMhgMIHWECnh-u6JDAFcFUl1PDW-I_204Msh5_qHSllQU"
+  },
+  {
+    title: "CPCB",
+    subtitle: "Compliance Certification",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDf-bnWJB7QGojF57yDvykukofC1VkKsH4a33HgOpiAPF0kGO9AJNhzxAPmOBSE9VwxKzO1x-zCVDtYKQYnKEAcPpJM-1rdalegJtbHWAAAe__kwZ7Utd5GnzW3x1ObxI7e2Xvl_vt9Qed0VubtDBQw_Jxohj4ta48aD9vL91YjN7fPi7n57a8_o4K1eIstGlMdwLmD8-GPN6Rzzi7JylOx_fnagOQMQJxO0TazDBK4b6ET89ONs7Qyu9hP03sTF2S1J9A0RoETTZQ"
+  },
+  {
+    title: "Green Business",
+    subtitle: "Sustainability Award",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCnDIWlEvSiB3jn3FZd9Rz738edX3mFuGbAR9eQ0XWyOyTSGdw-BeLV1N1sfXy5eth-16g7VwONfd21sqkAhEfhZrr-cEwzYI-ac5NW8ufOXe2PGIniyMe_XGb2RF7OyFm50eGm_eY1NtvD5gPRMl3q0lE5mUzDg0iLtTQELBPwZJbXaeFue0L9MJgiNS-0seR7UU0PJ91ta-ApmbP3Ja60m7AGYf4LxFID0jkmeU5MBAsJ33dJVanlgB8DczTr0Oafj7j9Gp6tyNs"
+  },
+  {
+    title: "BIS",
+    subtitle: "Standard Certification",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1stzTskyQeUpHcZyiqmcluqPGlc4IMS3reUc0R86-r9xw2MMMRzjuMTUKWRIrUd0T-QI6JFv7HckKrLJSSikM9X4iGD1jhXjhi3XZ6JLyIgLZj0nncEeruP9CwgYX10dtbL6YmHIB4i14pTChOFhoqmF60XeRHzi9oPWlEYMb5gdqVvlj2VXb69I2XKImp4uJPDTqcXdCf8vrvUSZcGlsscZ7ZYgQRUIpuEwyd1BhU2vurgWwTOj4hdR7zw35MCnTGR_g6xn7BnM"
+  }
 ];
 
 export default function AboutPage() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    let animationFrameId: number;
+
+    const handleResize = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    };
+    
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const gl = (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
+    if (!gl) {
+      console.warn("WebGL not supported");
+      return;
+    }
+
+    const vsSource = `
+      attribute vec2 a_position;
+      varying vec2 v_texCoord;
+      void main() {
+        v_texCoord = a_position * 0.5 + 0.5;
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
+
+    const fsSource = `
+      precision highp float;
+      uniform float u_time;
+      uniform vec2 u_resolution;
+      varying vec2 v_texCoord;
+      
+      void main() {
+          vec2 uv = v_texCoord;
+          vec3 color1 = vec3(0.114, 0.365, 0.608); // #1D5D9B
+          vec3 color2 = vec3(0.976, 0.976, 1.0);   // #f9f9ff
+          
+          float noise = sin(uv.x * 10.0 + u_time) * cos(uv.y * 10.0 - u_time) * 0.5 + 0.5;
+          vec3 color = mix(color1, color2, noise * 0.2 + 0.8);
+          
+          gl_FragColor = vec4(color, 1.0);
+      }
+    `;
+
+    const createShader = (type: number, source: string) => {
+      const shader = gl.createShader(type);
+      if (!shader) return null;
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+        gl.deleteShader(shader);
+        return null;
+      }
+      return shader;
+    };
+
+    const vs = createShader(gl.VERTEX_SHADER, vsSource);
+    const fs = createShader(gl.FRAGMENT_SHADER, fsSource);
+    if (!vs || !fs) return;
+
+    const program = gl.createProgram();
+    if (!program) return;
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.error("Program link error:", gl.getProgramInfoLog(program));
+      return;
+    }
+
+    gl.useProgram(program);
+
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+      gl.STATIC_DRAW
+    );
+
+    const positionLocation = gl.getAttribLocation(program, "a_position");
+    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+    const timeLocation = gl.getUniformLocation(program, "u_time");
+    const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+
+    const render = (time: number) => {
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform1f(timeLocation, time * 0.001);
+      gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    animationFrameId = requestAnimationFrame(render);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div style={{ paddingTop: "80px" }}>
-      {/* HERO */}
-      <section style={{ background: "linear-gradient(145deg,#f8faff 0%,#eff6ff 60%,#dbeafe 100%)", padding: "5rem 1.5rem 4rem", position: "relative", overflow: "hidden" }}>
-        <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle,rgba(29,78,216,.07) 1px,transparent 1px)", backgroundSize: "32px 32px", pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(29,78,216,.08)", border: "1px solid rgba(29,78,216,.2)", borderRadius: "100px", padding: "0.375rem 0.875rem", marginBottom: "1.25rem" }}>
-              <Globe size={14} color="#1d4ed8" />
-              <span style={{ fontSize: "0.825rem", fontWeight: 600, color: "#1d4ed8", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>About Us</span>
-            </div>
-            <h1 style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.02em", maxWidth: 700, marginBottom: "1.25rem" }}>
-              Driven by Purpose, Powered by Innovation
-            </h1>
-            <p style={{ fontSize: "1.125rem", color: "#475569", lineHeight: 1.75, maxWidth: 620, marginBottom: "2rem" }}>
-              Saaphzone Technologies is a leading Indian clean-tech company delivering advanced environmental and renewable energy solutions that make industries cleaner, greener, and more sustainable.
-            </p>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", background: "#1d4ed8", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", boxShadow: "0 4px 20px rgba(29,78,216,.3)", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; }}>
-              Contact Us <ArrowRight size={18} />
+    <div className="overflow-x-hidden">
+      {/* Hero Section */}
+      <header className="relative pt-40 pb-24 min-h-[716px] flex flex-col items-center justify-center text-center bg-gray-50/50">
+        <canvas 
+          ref={canvasRef} 
+          className="absolute inset-0 w-full h-full -z-10 opacity-40" 
+        />
+        <div className="px-6 max-w-4xl mx-auto relative z-10">
+          <motion.span 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-1.5 rounded-full bg-blue-100/80 text-[#1D5D9B] font-semibold text-sm mb-6"
+          >
+            About Us
+          </motion.span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-headline-xl text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-gray-900"
+          >
+            Driven by Purpose,<br/>Powered by Innovation
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Link 
+              href="/contact" 
+              className="inline-block bg-[#1D5D9B] text-white px-8 py-3.5 rounded-full font-semibold hover:shadow-lg transition-all transform hover:-translate-y-1"
+            >
+              Contact Us
             </Link>
           </motion.div>
         </div>
-      </section>
+      </header>
 
-      {/* COMPANY STORY + MISSION/VISION */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }} className="about-two-col">
-          <motion.div initial={{ opacity: 0, x: -32 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "1.25rem" }}>Our Story</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#475569", lineHeight: 1.8, marginBottom: "1rem" }}>
-              Founded in 2018 in Noida, Uttar Pradesh, Saaphzone Technologies began with a singular vision: to make industrial India cleaner and more sustainable through cutting-edge environmental technology.
-            </p>
-            <p style={{ fontSize: "1.0625rem", color: "#475569", lineHeight: 1.8, marginBottom: "1rem" }}>
-              What started as a pollution control company has grown into a full-spectrum clean-tech enterprise — with capabilities spanning solid waste management, air pollution mitigation, battery energy storage, and renewable energy.
-            </p>
-            <p style={{ fontSize: "1.0625rem", color: "#475569", lineHeight: 1.8 }}>
-              Today, with 350+ projects completed across 40+ industries and 85 MW of renewable capacity installed, we are one of India&apos;s trusted names in environmental solutions.
-            </p>
+      {/* Our Story Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1D5D9B]">Our Story</h2>
+            <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
+              <p>Saaphzone Technologies was founded in 2018. We created innovative solutions and established a consistent community profile and vision for growth and innovation and creators connecting business.</p>
+              <p>Saaphzone Technologies focused on transforming technology complexities and scale within many emerging catalysts and enriching the engine of real-time growth and creative orientation.</p>
+              <p>We love Saaphzone Technologies for our results, easier purpose in raising the entry and embrace of our proposed real smart business.</p>
+            </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-              <div style={{ background: "linear-gradient(135deg,#eff6ff,#dbeafe)", border: "1.5px solid #bfdbfe", borderRadius: "16px", padding: "2rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-                  <div style={{ width: 40, height: 40, borderRadius: "10px", background: "#1d4ed8", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Target size={20} color="white" />
-                  </div>
-                  <h3 style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Our Mission</h3>
-                </div>
-                <p style={{ fontSize: "0.9875rem", color: "#475569", lineHeight: 1.75 }}>
-                  To deliver advanced, reliable, and cost-effective environmental solutions that enable Indian industries to operate sustainably — reducing pollution, recovering resources, and generating clean energy.
-                </p>
+          <motion.div 
+            initial={{ opacity: 0, x: 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            {/* Mission Card */}
+            <div className="p-8 rounded-xl bg-[#f9f9ff] border border-gray-200/50 flex gap-6 items-start shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-[#1D5D9B] shrink-0">
+                <Target className="w-6 h-6" />
               </div>
-              <div style={{ background: "linear-gradient(135deg,#f0fdf4,#dcfce7)", border: "1.5px solid #bbf7d0", borderRadius: "16px", padding: "2rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-                  <div style={{ width: 40, height: 40, borderRadius: "10px", background: "#16a34a", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Globe size={20} color="white" />
-                  </div>
-                  <h3 style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Our Vision</h3>
-                </div>
-                <p style={{ fontSize: "0.9875rem", color: "#475569", lineHeight: 1.75 }}>
-                  To be India&apos;s most trusted clean-tech partner — contributing to Net Zero goals by making sustainable practices the industrial standard, not the exception.
-                </p>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">Our Mission</h3>
+                <p className="text-gray-600 leading-relaxed text-base">We aim to empower every enterprise by providing modern technologies to communicate with the novel-fit innovation.</p>
+              </div>
+            </div>
+            {/* Vision Card */}
+            <div className="p-8 rounded-xl bg-green-50/50 border border-green-200/50 flex gap-6 items-start shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-700 shrink-0">
+                <Eye className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">Our Vision</h3>
+                <p className="text-gray-600 leading-relaxed text-base">We now present our vision and visionary developments communicating enchantment goals.</p>
               </div>
             </div>
           </motion.div>
         </div>
-        <style>{`.about-two-col{grid-template-columns:1fr 1fr;}@media(max-width:768px){.about-two-col{grid-template-columns:1fr!important;}}`}</style>
       </section>
 
-      {/* CORE VALUES */}
-      <section style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Core Values</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 520, margin: "0 auto" }}>The principles that guide every decision, design, and delivery at Saaphzone.</p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "1.5rem" }}>
-            {CORE_VALUES.map((val, i) => {
-              const Icon = iconMap[val.icon] || Target;
+      {/* Core Values Section */}
+      <section className="py-20 bg-[#f9f9ff]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Core Values</h2>
+          </div>
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {coreValues.map((val, idx) => {
+              const Icon = val.icon;
               return (
-                <motion.div key={i} variants={fadeInUp} style={{ background: "white", border: "1.5px solid #e2e8f0", borderRadius: "14px", padding: "1.75rem", textAlign: "center", transition: "all .25s ease" }} whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(29,78,216,.12)", borderColor: "#3b82f6" }}>
-                  <div style={{ width: 56, height: 56, borderRadius: "14px", background: "#eff6ff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1rem" }}>
-                    <Icon size={24} color="#1d4ed8" />
+                <motion.div 
+                  key={idx}
+                  variants={fadeInUp}
+                  className="p-8 border border-gray-200/60 bg-white rounded-xl text-center hover:border-[#1D5D9B]/40 transition-all hover:shadow-lg group"
+                >
+                  <div className="w-14 h-14 mx-auto mb-6 rounded-full bg-blue-50 flex items-center justify-center text-[#1D5D9B] group-hover:scale-110 transition-transform">
+                    <Icon className="w-6 h-6" />
                   </div>
-                  <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.5rem" }}>{val.title}</h3>
-                  <p style={{ fontSize: "0.875rem", color: "#64748b", lineHeight: 1.65 }}>{val.desc}</p>
+                  <h4 className="text-xl font-bold mb-3 text-gray-900">{val.title}</h4>
+                  <p className="text-gray-600 leading-relaxed">{val.desc}</p>
                 </motion.div>
               );
             })}
@@ -115,64 +354,93 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* MILESTONES TIMELINE */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Journey</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: 480, margin: "0 auto" }}>Key milestones on the road to becoming India&apos;s trusted clean-tech partner.</p>
-          </motion.div>
-          <div style={{ position: "relative", paddingLeft: "2rem" }}>
-            <div style={{ position: "absolute", left: "0.75rem", top: 0, bottom: 0, width: "2px", background: "linear-gradient(180deg,#dbeafe,#1d4ed8,#dbeafe)" }} />
-            {MILESTONES.map((m, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} style={{ position: "relative", paddingBottom: "2.5rem", paddingLeft: "1.5rem" }}>
-                <div style={{ position: "absolute", left: "-0.875rem", top: "0.25rem", width: 22, height: 22, borderRadius: "50%", background: "#1d4ed8", border: "3px solid white", boxShadow: "0 0 0 3px #dbeafe" }} />
-                <span style={{ display: "inline-block", background: "#eff6ff", color: "#1d4ed8", fontSize: "0.8rem", fontWeight: 800, fontFamily: "'Plus Jakarta Sans',sans-serif", padding: "0.25rem 0.75rem", borderRadius: "100px", marginBottom: "0.5rem" }}>{m.year}</span>
-                <p style={{ fontSize: "0.9875rem", color: "#374151", lineHeight: 1.7 }}>{m.event}</p>
+      {/* Our Journey Section */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
+            <p className="text-gray-500 italic">Building solutions for business and innovation.</p>
+          </div>
+          <div className="relative max-w-3xl mx-auto space-y-16 before:content-[''] before:absolute before:left-1/2 before:top-0 before:bottom-0 before:w-[2px] before:bg-blue-100 before:-translate-x-1/2">
+            {milestones.map((m, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="flex items-center gap-12 group"
+              >
+                <div className="w-1/2 text-right">
+                  <span className="text-2xl font-bold text-gray-400 group-hover:text-[#1D5D9B] transition-all">{m.year}</span>
+                </div>
+                <div className="w-4 h-4 rounded-full bg-[#1D5D9B] ring-8 ring-blue-100 z-10 shrink-0"></div>
+                <div className="w-1/2">
+                  <h4 className="text-xl font-bold mb-1 text-gray-900">{m.title}</h4>
+                  <p className="text-gray-600 leading-relaxed">{m.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-
-
-      {/* CERTIFICATIONS */}
-      <section style={{ padding: "5rem 1.5rem", background: "#1d4ed8" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Certifications & Recognitions</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#bfdbfe", maxWidth: 480, margin: "0 auto" }}>Our quality and compliance credentials — earned through rigorous audits and field performance.</p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "1rem" }}>
-            {certifications.map((cert, i) => (
-              <motion.div key={i} variants={fadeInUp} style={{ display: "flex", alignItems: "center", gap: "0.875rem", padding: "1.125rem 1.25rem", background: "rgba(255,255,255,.1)", border: "1px solid rgba(255,255,255,.15)", borderRadius: "10px" }}>
-                <CheckCircle2 size={20} color="#93c5fd" style={{ flexShrink: 0 }} />
-                <span style={{ fontSize: "0.9rem", color: "white", fontWeight: 500 }}>{cert}</span>
+      {/* Certifications & Recognitions Section */}
+      <section className="py-20 bg-[#1D5D9B] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1d5d9b] to-[#0f3d6b] opacity-50"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10 text-white">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Certifications &amp; Recognitions</h2>
+          </div>
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-3 gap-8"
+          >
+            {certifications.map((cert, idx) => (
+              <motion.div 
+                key={idx}
+                variants={fadeInUp}
+                className="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 text-center hover:bg-white/15 transition-all"
+              >
+                <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                  <img 
+                    className="w-full h-full object-contain filter invert brightness-0" 
+                    alt={cert.title} 
+                    src={cert.img}
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-white mb-2">{cert.title}</h4>
+                <p className="text-white/70">{cert.subtitle}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-            <h2 style={{ fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "1rem" }}>Partner with Saaphzone Technologies</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#64748b", marginBottom: "2rem", lineHeight: 1.7 }}>Let&apos;s discuss your environmental or energy challenge and build a solution together.</p>
-            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", background: "#1d4ed8", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", boxShadow: "0 4px 20px rgba(29,78,216,.3)", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; }}>
-                Get in Touch <ArrowRight size={18} />
-              </Link>
-              <Link href="/services/solid-waste" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 2rem", background: "white", color: "#1d4ed8", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", border: "1.5px solid #1d4ed8", transition: "all .25s ease" }}>
-                Explore Services
-              </Link>
-            </div>
-          </motion.div>
+      {/* CTA Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Partner with Saaphzone Technologies</h2>
+          <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">Partner with Saaphzone Technologies to experience and company and current technological solutions.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/contact" 
+              className="bg-[#1D5D9B] text-white px-10 py-3.5 rounded-full font-semibold hover:opacity-90 transition-all text-center"
+            >
+              Get in Touch
+            </Link>
+            <Link 
+              href="/services" 
+              className="border-2 border-[#1D5D9B] text-[#1D5D9B] px-10 py-3.5 rounded-full font-semibold hover:bg-blue-50/10 transition-all text-center"
+            >
+              Explore Services
+            </Link>
+          </div>
         </div>
       </section>
     </div>
   );
 }
-
