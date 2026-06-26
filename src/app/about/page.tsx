@@ -87,39 +87,6 @@ const milestones = [
   }
 ];
 
-const certifications = [
-  {
-    title: "ISO 9001",
-    subtitle: "Quality Certification",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDZXjbWfnmDh0BPg3QbjFyCyTBN7Ifio_t9Ly4bXskQjJ08rQyC7198f0fo2tqIcq3tWypDyRyKg5iJpCUYs93bGScygYYfS5zQdTUKGee50UhsgaUqiKj5yJDNP_glTs0qLvxhH78vsFQ02oUX6lwIrS80wSgE-a2pBQ7rDl731dHCq8WLmIXDgMSE6f_YiVJJKrH16JdYcpe63cwMQxzmqR6qzAYKSr59I2h8fDtmC3i_LQMjxgzeu7KFXJvFJljfZamENyJQHwA"
-  },
-  {
-    title: "ISO 14001",
-    subtitle: "Environment Certification",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBLPFUTAdMZYPw8Oo7nijnzy8Dj3xLvbWzCrY2ZgUFmqVuR1WtqoMR0Us2FkIuTgNi_vos9i4tqf5_Z8kbe8I5I_EJ2HgnEL2inG9QvgPmvej9XeR52iffwEwoNqrkCb4v6y8v5oMYXJlHjiV4wp6y0NFMjFPb2IkHSIQ9Ij7aDt1Dul3fE9EJ2d3XWjZIJIx4Wt-HD5AKsqPEvy0wCmuwQitpV2gu2kM6NVHyF3dhQIr6t9HeKVChbWc54WI-RquzuzxfAeUyK8Tc"
-  },
-  {
-    title: "MSME",
-    subtitle: "Official Recognition",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBokFZpMJ839ikmQkKz-G0-jVa5gkC2vVcgzKISE_G4ikrT6Xy2wNHb6kyyyJz3wWFp3hsJWdw9VWlNVnZzgDnBouCthgIoeXlQH9qXs0pcUz4_8vT_kMUxMaAb9s5nBwGjcRiO_gJ2IQvaEKajRuoDAgKwyiAnrpyUty_O-5TJIu61K_0oz7rj27OJIA9u0bJhwf7babHY0HmpWd0edJzFygulBcdl6BbMhgMIHWECnh-u6JDAFcFUl1PDW-I_204Msh5_qHSllQU"
-  },
-  {
-    title: "CPCB",
-    subtitle: "Compliance Certification",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDf-bnWJB7QGojF57yDvykukofC1VkKsH4a33HgOpiAPF0kGO9AJNhzxAPmOBSE9VwxKzO1x-zCVDtYKQYnKEAcPpJM-1rdalegJtbHWAAAe__kwZ7Utd5GnzW3x1ObxI7e2Xvl_vt9Qed0VubtDBQw_Jxohj4ta48aD9vL91YjN7fPi7n57a8_o4K1eIstGlMdwLmD8-GPN6Rzzi7JylOx_fnagOQMQJxO0TazDBK4b6ET89ONs7Qyu9hP03sTF2S1J9A0RoETTZQ"
-  },
-  {
-    title: "Green Business",
-    subtitle: "Sustainability Award",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCnDIWlEvSiB3jn3FZd9Rz738edX3mFuGbAR9eQ0XWyOyTSGdw-BeLV1N1sfXy5eth-16g7VwONfd21sqkAhEfhZrr-cEwzYI-ac5NW8ufOXe2PGIniyMe_XGb2RF7OyFm50eGm_eY1NtvD5gPRMl3q0lE5mUzDg0iLtTQELBPwZJbXaeFue0L9MJgiNS-0seR7UU0PJ91ta-ApmbP3Ja60m7AGYf4LxFID0jkmeU5MBAsJ33dJVanlgB8DczTr0Oafj7j9Gp6tyNs"
-  },
-  {
-    title: "BIS",
-    subtitle: "Standard Certification",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1stzTskyQeUpHcZyiqmcluqPGlc4IMS3reUc0R86-r9xw2MMMRzjuMTUKWRIrUd0T-QI6JFv7HckKrLJSSikM9X4iGD1jhXjhi3XZ6JLyIgLZj0nncEeruP9CwgYX10dtbL6YmHIB4i14pTChOFhoqmF60XeRHzi9oPWlEYMb5gdqVvlj2VXb69I2XKImp4uJPDTqcXdCf8vrvUSZcGlsscZ7ZYgQRUIpuEwyd1BhU2vurgWwTOj4hdR7zw35MCnTGR_g6xn7BnM"
-  }
-];
-
 export default function AboutPage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -382,41 +349,6 @@ export default function AboutPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Certifications & Recognitions Section */}
-      <section className="py-20 bg-[#1D5D9B] relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1d5d9b] to-[#0f3d6b] opacity-50"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-white">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Certifications &amp; Recognitions</h2>
-          </div>
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-8"
-          >
-            {certifications.map((cert, idx) => (
-              <motion.div 
-                key={idx}
-                variants={fadeInUp}
-                className="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 text-center hover:bg-white/15 transition-all"
-              >
-                <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                  <img 
-                    className="w-full h-full object-contain invert mix-blend-screen" 
-                    alt={cert.title} 
-                    src={cert.img}
-                  />
-                </div>
-                <h4 className="text-xl font-bold text-white mb-2">{cert.title}</h4>
-                <p className="text-white/70">{cert.subtitle}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
