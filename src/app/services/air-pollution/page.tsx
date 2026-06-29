@@ -47,7 +47,7 @@ export default function AirPollutionPage() {
               <span style={{ fontSize: "0.825rem", fontWeight: 600, color: "#1d4ed8", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Our Services</span>
             </div>
             <h1 style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.02em", maxWidth: 700, marginBottom: "1.25rem" }}>
-              Air Pollution Mitigation System
+              Air Pollution System
             </h1>
             <p style={{ fontSize: "1.125rem", color: "#475569", lineHeight: 1.75, maxWidth: 620, marginBottom: "2rem" }}>
               Advanced industrial air pollution control — filtration, scrubbing, dust collection, and continuous emission monitoring systems that bring your emissions below every regulatory limit.

@@ -14,10 +14,11 @@ const NAV_LINKS = [
     children: [
       { label: "Solid Waste Management", href: "/services/solid-waste" },
       {
-        label: "Air Pollution Mitigation",
+        label: "Air Pollution",
         href: "/services/air-pollution",
         children: [
           { label: "SPM (Dust Analyzer)", href: "/services/air-pollution/spm" },
+          { label: "MAAPS", href: "/services/air-pollution/maaps" },
         ],
       },
       { label: "BESS", href: "/services/bess" },

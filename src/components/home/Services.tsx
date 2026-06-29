@@ -21,7 +21,7 @@ const SERVICES = [
   {
     id: "air-pollution",
     Icon: Wind,
-    title: "Air Pollution Mitigation",
+    title: "Air Pollution",
     tagline: "Breathe Cleaner.",
     description:
       "Advanced filtration, scrubbers, and dust-collection systems that bring industrial emissions well within regulatory limits.",

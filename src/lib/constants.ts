@@ -25,7 +25,7 @@ export const NAV_LINKS = [
     children: [
       { label: "Solid Waste Management", href: "/services/solid-waste" },
       {
-        label: "Air Pollution Mitigation",
+        label: "Air Pollution",
         href: "/services/air-pollution",
         children: [
           { label: "SPM (Dust Analyzer)", href: "/services/air-pollution/spm" },
@@ -53,7 +53,7 @@ export const SERVICES = [
   {
     id: "air-pollution",
     icon: "Wind",
-    title: "Air Pollution Mitigation",
+    title: "Air Pollution",
     description:
       "Advanced filtration, scrubbing and dust-collection systems that bring industrial emissions below regulatory limits.",
     href: "/services/air-pollution",

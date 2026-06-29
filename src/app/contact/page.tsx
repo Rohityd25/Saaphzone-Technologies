@@ -17,7 +17,7 @@ type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const INQUIRY_TYPES = [
   "Solid Waste Management",
-  "Air Pollution Mitigation",
+  "Air Pollution",
   "BESS (Battery Energy Storage)",
   "Solar & Wind Energy",
   "General Inquiry",

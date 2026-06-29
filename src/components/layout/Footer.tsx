@@ -34,8 +34,9 @@ const YoutubeIcon = () => (
 
 const FOOTER_SERVICES = [
   { label: "Solid Waste Management", href: "/services/solid-waste" },
-  { label: "Air Pollution Mitigation", href: "/services/air-pollution" },
+  { label: "Air Pollution", href: "/services/air-pollution" },
   { label: "SPM (Dust Analyzer)", href: "/services/air-pollution/spm" },
+  { label: "MAAPS", href: "/services/air-pollution/maaps" },
   { label: "BESS", href: "/services/bess" },
   { label: "Solar & Wind Energy", href: "/services/solar-wind" },
   { label: "Software Development", href: "/services/software-development" },
