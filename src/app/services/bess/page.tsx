@@ -291,7 +291,7 @@ export default function BESSPage() {
 
         .bess-page-container .compact-prod-card-thumb {
           width: 100%;
-          height: 160px;
+          height: 220px;
           border-radius: 0;
           background: #0c2340;
           display: flex;
@@ -1826,7 +1826,7 @@ export default function BESSPage() {
                       alt="SAPH-R1 Portable"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1843,7 +1843,7 @@ export default function BESSPage() {
                       alt="SAPH-R2 Wall Mount"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1860,7 +1860,7 @@ export default function BESSPage() {
                       alt="SAPH-R3 Trolley"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1877,7 +1877,7 @@ export default function BESSPage() {
                       alt="SAPH-R4 HiCap"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1939,7 +1939,7 @@ export default function BESSPage() {
                       alt="SAPH-C30 System"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1956,7 +1956,7 @@ export default function BESSPage() {
                       alt="SAPH-C60 System"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -2018,7 +2018,7 @@ export default function BESSPage() {
                       alt="Utility Scale BESS"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -2035,7 +2035,7 @@ export default function BESSPage() {
                       alt="Solar + Storage"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -2052,7 +2052,7 @@ export default function BESSPage() {
                       alt="Industrial Energy Systems"
                       width={400}
                       height={220}
-                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
+                      style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
