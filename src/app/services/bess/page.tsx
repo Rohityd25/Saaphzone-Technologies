@@ -1822,6 +1822,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/camping_carry.jpeg"
                       alt="SAPH-R1 Portable"
                       width={400}
@@ -1839,6 +1840,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/wall_mount.jpeg"
                       alt="SAPH-R2 Wall Mount"
                       width={400}
@@ -1856,6 +1858,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/portable_trolley.jpeg"
                       alt="SAPH-R3 Trolley"
                       width={400}
@@ -1873,6 +1876,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/white_cube_25kw.jpeg"
                       alt="SAPH-R4 HiCap"
                       width={400}
@@ -1935,6 +1939,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/modular_30_60kw.jpeg"
                       alt="SAPH-C30 System"
                       width={400}
@@ -1952,6 +1957,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/cube_indoor_outdoor.jpeg"
                       alt="SAPH-C60 System"
                       width={400}
@@ -2014,6 +2020,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/solar_farm.jpeg"
                       alt="Utility Scale BESS"
                       width={400}
@@ -2031,6 +2038,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/ev_charging.jpeg"
                       alt="Solar + Storage"
                       width={400}
@@ -2048,6 +2056,7 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
+                      unoptimized
                       src="/portable_rugged.jpeg"
                       alt="Industrial Energy Systems"
                       width={400}
