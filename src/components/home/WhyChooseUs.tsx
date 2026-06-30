@@ -4,187 +4,110 @@ import { motion } from "framer-motion";
 import { Cpu, ShieldCheck, Factory, Leaf, Clock } from "lucide-react";
 
 const REASONS = [
-  {
-    Icon: Cpu,
-    title: "Smart Technology",
-    desc: "AI-driven monitoring and IoT sensors deliver real-time environmental data and predictive alerts.",
-  },
-  {
-    Icon: ShieldCheck,
-    title: "Regulatory Compliance",
-    desc: "Full alignment with CPCB, MoEFCC, and international ISO standards ensures zero legal risk.",
-  },
-  {
-    Icon: Factory,
-    title: "Industrial Expertise",
-    desc: "Sector-specific solutions built on 15+ years of field experience across 40+ industries.",
-  },
-  {
-    Icon: Leaf,
-    title: "Sustainability Focus",
-    desc: "Every solution is designed to minimise environmental footprint and maximise long-term impact.",
-  },
-  {
-    Icon: Clock,
-    title: "24/7 Monitoring",
-    desc: "Round-the-clock remote monitoring with instant alert notifications and dedicated support.",
-  },
+  { Icon: Cpu, title: "Smart Technology", desc: "AI-driven monitoring and IoT sensors deliver real-time environmental data and predictive alerts.", color: "#38bdf8" },
+  { Icon: ShieldCheck, title: "Regulatory Compliance", desc: "Full alignment with CPCB, MoEFCC, and international ISO standards ensures zero legal risk.", color: "#34d399" },
+  { Icon: Factory, title: "Industrial Expertise", desc: "Sector-specific solutions built on 15+ years of field experience across 40+ industries.", color: "#a78bfa" },
+  { Icon: Leaf, title: "Sustainability Focus", desc: "Every solution is designed to minimise environmental footprint and maximise long-term impact.", color: "#4ade80" },
+  { Icon: Clock, title: "24/7 Monitoring", desc: "Round-the-clock remote monitoring with instant alert notifications and dedicated support.", color: "#fb923c" },
 ];
-
-/* animated underline drawn on scroll */
-function UnderlineReveal({ children }: { children: React.ReactNode }) {
-  return (
-    <span style={{ position: "relative", display: "inline-block" }}>
-      {children}
-      <motion.span
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true, amount: 0.8 }}
-        transition={{ duration: 0.55, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          position: "absolute",
-          bottom: -4,
-          left: 0,
-          right: 0,
-          height: 3,
-          background: "linear-gradient(90deg, #1d4ed8, #3b82f6)",
-          borderRadius: "2px",
-          transformOrigin: "left",
-          display: "block",
-        }}
-      />
-    </span>
-  );
-}
 
 export default function WhyChooseUs() {
   return (
     <section
       aria-label="Why Choose Saaphzone"
-      style={{ padding: "6rem 1.5rem", background: "#f8faff" }}
+      style={{ padding: "6rem 1.5rem", background: "#f8fafc" }}
     >
+      <style>{`
+        .wcu-card {
+          background: white;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 18px;
+          padding: 1.75rem;
+          transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+          cursor: default;
+          position: relative;
+          overflow: hidden;
+        }
+        .wcu-card:hover {
+          border-color: #bfdbfe;
+          box-shadow: 0 16px 40px rgba(56,189,248,0.1);
+          transform: translateY(-5px);
+        }
+        .wcu-card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(56,189,248,0.03), transparent);
+          opacity: 0;
+          transition: opacity 0.25s ease;
+        }
+        .wcu-card:hover::after { opacity: 1; }
+
+        .wcu-icon {
+          width: 52px; height: 52px;
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.1rem;
+          transition: transform 0.25s ease;
+        }
+        .wcu-card:hover .wcu-icon { transform: scale(1.1) rotate(4deg); }
+      `}</style>
+
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              display: "inline-block",
-              background: "#eff6ff",
-              color: "#1d4ed8",
-              fontSize: "0.8rem",
-              fontWeight: 700,
-              padding: "0.375rem 0.875rem",
-              borderRadius: "100px",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: "0.875rem",
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
           >
-            Our Advantage
-          </motion.span>
+            <span style={{ display: "inline-block", background: "rgba(56,189,248,0.1)", color: "#0284c7", fontSize: "0.75rem", fontWeight: 700, padding: "0.35rem 0.9rem", borderRadius: "100px", letterSpacing: "0.09em", textTransform: "uppercase", marginBottom: "0.875rem", fontFamily: "'Plus Jakarta Sans', sans-serif", border: "1px solid rgba(2,132,199,0.2)" }}>
+              Our Advantage
+            </span>
+          </motion.div>
 
-          <h2
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-              fontWeight: 800,
-              color: "#0f172a",
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              marginBottom: "0.875rem",
-              letterSpacing: "-0.02em",
-            }}
+          <motion.h2
+            initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.08 }}
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 900, color: "#0f172a", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.025em", marginBottom: "0.875rem" }}
           >
-            <UnderlineReveal>Why Choose Saaphzone?</UnderlineReveal>
-          </h2>
+            Why Choose Saaphzone?
+          </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              fontSize: "1.0625rem",
-              color: "#64748b",
-              maxWidth: "480px",
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.18 }}
+            style={{ fontSize: "1.0625rem", color: "#64748b", maxWidth: "480px", margin: "0 auto", lineHeight: 1.7 }}
           >
-            We combine technical excellence with field-proven reliability to deliver
-            clean-tech solutions that last.
+            We combine technical excellence with field-proven reliability to deliver clean-tech solutions that last.
           </motion.p>
         </div>
 
-        {/* Cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "1.25rem",
-          }}
-        >
-          {REASONS.map(({ Icon, title, desc }, i) => (
+        {/* Cards grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.25rem" }}>
+          {REASONS.map(({ Icon, title, desc, color }, i) => (
             <motion.div
               key={title}
+              className="wcu-card"
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.55,
-                delay: i * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              whileHover={{
-                y: -6,
-                boxShadow: "0 16px 36px rgba(29,78,216,0.13)",
-                borderColor: "#bfdbfe",
-              }}
-              style={{
-                background: "white",
-                border: "1.5px solid #e2e8f0",
-                borderRadius: "16px",
-                padding: "1.75rem",
-                transition: "border-color 0.25s ease",
-                cursor: "default",
-              }}
+              transition={{ duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Icon with hover glow */}
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 4 }}
-                transition={{ duration: 0.22 }}
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: "12px",
-                  background: "linear-gradient(135deg, #1d4ed8, #3b82f6)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "1rem",
-                  boxShadow: "0 4px 12px rgba(29,78,216,0.25)",
-                }}
-              >
-                <Icon size={22} color="white" />
-              </motion.div>
-
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: "#0f172a",
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {title}
-              </h3>
-              <p style={{ fontSize: "0.875rem", color: "#64748b", lineHeight: 1.65 }}>
-                {desc}
-              </p>
+              <div className="wcu-icon" style={{ background: `${color}18`, border: `1px solid ${color}33` }}>
+                <Icon size={22} color={color} />
+              </div>
+              <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#0f172a", fontFamily: "'Plus Jakarta Sans', sans-serif", marginBottom: "0.5rem" }}>{title}</h3>
+              <p style={{ fontSize: "0.875rem", color: "#64748b", lineHeight: 1.65 }}>{desc}</p>
+              {/* Accent bottom bar */}
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${color}, transparent)`, opacity: 0.4 }} />
             </motion.div>
           ))}
         </div>

@@ -2,221 +2,170 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
-/* ── word-by-word reveal (triggered on scroll) ── */
-function RevealWords({
-  text,
-  baseDelay = 0,
-  stagger = 0.055,
-  style,
-}: {
-  text: string;
-  baseDelay?: number;
-  stagger?: number;
-  style?: React.CSSProperties;
-}) {
-  const words = text.split(" ");
-  return (
-    <span style={{ display: "inline", ...style }} aria-label={text}>
-      {words.map((word, i) => (
-        <span
-          key={i}
-          style={{ display: "inline-block", overflow: "hidden", lineHeight: "inherit" }}
-        >
-          <motion.span
-            style={{ display: "inline-block" }}
-            initial={{ y: "110%", opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{
-              duration: 0.58,
-              delay: baseDelay + i * stagger,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          >
-            {word}
-          </motion.span>
-          {i < words.length - 1 ? "\u00a0" : ""}
-        </span>
-      ))}
-    </span>
-  );
-}
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function AboutPreview() {
   return (
     <section
       aria-label="About Saaphzone"
-      style={{ padding: "6rem 1.5rem", background: "#ffffff" }}
+      style={{
+        padding: "7rem 1.5rem",
+        background: "linear-gradient(160deg, #020817 0%, #0c1a3a 50%, #071428 100%)",
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-        {/* Badge */}
-        <motion.span
-          initial={{ opacity: 0, x: -16 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            display: "inline-block",
-            background: "#eff6ff",
-            color: "#1d4ed8",
-            fontSize: "0.8rem",
-            fontWeight: 700,
-            padding: "0.375rem 0.875rem",
-            borderRadius: "100px",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            marginBottom: "0.875rem",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
-        >
-          Who We Are
-        </motion.span>
+      <style>{`
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 5rem;
+          align-items: center;
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+        @media (max-width: 960px) {
+          .about-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+        }
 
-        {/* Headline with word reveal */}
-        <h2
-          style={{
-            fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-            fontWeight: 800,
-            color: "#0f172a",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            marginBottom: "1.25rem",
-            letterSpacing: "-0.02em",
-            lineHeight: 1.2,
-          }}
-        >
-          <RevealWords
-            text="India's Trusted Clean-Tech Partner Since 2018"
-            baseDelay={0.05}
-            stagger={0.05}
-          />
-        </h2>
+        .about-orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(80px);
+          pointer-events: none;
+        }
 
-        {/* Body paragraphs — fade-in with blur */}
-        {[
-          "Saaphzone Technologies is a leading environmental solutions company headquartered in Gurugram, Haryana. We help industries meet regulatory compliance while significantly reducing their environmental footprint.",
-          "From cement plants and steel mills to municipalities and solar farms, our solutions span the full spectrum of clean technology — backed by field-tested expertise and 350+ successful projects.",
-        ].map((para, i) => (
-          <motion.p
-            key={i}
-            initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{
-              duration: 0.65,
-              delay: 0.15 + i * 0.12,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            style={{
-              fontSize: "1rem",
-              color: "#475569",
-              lineHeight: 1.75,
-              marginBottom: "1rem",
-            }}
-          >
-            {para}
-          </motion.p>
-        ))}
+        .about-stat-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(56,189,248,0.12);
+          border-radius: 16px;
+          padding: 1.5rem;
+          position: relative;
+          overflow: hidden;
+          transition: border-color 0.25s ease;
+        }
+        .about-stat-card:hover {
+          border-color: rgba(56,189,248,0.3);
+        }
+        .about-stat-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #38bdf8, #34d399, transparent);
+        }
+      `}</style>
 
-        {/* Mission & Vision */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
-          {[
-            {
-              label: "Mission",
-              text: "To make clean technology accessible and practical for every industry in India.",
-              color: "#1d4ed8",
-            },
-            {
-              label: "Vision",
-              text: "An India where industrial growth and environmental sustainability coexist seamlessly.",
-              color: "#0369a1",
-            },
-          ].map(({ label, text, color }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, delay: 0.35 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}
-            >
-              <motion.div
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.45, delay: 0.38 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  width: 4,
-                  minHeight: 44,
-                  borderRadius: "2px",
-                  background: color,
-                  flexShrink: 0,
-                  marginTop: 2,
-                  transformOrigin: "top",
-                }}
-              />
-              <div>
-                <p
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: 700,
-                    color,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  {label}
-                </p>
-                <p style={{ fontSize: "0.9375rem", color: "#475569", lineHeight: 1.6 }}>{text}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      {/* BG orbs */}
+      <div className="about-orb" style={{ width: 500, height: 500, background: "rgba(56,189,248,0.05)", top: -150, right: -100 }} />
+      <div className="about-orb" style={{ width: 300, height: 300, background: "rgba(52,211,153,0.04)", bottom: -80, left: -60 }} />
 
-        {/* CTA */}
+      {/* Grid overlay */}
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px)", backgroundSize: "52px 52px", pointerEvents: "none" }} />
+
+      <div className="about-grid" style={{ position: "relative", zIndex: 1 }}>
+
+        {/* LEFT — Text */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
         >
+          {/* Badge */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(56,189,248,0.1)", border: "1px solid rgba(56,189,248,0.25)", padding: "0.35rem 0.9rem", borderRadius: "100px", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.09em", color: "#38bdf8", textTransform: "uppercase", marginBottom: "1.25rem", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            Who We Are
+          </div>
+
+          <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)", fontWeight: 900, color: "#fff", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "-0.025em", lineHeight: 1.15, marginBottom: "1.25rem" }}>
+            India&apos;s Trusted{" "}
+            <span style={{ background: "linear-gradient(90deg, #38bdf8, #34d399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Clean-Tech Partner
+            </span>{" "}
+            Since 2018
+          </h2>
+
+          <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "1rem" }}>
+            Saaphzone Technologies is a leading environmental solutions company headquartered in Gurugram, Haryana. We help industries meet regulatory compliance while significantly reducing their environmental footprint.
+          </p>
+          <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "2rem" }}>
+            From cement plants and steel mills to municipalities and solar farms, our solutions span the full spectrum of clean technology — backed by 350+ successful projects.
+          </p>
+
+          {/* Checkpoints */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2rem" }}>
+            {[
+              "ISO 9001:2015 Certified",
+              "350+ Successful Projects across India",
+              "CPCB & MoEFCC Compliant Solutions",
+              "Pan-India presence with 40+ Industries served",
+            ].map((item) => (
+              <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                <CheckCircle2 size={18} color="#34d399" style={{ flexShrink: 0, marginTop: 2 }} />
+                <span style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Mission / Vision */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2.5rem" }}>
+            {[
+              { label: "Mission", text: "To make clean technology accessible and practical for every industry in India.", color: "#38bdf8" },
+              { label: "Vision", text: "An India where industrial growth and environmental sustainability coexist seamlessly.", color: "#34d399" },
+            ].map(({ label, text, color }) => (
+              <div key={label} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                <div style={{ width: 3, minHeight: 44, borderRadius: "2px", background: color, flexShrink: 0, marginTop: 2 }} />
+                <div>
+                  <p style={{ fontSize: "0.72rem", fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "'Plus Jakarta Sans', sans-serif", marginBottom: "0.2rem" }}>{label}</p>
+                  <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>{text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <Link
             href="/about"
             id="about-learn-more-btn"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              padding: "0.8125rem 1.625rem",
-              background: "#1d4ed8",
-              color: "white",
-              borderRadius: "10px",
-              textDecoration: "none",
-              fontWeight: 700,
-              fontSize: "0.9375rem",
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
-              boxShadow: "0 4px 14px rgba(29,78,216,0.25)",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = "#1e40af";
-              el.style.transform = "translateY(-3px) scale(1.02)";
-              el.style.boxShadow = "0 10px 26px rgba(29,78,216,0.38)";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = "#1d4ed8";
-              el.style.transform = "translateY(0) scale(1)";
-              el.style.boxShadow = "0 4px 14px rgba(29,78,216,0.25)";
-            }}
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.8rem 1.75rem", background: "linear-gradient(135deg, #0284c7, #0369a1)", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "0.9375rem", fontFamily: "'Plus Jakarta Sans', sans-serif", boxShadow: "0 4px 20px rgba(2,132,199,0.3)", transition: "all 0.25s ease" }}
+            onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 10px 28px rgba(2,132,199,0.45)"; }}
+            onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = "translateY(0)"; el.style.boxShadow = "0 4px 20px rgba(2,132,199,0.3)"; }}
           >
             Learn More About Us <ArrowRight size={17} />
           </Link>
         </motion.div>
+
+        {/* RIGHT — Floating stat cards */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}
+        >
+          {[
+            { val: "350+", label: "Projects Delivered", icon: "🏗️", color: "#38bdf8" },
+            { val: "85 MW", label: "Renewable Capacity", icon: "⚡", color: "#34d399" },
+            { val: "40+", label: "Industries Served", icon: "🏭", color: "#a78bfa" },
+            { val: "10+", label: "Years Experience", icon: "📅", color: "#fb923c" },
+            { val: "100%", label: "CPCB Compliant", icon: "✅", color: "#38bdf8" },
+            { val: "24/7", label: "Monitoring & Support", icon: "📡", color: "#34d399" },
+          ].map(({ val, label, icon, color }, i) => (
+            <motion.div
+              key={label}
+              className="about-stat-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 + i * 0.07, duration: 0.5 }}
+              whileHover={{ y: -4 }}
+            >
+              <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>{icon}</div>
+              <div style={{ fontSize: "1.6rem", fontWeight: 900, color, fontFamily: "'Plus Jakarta Sans', sans-serif", lineHeight: 1, marginBottom: "0.3rem" }}>{val}</div>
+              <div style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.45)", fontWeight: 500, lineHeight: 1.4 }}>{label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );
