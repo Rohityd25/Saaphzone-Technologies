@@ -37,8 +37,18 @@ export default function AirPollutionPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   return (
     <div style={{ paddingTop: "80px" }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .ap-hero-section { padding: clamp(2rem, 6vw, 3.5rem) 1.25rem clamp(2rem, 5vw, 3rem) !important; }
+          .ap-hero-h1 { font-size: clamp(1.6rem, 5vw, 2.25rem) !important; }
+          .ap-hero-p { font-size: 1rem !important; }
+          .ap-hero-btns { flex-direction: column !important; }
+          .ap-hero-btns a { width: 100% !important; justify-content: center !important; }
+          .ap-content-section { padding: clamp(2.5rem, 6vw, 4rem) 1.25rem !important; }
+        }
+      `}</style>
       {/* HERO */}
-      <section style={{ background: "linear-gradient(145deg,#f8faff 0%,#eff6ff 60%,#dbeafe 100%)", padding: "5rem 1.5rem 4rem", position: "relative", overflow: "hidden" }}>
+      <section className="ap-hero-section" style={{ background: "linear-gradient(145deg,#f8faff 0%,#eff6ff 60%,#dbeafe 100%)", padding: "5rem 1.5rem 4rem", position: "relative", overflow: "hidden" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle,rgba(29,78,216,.07) 1px,transparent 1px)", backgroundSize: "32px 32px", pointerEvents: "none" }} />
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -46,13 +56,13 @@ export default function AirPollutionPage() {
               <Wind size={14} color="#1d4ed8" />
               <span style={{ fontSize: "0.825rem", fontWeight: 600, color: "#1d4ed8", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Our Services</span>
             </div>
-            <h1 style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.02em", maxWidth: 700, marginBottom: "1.25rem" }}>
+            <h1 className="ap-hero-h1" style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.02em", maxWidth: 700, marginBottom: "1.25rem" }}>
               Air Pollution System
             </h1>
-            <p style={{ fontSize: "1.125rem", color: "#475569", lineHeight: 1.75, maxWidth: 620, marginBottom: "2rem" }}>
+            <p className="ap-hero-p" style={{ fontSize: "1.125rem", color: "#475569", lineHeight: 1.75, maxWidth: 620, marginBottom: "2rem" }}>
               Advanced industrial air pollution control — filtration, scrubbing, dust collection, and continuous emission monitoring systems that bring your emissions below every regulatory limit.
             </p>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div className="ap-hero-btns" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", background: "#1d4ed8", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", boxShadow: "0 4px 20px rgba(29,78,216,.3)", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; }}>
                 Get a Quote <ArrowRight size={18} />
               </Link>
@@ -65,7 +75,7 @@ export default function AirPollutionPage() {
       </section>
 
       {/* SYSTEM TYPES */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
+      <section className="ap-content-section" style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Air Pollution Control Technologies</h2>
@@ -86,7 +96,7 @@ export default function AirPollutionPage() {
       </section>
 
       {/* EMISSION MONITORING */}
-      <section style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
+      <section className="ap-content-section" style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }} className="two-col-grid">
           <motion.div initial={{ opacity: 0, x: -32 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "1rem" }}>Real-Time Emission Monitoring</h2>
@@ -132,7 +142,7 @@ export default function AirPollutionPage() {
       </section>
 
       {/* COMPLIANCE */}
-      <section style={{ padding: "5rem 1.5rem", background: "#1d4ed8" }}>
+      <section className="ap-content-section" style={{ padding: "5rem 1.5rem", background: "#1d4ed8" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Compliance & Regulatory Support</h2>
@@ -150,7 +160,7 @@ export default function AirPollutionPage() {
       </section>
 
       {/* CASE STUDY SNIPPET */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
+      <section className="ap-content-section" style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ background: "linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%)", border: "1.5px solid #bfdbfe", borderRadius: "20px", padding: "2.5rem", position: "relative", overflow: "hidden" }}>
             <div aria-hidden="true" style={{ position: "absolute", top: "-20px", right: "-20px", width: 120, height: 120, borderRadius: "50%", background: "rgba(29,78,216,.06)" }} />
@@ -174,7 +184,7 @@ export default function AirPollutionPage() {
       </section>
 
       {/* FAQ */}
-      <section style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
+      <section className="ap-content-section" style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Frequently Asked Questions</h2>
@@ -199,7 +209,7 @@ export default function AirPollutionPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: "5rem 1.5rem", background: "linear-gradient(135deg,#1e40af 0%,#1d4ed8 50%,#3b82f6 100%)" }}>
+      <section className="ap-content-section" style={{ padding: "5rem 1.5rem", background: "linear-gradient(135deg,#1e40af 0%,#1d4ed8 50%,#3b82f6 100%)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
             <h2 style={{ fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 800, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "1rem" }}>Clean Air. Full Compliance. Zero Compromise.</h2>

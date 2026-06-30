@@ -36,8 +36,18 @@ export default function SoftwareDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   return (
     <div style={{ paddingTop: "80px" }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .sd-hero-section { padding: clamp(2rem, 6vw, 3.5rem) 1.25rem clamp(2rem, 5vw, 3rem) !important; }
+          .sd-hero-h1 { font-size: clamp(1.6rem, 5vw, 2.25rem) !important; }
+          .sd-hero-p { font-size: 1rem !important; }
+          .sd-hero-btns { flex-direction: column !important; }
+          .sd-hero-btns a { width: 100% !important; justify-content: center !important; }
+          .sd-content-section { padding: clamp(2.5rem, 6vw, 4rem) 1.25rem !important; }
+        }
+      `}</style>
       {/* HERO */}
-      <section style={{ background: "linear-gradient(145deg,#f8faff 0%,#eff6ff 60%,#dbeafe 100%)", padding: "5rem 1.5rem 4rem", position: "relative", overflow: "hidden" }}>
+      <section className="sd-hero-section" style={{ background: "linear-gradient(145deg,#f8faff 0%,#eff6ff 60%,#dbeafe 100%)", padding: "5rem 1.5rem 4rem", position: "relative", overflow: "hidden" }}>
         <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle,rgba(29,78,216,.07) 1px,transparent 1px)", backgroundSize: "32px 32px", pointerEvents: "none" }} />
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -45,13 +55,13 @@ export default function SoftwareDevelopmentPage() {
               <Code size={14} color="#1d4ed8" />
               <span style={{ fontSize: "0.825rem", fontWeight: 600, color: "#1d4ed8", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Our Services</span>
             </div>
-            <h1 style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.02em", maxWidth: 680, marginBottom: "1.25rem" }}>
+            <h1 className="sd-hero-h1" style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: "-0.02em", maxWidth: 680, marginBottom: "1.25rem" }}>
               Software Development
             </h1>
-            <p style={{ fontSize: "1.125rem", color: "#475569", lineHeight: 1.75, maxWidth: 600, marginBottom: "2rem" }}>
+            <p className="sd-hero-p" style={{ fontSize: "1.125rem", color: "#475569", lineHeight: 1.75, maxWidth: 600, marginBottom: "2rem" }}>
               Custom environmental tracking software, IoT telemetry integration, and enterprise compliance reporting dashboards tailored for modern green enterprises and smart cities.
             </p>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div className="sd-hero-btns" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.875rem 1.75rem", background: "#1d4ed8", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", fontFamily: "'Plus Jakarta Sans',sans-serif", boxShadow: "0 4px 20px rgba(29,78,216,.3)", transition: "all .25s ease" }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1e40af"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8"; (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; }}>
                 Get a Quote <ArrowRight size={18} />
               </Link>
@@ -64,7 +74,7 @@ export default function SoftwareDevelopmentPage() {
       </section>
 
       {/* SOLUTIONS OVERVIEW */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
+      <section className="sd-content-section" style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Software & IoT Solutions</h2>
@@ -90,7 +100,7 @@ export default function SoftwareDevelopmentPage() {
       </section>
 
       {/* WORKFLOW */}
-      <section style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
+      <section className="sd-content-section" style={{ padding: "5rem 1.5rem", background: "#f8faff" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Our Development Process</h2>
@@ -111,7 +121,7 @@ export default function SoftwareDevelopmentPage() {
       </section>
 
       {/* BENEFITS */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
+      <section className="sd-content-section" style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Why Choose Our Software</h2>
@@ -134,7 +144,7 @@ export default function SoftwareDevelopmentPage() {
       </section>
 
       {/* FAQ */}
-      <section style={{ padding: "5rem 1.5rem", background: "white" }}>
+      <section className="sd-content-section" style={{ padding: "5rem 1.5rem", background: "white" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem,3vw,2.25rem)", fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "0.75rem" }}>Frequently Asked Questions</h2>
@@ -159,7 +169,7 @@ export default function SoftwareDevelopmentPage() {
       </section>
 
       {/* CTA BANNER */}
-      <section style={{ padding: "5rem 1.5rem", background: "linear-gradient(135deg,#1e40af 0%,#1d4ed8 50%,#3b82f6 100%)" }}>
+      <section className="sd-content-section" style={{ padding: "5rem 1.5rem", background: "linear-gradient(135deg,#1e40af 0%,#1d4ed8 50%,#3b82f6 100%)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
             <h2 style={{ fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 800, color: "white", fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: "1rem" }}>Ready to Build Your Environmental Monitoring System?</h2>
