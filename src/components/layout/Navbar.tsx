@@ -33,7 +33,8 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);      // desktop hover
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false); // mobile accordion
   const [subOpen, setSubOpen] = useState<string | null>(null);
   const pathname = usePathname();
 
@@ -47,6 +48,7 @@ export default function Navbar() {
     const timer = setTimeout(() => {
       setMobileOpen(false);
       setServicesOpen(false);
+      setMobileServicesOpen(false);
       setSubOpen(null);
     }, 0);
     return () => clearTimeout(timer);
@@ -362,13 +364,16 @@ export default function Navbar() {
             borderTop: "1px solid #e2e8f0",
             padding: "1rem 1.5rem 1.5rem",
             animation: "slideDown 0.2s ease",
+            maxHeight: "calc(100vh - 80px)",
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
           }}
         >
           {NAV_LINKS.map((link) =>
             link.children ? (
               <div key={link.label}>
                 <button
-                  onClick={() => setServicesOpen(!servicesOpen)}
+                  onClick={() => setMobileServicesOpen((prev) => !prev)}
                   style={{
                     width: "100%",
                     display: "flex",
@@ -381,19 +386,21 @@ export default function Navbar() {
                     fontSize: "1rem",
                     fontWeight: 600,
                     color: "#1e293b",
-                    borderBottom: "1px solid #f1f5f9",
+                    borderBottom: mobileServicesOpen ? "none" : "1px solid #f1f5f9",
+                    userSelect: "none",
                   }}
                 >
                   {link.label}
                   <ChevronDown
                     size={16}
                     style={{
-                      transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.2s",
+                      transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                      transition: "transform 0.25s ease",
+                      flexShrink: 0,
                     }}
                   />
                 </button>
-                {servicesOpen && (
+                {mobileServicesOpen && (
                   <div style={{ paddingLeft: "1rem" }}>
                     {link.children.map((child) => {
                       if ("children" in child && Array.isArray(child.children)) {
