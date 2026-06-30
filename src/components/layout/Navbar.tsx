@@ -126,8 +126,7 @@ export default function Navbar() {
         <nav
           role="navigation"
           aria-label="Main navigation"
-          style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
-          className="hidden lg:flex"
+          className="navbar-desktop-nav"
         >
           {NAV_LINKS.map((link) =>
             link.children ? (
@@ -341,7 +340,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           type="button"
-          className="lg:hidden"
+          className="navbar-mobile-hamburger"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -606,10 +605,21 @@ export default function Navbar() {
           from { opacity: 0; transform: translateX(-8px); }
           to { opacity: 1; transform: translateX(0); }
         }
-        .hidden { display: none; }
+        .navbar-desktop-nav {
+          display: none;
+        }
+        .navbar-mobile-hamburger {
+          display: block;
+        }
         @media (min-width: 1024px) {
-          .hidden.lg\\:flex { display: flex !important; }
-          .lg\\:hidden { display: none !important; }
+          .navbar-desktop-nav {
+            display: flex !important;
+            align-items: center;
+            gap: 0.25rem;
+          }
+          .navbar-mobile-hamburger {
+            display: none !important;
+          }
         }
       `}</style>
     </header>
