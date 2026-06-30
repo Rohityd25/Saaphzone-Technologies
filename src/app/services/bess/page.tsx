@@ -1816,11 +1816,13 @@ export default function BESSPage() {
               <div className="solution-left-cards">
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="5" y="3" width="14" height="18" rx="2" ry="2"/>
-                      <line x1="9" y1="7" x2="15" y2="7"/>
-                      <line x1="9" y1="11" x2="15" y2="11"/>
-                    </svg>
+                    <Image
+                      src="/camping_carry.jpg.jpeg"
+                      alt="SAPH-R1 Portable"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>SAPH-R1 Portable</h4>
@@ -1831,10 +1833,13 @@ export default function BESSPage() {
 
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                      <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
+                    <Image
+                      src="/wall_mount.jpg.jpeg"
+                      alt="SAPH-R2 Wall Mount"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>SAPH-R2 Wall Mount</h4>
@@ -1845,11 +1850,13 @@ export default function BESSPage() {
 
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="7" cy="21" r="2"/>
-                      <circle cx="17" cy="21" r="2"/>
-                      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-                    </svg>
+                    <Image
+                      src="/portable_trolley.jpg.jpeg"
+                      alt="SAPH-R3 Trolley"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>SAPH-R3 Trolley</h4>
@@ -1860,9 +1867,13 @@ export default function BESSPage() {
 
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                    </svg>
+                    <Image
+                      src="/white_cube_25kw.jpg.jpeg"
+                      alt="SAPH-R4 HiCap"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>SAPH-R4 HiCap</h4>
@@ -1918,11 +1929,13 @@ export default function BESSPage() {
               <div className="solution-left-cards">
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="2" width="20" height="20" rx="2" ry="2"/>
-                      <line x1="12" y1="18" x2="12" y2="6"/>
-                      <line x1="6" y1="12" x2="18" y2="12"/>
-                    </svg>
+                    <Image
+                      src="/modular_30_60kw.jpg.jpeg"
+                      alt="SAPH-C30 System"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>SAPH-C30 System</h4>
@@ -1933,9 +1946,13 @@ export default function BESSPage() {
 
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
+                    <Image
+                      src="/cube_indoor_outdoor.jpg.jpeg"
+                      alt="SAPH-C60 System"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>SAPH-C60 System</h4>
@@ -1991,10 +2008,13 @@ export default function BESSPage() {
               <div className="solution-left-cards">
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="2" width="20" height="20" rx="2" ry="2"/>
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
+                    <Image
+                      src="/solar_farm.jpg.jpeg"
+                      alt="Utility Scale BESS"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>Utility Scale BESS</h4>
@@ -2005,10 +2025,13 @@ export default function BESSPage() {
 
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
-                    </svg>
+                    <Image
+                      src="/ev_charging.jpg.jpeg"
+                      alt="Solar + Storage"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>Solar + Storage</h4>
@@ -2019,9 +2042,13 @@ export default function BESSPage() {
 
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                    </svg>
+                    <Image
+                      src="/portable_rugged.jpg.jpeg"
+                      alt="Industrial Energy Systems"
+                      width={58}
+                      height={58}
+                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                    />
                   </div>
                   <div className="compact-prod-card-info">
                     <h4>Industrial Energy Systems</h4>
