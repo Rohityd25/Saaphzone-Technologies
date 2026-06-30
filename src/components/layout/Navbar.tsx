@@ -138,6 +138,7 @@ export default function Navbar() {
                 onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
+                  type="button"
                   aria-haspopup="true"
                   aria-expanded={servicesOpen}
                   style={{
@@ -339,8 +340,13 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
+          type="button"
           className="lg:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setMobileOpen((prev) => !prev);
+          }}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           style={{
@@ -373,7 +379,12 @@ export default function Navbar() {
             link.children ? (
               <div key={link.label}>
                 <button
-                  onClick={() => setMobileServicesOpen((prev) => !prev)}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setMobileServicesOpen((prev) => !prev);
+                  }}
                   style={{
                     width: "100%",
                     display: "flex",
@@ -408,8 +419,10 @@ export default function Navbar() {
                         return (
                           <div key={child.label}>
                             <button
+                              type="button"
                               onClick={(e) => {
                                 e.preventDefault();
+                                e.stopPropagation();
                                 setSubOpen(isOpen ? null : child.label);
                               }}
                               style={{
