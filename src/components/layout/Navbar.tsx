@@ -53,7 +53,8 @@ export default function Navbar() {
   }, [pathname]);
 
   const isBess = pathname === "/services/bess" || pathname === "/services/bess/";
-  if (pathname?.startsWith("/preview") || isBess) {
+  const isSpm = pathname === "/services/air-pollution/spm" || pathname === "/services/air-pollution/spm/";
+  if (pathname?.startsWith("/preview") || isBess || isSpm) {
     return null;
   }
 

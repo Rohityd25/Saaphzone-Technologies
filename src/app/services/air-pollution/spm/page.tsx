@@ -374,53 +374,120 @@ export default function SpmPage() {
         .spm-page-container .laser-banner p { font-size: 13.5px; color: #E9D6D2; line-height: 1.5; }
         .spm-page-container .laser-banner b { color: #fff; }
 
-        /* ---------- SUBNAV ---------- */
-        .spm-page-container .sub-nav {
+        /* ---------- MAIN HEADER / NAV ---------- */
+        .spm-page-container nav {
           position: sticky;
-          top: 80px;
-          z-index: 900;
-          background: rgba(247, 248, 244, 0.92);
+          top: 0;
+          z-index: 9990;
+          background: rgba(247, 248, 244, 0.96);
           backdrop-filter: blur(12px);
           border-bottom: 1px solid var(--line);
         }
 
-        .spm-page-container .sub-nav-links {
+        .spm-page-container nav .container {
           display: flex;
-          justify-content: center;
-          gap: 2.5rem;
-          padding: 0.85rem 0;
-          list-style: none;
-          margin: 0;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 80px;
+          max-width: var(--maxw);
+          margin: 0 auto;
+          padding: 0 28px;
         }
 
-        .spm-page-container .sub-nav-links a {
+        .spm-page-container nav .sub-nav-links {
+          display: flex;
+          justify-content: center;
+          gap: 2.25rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .spm-page-container nav .sub-nav-links a {
           font-family: var(--font-display);
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           font-weight: 700;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.04em;
           text-transform: uppercase;
           color: var(--ink-soft);
           transition: color 0.2s;
           text-decoration: none;
         }
 
-        .spm-page-container .sub-nav-links a:hover {
+        .spm-page-container nav .sub-nav-links a:hover {
           color: var(--green-700);
+        }
+
+        .spm-page-container nav .nav-cta {
+          background: var(--green-700);
+          color: var(--white);
+          padding: 0.68rem 1.6rem;
+          border-radius: 8px;
+          transition: all 0.25s ease;
+          font-weight: 700;
+          text-transform: none;
+          font-family: var(--font-display);
+          font-size: 0.94rem;
+          text-decoration: none;
+          display: inline-block;
+          white-space: nowrap;
+        }
+
+        .spm-page-container nav .nav-cta:hover {
+          background: var(--green-600);
+          box-shadow: 0 4px 14px rgba(27, 94, 32, 0.25);
+          transform: translateY(-1px);
         }
       ` }} />
 
-      {/* Local Page Sub-Navbar for Section Navigation */}
-      <div className="sub-nav">
-        <div className="wrap">
-          <ul className="sub-nav-links">
+      {/* Local Page Main Navbar */}
+      <nav>
+        <div className="container">
+          <div style={{ flex: 1, display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+            <Link
+              href="/"
+              aria-label="Saaphzone Technologies Home"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0px",
+                textDecoration: "none",
+                flexShrink: 0,
+              }}
+            >
+              <Image
+                src="/Saaphzone logo.png"
+                alt="Saaphzone Technologies"
+                width={70}
+                height={70}
+                style={{ objectFit: "contain", background: "none", flexShrink: 0, marginRight: "-8px" }}
+                priority
+              />
+              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15, flexShrink: 0 }}>
+                <span style={{ fontWeight: 800, color: "#0f172a", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", fontSize: "1.35rem", letterSpacing: "-0.02em" }}>
+                  Saaphzone
+                </span>
+                <span style={{ fontWeight: 600, color: "#64748b", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+                  Technologies
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          <ul className="sub-nav-links" style={{ flex: "none", margin: 0, padding: 0 }}>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#specifications">Specifications</a></li>
             <li><a href="#installation">Installation</a></li>
             <li><a href="#calibration">Calibration</a></li>
           </ul>
+
+          <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+            <Link href="/contact" className="nav-cta">Request a Quote</Link>
+          </div>
         </div>
-      </div>
+      </nav>
 
       <section className="hero" id="top">
         <div className="wrap">
