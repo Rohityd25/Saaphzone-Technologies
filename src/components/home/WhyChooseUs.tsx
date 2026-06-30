@@ -15,7 +15,7 @@ export default function WhyChooseUs() {
   return (
     <section
       aria-label="Why Choose Saaphzone"
-      style={{ padding: "6rem 1.5rem", background: "#f8fafc" }}
+      style={{ padding: "clamp(3.5rem, 7vw, 6rem) 1.25rem", background: "#f8fafc" }}
     >
       <style>{`
         .wcu-card {
@@ -53,6 +53,11 @@ export default function WhyChooseUs() {
           transition: transform 0.25s ease;
         }
         .wcu-card:hover .wcu-icon { transform: scale(1.1) rotate(4deg); }
+
+        @media (max-width: 480px) {
+          .wcu-card { padding: 1.25rem !important; border-radius: 14px !important; }
+          .wcu-icon { width: 44px !important; height: 44px !important; }
+        }
       `}</style>
 
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>

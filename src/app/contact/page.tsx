@@ -623,6 +623,19 @@ export default function ContactPage() {
           transform: translateY(-2px);
           box-shadow: 0 4px 16px rgba(56,189,248,0.2);
         }
+
+        @media (max-width: 640px) {
+          .cp-hero { padding: 3.5rem 1.25rem 4.5rem !important; min-height: auto !important; }
+          .cp-hero-stats { gap: 1.25rem !important; }
+          .cp-form-card { padding: 1.5rem !important; border-radius: 16px !important; }
+          .cp-info-card { padding: 1.5rem !important; }
+          .cp-band-links { flex-direction: column !important; align-items: center !important; }
+          .cp-band-link { width: 100% !important; justify-content: center !important; max-width: 320px !important; }
+        }
+        @media (max-width: 480px) {
+          .cp-hero-title { font-size: 2rem !important; }
+          .cp-form-eyebrow::before { display: none; }
+        }
       `}</style>
 
       {/* ── HERO ──────────────────────────────── */}

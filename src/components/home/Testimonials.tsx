@@ -42,7 +42,7 @@ export default function Testimonials() {
     <section
       aria-label="Client Testimonials"
       style={{
-        padding: "6rem 1.5rem",
+        padding: "clamp(3.5rem, 7vw, 6rem) 1.25rem",
         background: "linear-gradient(160deg, #020817 0%, #0c1a3a 60%, #071428 100%)",
         position: "relative",
         overflow: "hidden",
@@ -67,6 +67,10 @@ export default function Testimonials() {
           color: white;
           border-color: #0284c7;
           transform: scale(1.1);
+        }
+
+        @media (max-width: 640px) {
+          .testi-nav-btn { width: 38px !important; height: 38px !important; }
         }
       `}</style>
 

@@ -9,7 +9,7 @@ export default function AboutPreview() {
     <section
       aria-label="About Saaphzone"
       style={{
-        padding: "7rem 1.5rem",
+        padding: "clamp(4rem, 8vw, 7rem) 1.25rem",
         background: "linear-gradient(160deg, #020817 0%, #0c1a3a 50%, #071428 100%)",
         position: "relative",
         overflow: "hidden",
@@ -26,6 +26,10 @@ export default function AboutPreview() {
         }
         @media (max-width: 960px) {
           .about-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+        }
+        @media (max-width: 640px) {
+          .about-grid { gap: 2rem !important; }
+          .about-stat-card { padding: 1.1rem !important; }
         }
 
         .about-orb {

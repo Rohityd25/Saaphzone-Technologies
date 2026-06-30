@@ -35,7 +35,7 @@ export default function Projects() {
   return (
     <section
       aria-label="Featured Projects"
-      style={{ padding: "6rem 1.5rem", background: "white" }}
+      style={{ padding: "clamp(3.5rem, 7vw, 6rem) 1.25rem", background: "white" }}
     >
       <style>{`
         .project-card {
@@ -69,6 +69,10 @@ export default function Projects() {
           background: #0284c7;
           border-color: #0284c7;
           color: white;
+        }
+
+        @media (max-width: 640px) {
+          .project-card { border-radius: 16px !important; }
         }
       `}</style>
 

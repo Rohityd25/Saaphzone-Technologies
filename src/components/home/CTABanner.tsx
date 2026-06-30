@@ -32,7 +32,7 @@ export default function CTABanner() {
       aria-label="Call to Action"
       style={{
         background: "linear-gradient(135deg, #020817 0%, #0c1a3a 50%, #071428 100%)",
-        padding: "7rem 1.5rem",
+        padding: "clamp(4rem, 8vw, 7rem) 1.25rem",
         position: "relative",
         overflow: "hidden",
         borderTop: "1px solid rgba(56,189,248,0.1)",
@@ -78,6 +78,14 @@ export default function CTABanner() {
           background: rgba(255,255,255,0.08);
           border-color: rgba(255,255,255,0.35);
           transform: translateY(-3px) scale(1.02);
+        }
+
+        @media (max-width: 640px) {
+          .cta-btn-primary, .cta-btn-ghost {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 0.875rem 1.5rem !important;
+          }
         }
       `}</style>
 
@@ -138,7 +146,7 @@ export default function CTABanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.55, delay: 0.7 }}
-          style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2.5rem" }}
+          style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2.5rem", maxWidth: 480, margin: "0 auto 2.5rem" }}
         >
           <Link href="/contact" id="cta-contact-btn" className="cta-btn-primary">
             Get in Touch <ArrowRight size={18} />

@@ -62,6 +62,18 @@ export default function Hero() {
           .hero-grid { grid-template-columns: 1fr !important; }
           .hero-illustration { display: none !important; }
         }
+        @media (max-width: 768px) {
+          .hero-btn-primary, .hero-btn-ghost {
+            padding: 0.8rem 1.4rem !important;
+            font-size: 0.9375rem !important;
+            width: 100%;
+            justify-content: center;
+          }
+          .hero-stat-divider { display: none !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-badge { font-size: 0.68rem !important; padding: 0.3rem 0.75rem !important; }
+        }
 
         .hero-orb {
           position: absolute;
@@ -177,7 +189,7 @@ export default function Hero() {
       <div aria-hidden="true" style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "180px", background: "linear-gradient(to top, rgba(2,8,23,0.6), transparent)", pointerEvents: "none" }} />
 
       {/* Content */}
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "4rem 1.5rem", width: "100%", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(2rem, 5vw, 4rem) 1.25rem", width: "100%", position: "relative", zIndex: 1 }}>
         <div className="hero-grid" style={{ display: "grid", gap: "4rem", alignItems: "center" }}>
 
           {/* LEFT */}
