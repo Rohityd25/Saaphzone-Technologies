@@ -37,6 +37,10 @@ export default function Navbar() {
   const [subOpen, setSubOpen] = useState<string | null>(null);
   const pathname = usePathname();
 
+  if (pathname?.startsWith("/preview") || pathname === "/services/bess") {
+    return null;
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });

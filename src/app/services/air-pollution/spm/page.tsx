@@ -373,7 +373,54 @@ export default function SpmPage() {
         .spm-page-container .laser-banner svg { flex: none; width: 22px; height: 22px; stroke: var(--laser); fill: none; stroke-width: 1.6; }
         .spm-page-container .laser-banner p { font-size: 13.5px; color: #E9D6D2; line-height: 1.5; }
         .spm-page-container .laser-banner b { color: #fff; }
+
+        /* ---------- SUBNAV ---------- */
+        .spm-page-container .sub-nav {
+          position: sticky;
+          top: 80px;
+          z-index: 900;
+          background: rgba(247, 248, 244, 0.92);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--line);
+        }
+
+        .spm-page-container .sub-nav-links {
+          display: flex;
+          justify-content: center;
+          gap: 2.5rem;
+          padding: 0.85rem 0;
+          list-style: none;
+          margin: 0;
+        }
+
+        .spm-page-container .sub-nav-links a {
+          font-family: var(--font-display);
+          font-size: 0.8rem;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--ink-soft);
+          transition: color 0.2s;
+          text-decoration: none;
+        }
+
+        .spm-page-container .sub-nav-links a:hover {
+          color: var(--green-700);
+        }
       ` }} />
+
+      {/* Local Page Sub-Navbar for Section Navigation */}
+      <div className="sub-nav">
+        <div className="wrap">
+          <ul className="sub-nav-links">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#specifications">Specifications</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#calibration">Calibration</a></li>
+          </ul>
+        </div>
+      </div>
 
       <section className="hero" id="top">
         <div className="wrap">

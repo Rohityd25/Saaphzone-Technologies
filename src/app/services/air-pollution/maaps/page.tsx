@@ -163,9 +163,14 @@ export default function MaapsPage() {
           border-bottom: 1px solid rgba(23, 184, 191, 0.18);
         }
 
+        .maaps-page-container .sub-nav .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
         .maaps-page-container .sub-nav-links {
           display: flex;
-          justify-content: center;
           gap: 2rem;
           padding: 0.85rem 0;
         }
@@ -183,6 +188,24 @@ export default function MaapsPage() {
 
         .maaps-page-container .sub-nav-links a:hover {
           color: var(--teal-light);
+        }
+
+        .maaps-page-container .sub-nav-cta {
+          background: #00b8c4;
+          color: var(--white);
+          padding: 0.55rem 1.25rem;
+          border-radius: 6px;
+          transition: all 0.2s;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700;
+          font-size: 0.8rem;
+          letter-spacing: 0.05em;
+          text-decoration: none;
+        }
+
+        .maaps-page-container .sub-nav-cta:hover {
+          background: #00d8e6;
+          box-shadow: 0 4px 14px rgba(0, 184, 196, 0.3);
         }
 
         @media (max-width: 768px) {
@@ -1247,6 +1270,7 @@ export default function MaapsPage() {
             <a href="#applications">Applications</a>
             <a href="#mii">Make in India</a>
           </div>
+          <Link href="/contact" className="sub-nav-cta">Enquire Now</Link>
         </div>
       </div>
 
