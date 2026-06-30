@@ -64,7 +64,8 @@ export default function BESSPage() {
 
   return (
     <div className="bess-page-container">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .bess-page-container {
           --navy: #0C2340;
           --navy-dark: #071628;
@@ -258,7 +259,7 @@ export default function BESSPage() {
         .bess-page-container .solution-left-cards {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem;
+          gap: 1.25rem;
         }
 
         @media (max-width: 640px) {
@@ -271,12 +272,14 @@ export default function BESSPage() {
           background: rgba(255, 255, 255, 0.015);
           border: 1px solid rgba(23, 184, 191, 0.12);
           border-radius: 16px;
-          padding: 1.5rem;
+          padding: 0;
           display: flex;
-          gap: 1.15rem;
-          align-items: center;
+          flex-direction: column;
+          gap: 0;
+          align-items: stretch;
           text-align: left;
           transition: all 0.25s ease;
+          overflow: hidden;
         }
 
         .bess-page-container .compact-prod-card:hover {
@@ -287,20 +290,22 @@ export default function BESSPage() {
         }
 
         .bess-page-container .compact-prod-card-thumb {
-          width: 58px;
-          height: 58px;
-          border-radius: 12px;
+          width: 100%;
+          height: 160px;
+          border-radius: 0;
           background: #0c2340;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          overflow: hidden;
         }
 
         .bess-page-container .compact-prod-card-info {
           display: flex;
           flex-direction: column;
           gap: 0.25rem;
+          padding: 1rem 1.25rem 1.25rem;
         }
 
         .bess-page-container .compact-prod-card-info h4 {
@@ -1717,8 +1722,8 @@ export default function BESSPage() {
             <div className="tech-card" style={{ borderTop: "4px solid #00b8c4" }}>
               <div className="tech-icon-container">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="7" width="16" height="10" rx="2" ry="2"/>
-                  <line x1="22" y1="11" x2="22" y2="13"/>
+                  <rect x="2" y="7" width="16" height="10" rx="2" ry="2" />
+                  <line x1="22" y1="11" x2="22" y2="13" />
                 </svg>
               </div>
               <h3>SAPH Series BESS</h3>
@@ -1736,8 +1741,8 @@ export default function BESSPage() {
             <div className="tech-card" style={{ borderTop: "4px solid #3b82f6" }}>
               <div className="tech-icon-container">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z"/>
-                  <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z"/>
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
+                  <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
                 </svg>
               </div>
               <h3>Proprietary EMS</h3>
@@ -1755,8 +1760,8 @@ export default function BESSPage() {
             <div className="tech-card" style={{ borderTop: "4px solid #0c2340" }}>
               <div className="tech-icon-container">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="3"/>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
                 </svg>
               </div>
               <h3>PCD - Power Conversion Design</h3>
@@ -1817,11 +1822,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/camping_carry.jpg.jpeg"
+                      src="/camping_carry.jpeg"
                       alt="SAPH-R1 Portable"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1834,11 +1839,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/wall_mount.jpg.jpeg"
+                      src="/wall_mount.jpeg"
                       alt="SAPH-R2 Wall Mount"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1851,11 +1856,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/portable_trolley.jpg.jpeg"
+                      src="/portable_trolley.jpeg"
                       alt="SAPH-R3 Trolley"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1868,11 +1873,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/white_cube_25kw.jpg.jpeg"
+                      src="/white_cube_25kw.jpeg"
                       alt="SAPH-R4 HiCap"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1930,11 +1935,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/modular_30_60kw.jpg.jpeg"
+                      src="/modular_30_60kw.jpeg"
                       alt="SAPH-C30 System"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -1947,11 +1952,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/cube_indoor_outdoor.jpg.jpeg"
+                      src="/cube_indoor_outdoor.jpeg"
                       alt="SAPH-C60 System"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -2009,11 +2014,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/solar_farm.jpg.jpeg"
+                      src="/solar_farm.jpeg"
                       alt="Utility Scale BESS"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -2026,11 +2031,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/ev_charging.jpg.jpeg"
+                      src="/ev_charging.jpeg"
                       alt="Solar + Storage"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -2043,11 +2048,11 @@ export default function BESSPage() {
                 <div className="compact-prod-card">
                   <div className="compact-prod-card-thumb">
                     <Image
-                      src="/portable_rugged.jpg.jpeg"
+                      src="/portable_rugged.jpeg"
                       alt="Industrial Energy Systems"
-                      width={58}
-                      height={58}
-                      style={{ objectFit: "cover", borderRadius: "12px" }}
+                      width={400}
+                      height={220}
+                      style={{ objectFit: "cover", width: "100%", height: "160px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
@@ -2183,8 +2188,8 @@ export default function BESSPage() {
                     <svg width="100%" height="100%" viewBox="0 0 800 160" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id="solarGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="rgba(0, 184, 196, 0.25)"/>
-                          <stop offset="100%" stopColor="rgba(0, 184, 196, 0)"/>
+                          <stop offset="0%" stopColor="rgba(0, 184, 196, 0.25)" />
+                          <stop offset="100%" stopColor="rgba(0, 184, 196, 0)" />
                         </linearGradient>
                       </defs>
 
@@ -2196,7 +2201,7 @@ export default function BESSPage() {
                       {/* Curves */}
                       <path d="M 0 140 Q 200 140 300 100 T 400 40 T 500 100 Q 600 140 800 140 L 800 160 L 0 160 Z" fill="url(#solarGrad)" />
                       <path d="M 0 140 Q 200 140 300 100 T 400 40 T 500 100 Q 600 140 800 140" fill="none" stroke="#00b8c4" strokeWidth="2.5" />
-                      
+
                       <path d="M 0 110 Q 200 110 400 75 T 800 100" fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" />
                     </svg>
                   </div>
@@ -2265,7 +2270,7 @@ export default function BESSPage() {
             <div className="contact-info-panel">
               <span className="section-badge" style={{ color: "#00b8c4", fontWeight: 700 }}>GET IN TOUCH</span>
               <h3>Talk to Our Energy Solutions Team</h3>
-              
+
               <h4 style={{ color: "var(--white)", fontSize: "1.2rem", fontWeight: 800, marginTop: "2.5rem", marginBottom: "0.75rem", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Saaphzone Technologies LLP
               </h4>
@@ -2319,7 +2324,7 @@ export default function BESSPage() {
             {/* Proposal Card Right */}
             <div className="proposal-card">
               <h3>Request a Proposal</h3>
-              
+
               {isSubmitted ? (
                 <div style={{ textAlign: "center", padding: "3rem 1rem" }}>
                   <div style={{ fontSize: "3rem", marginBottom: "1rem", color: "#00b8c4" }}>✓</div>
