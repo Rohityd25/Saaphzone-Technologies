@@ -54,7 +54,8 @@ export default function Navbar() {
 
   const isBess = pathname === "/services/bess" || pathname === "/services/bess/";
   const isSpm = pathname === "/services/air-pollution/spm" || pathname === "/services/air-pollution/spm/";
-  if (pathname?.startsWith("/preview") || isBess || isSpm) {
+  const isMaaps = pathname === "/services/air-pollution/maaps" || pathname === "/services/air-pollution/maaps/";
+  if (pathname?.startsWith("/preview") || isBess || isSpm || isMaaps) {
     return null;
   }
 

@@ -153,63 +153,73 @@ export default function MaapsPage() {
           box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
         }
 
-        /* LOCAL STICKY SUBNAV */
-        .maaps-page-container .sub-nav {
+        /* ---------- MAIN HEADER / NAV ---------- */
+        .maaps-page-container nav {
           position: sticky;
-          top: 80px;
-          z-index: 900;
-          background: rgba(7, 22, 40, 0.92);
+          top: 0;
+          z-index: 9990;
+          background: rgba(7, 22, 40, 0.95);
           backdrop-filter: blur(12px);
           border-bottom: 1px solid rgba(23, 184, 191, 0.18);
         }
 
-        .maaps-page-container .sub-nav .container {
+        .maaps-page-container nav .container {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          width: 100%;
+          height: 80px;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 5%;
         }
 
-        .maaps-page-container .sub-nav-links {
+        .maaps-page-container nav .sub-nav-links {
           display: flex;
           gap: 2rem;
-          padding: 0.85rem 0;
+          margin: 0;
+          padding: 0;
+          list-style: none;
         }
 
-        .maaps-page-container .sub-nav-links a {
+        .maaps-page-container nav .sub-nav-links a {
           font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 0.8rem;
+          font-size: 0.85rem;
           font-weight: 700;
           letter-spacing: 0.05em;
           text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.65);
+          color: rgba(255, 255, 255, 0.7);
           transition: color 0.2s;
           text-decoration: none;
         }
 
-        .maaps-page-container .sub-nav-links a:hover {
+        .maaps-page-container nav .sub-nav-links a:hover {
           color: var(--teal-light);
         }
 
-        .maaps-page-container .sub-nav-cta {
+        .maaps-page-container nav .sub-nav-cta {
           background: #00b8c4;
           color: var(--white);
-          padding: 0.55rem 1.25rem;
-          border-radius: 6px;
-          transition: all 0.2s;
+          padding: 0.68rem 1.6rem;
+          border-radius: 8px;
+          transition: all 0.25s ease;
           font-family: 'Plus Jakarta Sans', sans-serif;
           font-weight: 700;
-          font-size: 0.8rem;
-          letter-spacing: 0.05em;
+          font-size: 0.9rem;
+          letter-spacing: 0.02em;
           text-decoration: none;
+          display: inline-block;
+          white-space: nowrap;
         }
 
-        .maaps-page-container .sub-nav-cta:hover {
+        .maaps-page-container nav .sub-nav-cta:hover {
           background: #00d8e6;
-          box-shadow: 0 4px 14px rgba(0, 184, 196, 0.3);
+          box-shadow: 0 4px 14px rgba(0, 184, 196, 0.35);
+          transform: translateY(-1px);
         }
 
         @media (max-width: 768px) {
-          .maaps-page-container .sub-nav-links {
+          .maaps-page-container nav .sub-nav-links {
             gap: 1.25rem;
             overflow-x: auto;
             white-space: nowrap;
@@ -217,7 +227,7 @@ export default function MaapsPage() {
             padding: 0.85rem 1.5rem;
             -webkit-overflow-scrolling: touch;
           }
-          .maaps-page-container .sub-nav-links::-webkit-scrollbar {
+          .maaps-page-container nav .sub-nav-links::-webkit-scrollbar {
             display: none;
           }
         }
@@ -1260,9 +1270,40 @@ export default function MaapsPage() {
         }
       ` }} />
 
-      {/* Local Page Sub-Navbar for Section Navigation */}
-      <div className="sub-nav">
+      {/* Local Page Main Navbar */}
+      <nav>
         <div className="container">
+          <div style={{ flex: 1, display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+            <Link
+              href="/"
+              aria-label="Saaphzone Technologies Home"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0px",
+                textDecoration: "none",
+                flexShrink: 0,
+              }}
+            >
+              <Image
+                src="/Saaphzone logo.png"
+                alt="Saaphzone Technologies"
+                width={70}
+                height={70}
+                style={{ objectFit: "contain", background: "none", flexShrink: 0, marginRight: "-8px" }}
+                priority
+              />
+              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15, flexShrink: 0 }}>
+                <span style={{ fontWeight: 800, color: "#ffffff", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", fontSize: "1.35rem", letterSpacing: "-0.02em" }}>
+                  Saaphzone
+                </span>
+                <span style={{ fontWeight: 600, color: "var(--teal-light)", fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+                  Technologies
+                </span>
+              </div>
+            </Link>
+          </div>
+
           <div className="sub-nav-links">
             <a href="#technology">Technology</a>
             <a href="#performance">Performance</a>
@@ -1270,9 +1311,12 @@ export default function MaapsPage() {
             <a href="#applications">Applications</a>
             <a href="#mii">Make in India</a>
           </div>
-          <Link href="/contact" className="sub-nav-cta">Enquire Now</Link>
+
+          <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+            <Link href="/contact" className="sub-nav-cta">Enquire Now</Link>
+          </div>
         </div>
-      </div>
+      </nav>
 
       {/* HERO SECTION */}
       <section id="hero-sec">
