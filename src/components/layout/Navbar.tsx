@@ -18,7 +18,7 @@ const NAV_LINKS = [
         href: "/services/air-pollution",
         children: [
           { label: "SPM (Dust Analyzer)", href: "/services/air-pollution/spm" },
-          { label: "MAAPS", href: "/services/air-pollution/maaps" },
+          { label: "MAAPS (Air Purifier)", href: "/services/air-pollution/maaps" },
         ],
       },
       { label: "BESS", href: "/services/bess" },
