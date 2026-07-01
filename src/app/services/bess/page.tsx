@@ -1726,7 +1726,7 @@ export default function BESSPage() {
                   <line x1="22" y1="11" x2="22" y2="13" />
                 </svg>
               </div>
-              <h3>SAPH Series BESS</h3>
+              <h3>SAAPH Series BESS</h3>
               <p>
                 Our Battery Energy Storage Systems use LiFePO4 chemistry with custom cell balancing circuits and thermal management designed for Indian climatic conditions — from desert heat to high humidity.
               </p>
@@ -1786,7 +1786,7 @@ export default function BESSPage() {
             <span className="section-badge" style={{ color: "#0F8B91", fontWeight: 700 }}>THREE SOLUTION CATEGORIES</span>
             <h2 className="section-title" style={{ color: "var(--white)" }}>Power for Every Scale</h2>
             <p className="section-subtitle" style={{ color: "rgba(255,255,255,0.7)", margin: "0" }}>
-              From a single household to a utility-scale solar plant, the SAPH Series scales with your energy ambition.
+              From a single household to a utility-scale solar plant, the SAAPH Series scales with your energy ambition.
             </p>
           </div>
 
@@ -1824,14 +1824,14 @@ export default function BESSPage() {
                     <Image
                       unoptimized
                       src="/camping_carry.jpeg"
-                      alt="SAPH-R1 Portable"
+                      alt="SAAPH-R1 Portable"
                       width={400}
                       height={220}
                       style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
-                    <h4>SAPH-R1 Portable</h4>
+                    <h4>SAAPH-R1 Portable</h4>
                     <p>Apartment & small home backup</p>
                     <span>2.5 KW · PORTABLE</span>
                   </div>
@@ -1842,14 +1842,14 @@ export default function BESSPage() {
                     <Image
                       unoptimized
                       src="/wall_mount.jpeg"
-                      alt="SAPH-R2 Wall Mount"
+                      alt="SAAPH-R2 Wall Mount"
                       width={400}
                       height={220}
                       style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
-                    <h4>SAPH-R2 Wall Mount</h4>
+                    <h4>SAAPH-R2 Wall Mount</h4>
                     <p>Solar-integrated home system</p>
                     <span>3-5 KW · WALL MOUNT</span>
                   </div>
@@ -1860,14 +1860,14 @@ export default function BESSPage() {
                     <Image
                       unoptimized
                       src="/portable_trolley.jpeg"
-                      alt="SAPH-R3 Trolley"
+                      alt="SAAPH-R3 Trolley"
                       width={400}
                       height={220}
                       style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
-                    <h4>SAPH-R3 Trolley</h4>
+                    <h4>SAAPH-R3 Trolley</h4>
                     <p>Mobile power with solar charging</p>
                     <span>5-10 KW · MOBILE</span>
                   </div>
@@ -1878,14 +1878,14 @@ export default function BESSPage() {
                     <Image
                       unoptimized
                       src="/white_cube_25kw.jpeg"
-                      alt="SAPH-R4 HiCap"
+                      alt="SAAPH-R4 HiCap"
                       width={400}
                       height={220}
                       style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
-                    <h4>SAPH-R4 HiCap</h4>
+                    <h4>SAAPH-R4 HiCap</h4>
                     <p>High-capacity villa & bungalow</p>
                     <span>10-15 KW · FLOOR</span>
                   </div>
@@ -1903,7 +1903,7 @@ export default function BESSPage() {
                 </div>
                 <h3>Clean. Quiet. Yours.</h3>
                 <p className="lead">
-                  Every home deserves energy independence. The SAPH Residential Series delivers silent, zero-emission backup and solar storage for apartments, independent homes, and villas — with a smartphone app for complete control.
+                  Every home deserves energy independence. The SAAPH Residential Series delivers silent, zero-emission backup and solar storage for apartments, independent homes, and villas — with a smartphone app for complete control.
                 </p>
                 <ul className="sol-bullets">
                   <li>
@@ -1941,14 +1941,14 @@ export default function BESSPage() {
                     <Image
                       unoptimized
                       src="/modular_30_60kw.jpeg"
-                      alt="SAPH-C30 System"
+                      alt="SAAPH-C30 System"
                       width={400}
                       height={220}
                       style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
-                    <h4>SAPH-C30 System</h4>
+                    <h4>SAAPH-C30 System</h4>
                     <p>Demand charge reduction & backup</p>
                     <span>30 KW · CABINET</span>
                   </div>
@@ -1959,14 +1959,14 @@ export default function BESSPage() {
                     <Image
                       unoptimized
                       src="/cube_indoor_outdoor.jpeg"
-                      alt="SAPH-C60 System"
+                      alt="SAAPH-C60 System"
                       width={400}
                       height={220}
                       style={{ objectFit: "cover", width: "100%", height: "220px" }}
                     />
                   </div>
                   <div className="compact-prod-card-info">
-                    <h4>SAPH-C60 System</h4>
+                    <h4>SAAPH-C60 System</h4>
                     <p>Industrial backup & peak shaving</p>
                     <span>60 KW · CABINET</span>
                   </div>
@@ -1984,7 +1984,7 @@ export default function BESSPage() {
                 </div>
                 <h3>Reduce Tariffs. Secure Power.</h3>
                 <p className="lead">
-                  Keep your business running 24/7 with zero interruption. The SAPH Commercial Series reduces peak demand charges, improves power quality, and provides automatic backup for offices, manufacturing units, and server rooms.
+                  Keep your business running 24/7 with zero interruption. The SAAPH Commercial Series reduces peak demand charges, improves power quality, and provides automatic backup for offices, manufacturing units, and server rooms.
                 </p>
                 <ul className="sol-bullets">
                   <li>
@@ -2228,7 +2228,7 @@ export default function BESSPage() {
                 <div className="devices-grid">
                   <div className="device-card">
                     <div className="device-title-row">
-                      <div className="device-title">SAPH-R2 · Unit A1</div>
+                      <div className="device-title">SAAPH-R2 · Unit A1</div>
                     </div>
                     <div className="device-progress-bg">
                       <div className="device-progress-fill" style={{ width: "87%" }}></div>
@@ -2241,7 +2241,7 @@ export default function BESSPage() {
 
                   <div className="device-card">
                     <div className="device-title-row">
-                      <div className="device-title">SAPH-C1 · Unit B3</div>
+                      <div className="device-title">SAAPH-C1 · Unit B3</div>
                     </div>
                     <div className="device-progress-bg">
                       <div className="device-progress-fill" style={{ width: "62%", backgroundColor: "#3b82f6" }}></div>
@@ -2254,7 +2254,7 @@ export default function BESSPage() {
 
                   <div className="device-card">
                     <div className="device-title-row">
-                      <div className="device-title">SAPH-P1 · Container 1</div>
+                      <div className="device-title">SAAPH-P1 · Container 1</div>
                     </div>
                     <div className="device-progress-bg">
                       <div className="device-progress-fill" style={{ width: "94%" }}></div>
